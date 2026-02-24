@@ -22,46 +22,47 @@ const Hymns = () => {
     ]
 
     return (
-        <section id="simbolos" className="py-20 bg-white">
+        <section id="simbolos" className="py-20 bg-white animate-fade-in min-h-[70vh] flex items-center">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Himnos y Símbolos</h2>
-                    <div className="w-20 h-1 bg-accent mx-auto"></div>
+                    <span className="text-primary font-black tracking-[0.3em] uppercase text-[10px] mb-4 block">Identidad</span>
+                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">Himnos y Símbolos</h2>
                 </div>
 
-                <div className="flex flex-col lg:flex-row gap-12 items-start">
+                <div className="flex flex-col lg:flex-row gap-12 items-start max-w-5xl mx-auto">
                     <div className="w-full lg:w-1/3 flex flex-col gap-4">
                         {items.map((item) => (
                             <button
                                 key={item.id}
                                 onClick={() => setActiveItem(item.id)}
-                                className={`text-left p-4 rounded-lg border-2 transition-all duration-300 ${activeItem === item.id
-                                        ? 'border-primary bg-primary/5 text-primary scale-105'
-                                        : 'border-gray-100 hover:border-accent hover:bg-accent/5'
+                                className={`text-left p-6 rounded-3xl border-2 transition-all duration-500 font-bold uppercase text-[10px] tracking-widest ${activeItem === item.id
+                                    ? 'border-primary bg-primary text-white scale-105 shadow-xl shadow-primary/20'
+                                    : 'border-gray-100 text-gray-500 hover:border-accent hover:bg-accent/5'
                                     }`}
                             >
-                                <span className="font-bold">{item.title}</span>
+                                {item.title}
                             </button>
                         ))}
                     </div>
 
-                    <div className="w-full lg:w-2/3 min-h-[250px] p-8 rounded-2xl bg-secondary border border-gray-100 flex items-center justify-center relative overflow-hidden">
+                    <div className="w-full lg:w-2/3 min-h-[300px] p-10 md:p-16 rounded-[3rem] bg-secondary border border-gray-100 flex items-center justify-center relative overflow-hidden group shadow-inner">
                         {activeItem ? (
-                            <div className="animate-fade-in text-center lg:text-left">
-                                <h3 className="text-2xl font-bold mb-6 text-primary">
+                            <div className="animate-fade-in text-center lg:text-left relative z-10">
+                                <h3 className="text-2xl md:text-3xl font-bold mb-8 text-primary tracking-tight">
                                     {items.find(i => i.id === activeItem).title}
                                 </h3>
-                                <p className="text-lg text-gray-700 leading-relaxed italic">
+                                <p className="text-lg md:text-xl text-gray-700 leading-relaxed italic font-light">
                                     "{items.find(i => i.id === activeItem).content}"
                                 </p>
                             </div>
                         ) : (
-                            <div className="text-gray-400 text-center">
-                                <p>Selecciona un símbolo o himno para ver su historia y significado.</p>
+                            <div className="text-gray-400 text-center relative z-10">
+                                <p className="text-sm uppercase tracking-widest font-black opacity-50">Selecciona un elemento para descubrir su historia</p>
                             </div>
                         )}
                         {/* Decorative background element */}
-                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-accent/10 rounded-full blur-3xl"></div>
+                        <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-accent/10 rounded-full blur-[100px] group-hover:scale-150 transition-transform duration-1000"></div>
+                        <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/5 rounded-full blur-[80px]"></div>
                     </div>
                 </div>
             </div>
