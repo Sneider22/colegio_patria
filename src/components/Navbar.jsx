@@ -22,11 +22,11 @@ const Navbar = ({ activeView, onNavigate }) => {
     const handleLinkClick = (id) => {
         onNavigate(id)
         setIsOpen(false)
-        window.scrollTo(0, 0)
+        // Eliminado window.scrollTo(0,0) de aquí para no interferir con el scroll de App.jsx
     }
 
     return (
-        <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled || activeView !== 'home' ? 'bg-white/95 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] py-3' : 'bg-transparent py-6'}`}>
+        <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled || activeView !== 'home' ? 'bg-white/95 backdrop-blur-xl shadow-lg py-3' : 'bg-transparent py-6'}`}>
             <div className="container mx-auto px-6 flex justify-between items-center">
                 <button
                     onClick={() => handleLinkClick('inicio')}
@@ -51,21 +51,21 @@ const Navbar = ({ activeView, onNavigate }) => {
 
                 {/* Mobile Menu Button - PREMIUM STYLE */}
                 <button
-                    className="md:hidden relative z-[60] p-2 focus:outline-none"
+                    className="md:hidden relative z-[100] p-2 focus:outline-none"
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     <div className="w-6 h-5 relative flex flex-col justify-between">
-                        <span className={`w-full h-[2.5px] rounded-full transition-all duration-500 ${isOpen ? 'bg-primary rotate-45 translate-y-2' : (scrolled || activeView !== 'home' ? 'bg-primary' : 'bg-white')}`}></span>
-                        <span className={`w-full h-[2.5px] rounded-full transition-all duration-500 ${isOpen ? 'opacity-0 -translate-x-2' : (scrolled || activeView !== 'home' ? 'bg-primary' : 'bg-white')}`}></span>
-                        <span className={`w-full h-[2.5px] rounded-full transition-all duration-500 ${isOpen ? 'bg-primary -rotate-45 -translate-y-2' : (scrolled || activeView !== 'home' ? 'bg-primary' : 'bg-white')}`}></span>
+                        <span className={`w-full h-[3px] rounded-full transition-all duration-500 ${isOpen ? 'bg-primary rotate-45 translate-y-2' : (scrolled || activeView !== 'home' ? 'bg-primary' : 'bg-white')}`}></span>
+                        <span className={`w-full h-[3px] rounded-full transition-all duration-500 ${isOpen ? 'opacity-0 -translate-x-2' : (scrolled || activeView !== 'home' ? 'bg-primary' : 'bg-white')}`}></span>
+                        <span className={`w-full h-[3px] rounded-full transition-all duration-500 ${isOpen ? 'bg-primary -rotate-45 -translate-y-2' : (scrolled || activeView !== 'home' ? 'bg-primary' : 'bg-white')}`}></span>
                     </div>
                 </button>
             </div>
 
             {/* Mobile Menu Overlay - SLIDE DOWN PREMIUM */}
-            <div className={`md:hidden fixed inset-0 z-50 bg-white transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+            <div className={`md:hidden fixed inset-0 z-[90] bg-white transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
                 <div className="flex flex-col h-full justify-center px-10 space-y-8">
-                    <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] opacity-100 mb-2">Navegación</span>
+                    <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Navegación</span>
                     {navLinks.map((link, idx) => (
                         <button
                             key={link.id}
@@ -76,7 +76,7 @@ const Navbar = ({ activeView, onNavigate }) => {
                             {link.name}
                         </button>
                     ))}
-                    <div className={`mt-12 pt-8 border-t border-gray-100 transition-all duration-700 delay-500 ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
+                    <div className={`mt-12 pt-8 border-t border-gray-100 transition-all duration-1000 delay-500 ${isOpen ? 'opacity-100 blur-0' : 'opacity-0 blur-xl'}`}>
                         <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-4">Información</p>
                         <p className="text-gray-900 font-bold text-sm">Av. Los Mangos, Los Chorros</p>
                         <p className="text-primary font-black text-sm mt-1">+58 412 177 2899</p>
@@ -84,7 +84,7 @@ const Navbar = ({ activeView, onNavigate }) => {
                 </div>
 
                 {/* Decorative background in mobile menu */}
-                <div className="absolute bottom-[-10%] right-[-10%] w-64 h-64 bg-primary/5 rounded-full blur-3xl invisible md:visible"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/[0.02] -z-10 pointer-events-none"></div>
             </div>
         </nav>
     )
