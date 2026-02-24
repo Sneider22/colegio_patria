@@ -41,9 +41,17 @@ const Navbar = ({ activeView, onNavigate, isOpen, onToggle }) => {
             <div className="container mx-auto px-6 flex justify-between items-center">
                 <button
                     onClick={() => handleLinkClick('inicio')}
-                    className="text-2xl font-black tracking-tighter transition-colors text-primary"
+                    className="flex items-center gap-3 group transition-all"
                 >
-                    Colegio<span className="text-accent">Patria</span>
+                    <img
+                        src="/images/logo.png"
+                        alt="Logo"
+                        className="h-10 md:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-110"
+                        onError={(e) => { e.target.style.display = 'none'; }}
+                    />
+                    <span className="text-xl md:text-2xl font-black tracking-tighter transition-colors text-primary items-center flex">
+                        Colegio<span className="text-accent">Patria</span>
+                    </span>
                 </button>
 
                 {/* Desktop Menu */}

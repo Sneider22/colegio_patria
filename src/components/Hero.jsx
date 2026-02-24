@@ -2,15 +2,16 @@ import { useState } from 'react'
 
 const Hero = ({ onNavigate }) => {
     return (
-        <section className="relative h-[calc(100vh-80px)] mt-20 flex items-center justify-center text-white overflow-hidden animate-fade-in">
+        <section className="relative h-[75vh] max-h-[700px] mt-20 flex items-center justify-center text-white overflow-hidden animate-fade-in group">
             {/* Fallback pattern + Image Overlay */}
             <div className="absolute inset-0 bg-primary-dark">
                 <img
-                    src="https://via.placeholder.com/1920x1080?text=Colegio+Patria"
+                    src="/images/hero-bg.jpg"
                     alt="Colegio Patria Background"
-                    className="w-full h-full object-cover opacity-40 transition-transform duration-700 hover:scale-105"
+                    className="w-full h-full object-cover opacity-45 transition-transform duration-[3000ms] group-hover:scale-110"
+                    onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=2000'; }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/20"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-secondary/80"></div>
             </div>
 
             <div className="relative z-10 text-center px-4 max-w-4xl">
@@ -33,7 +34,7 @@ const Hero = ({ onNavigate }) => {
 
             <div
                 onClick={() => onNavigate('nosotros')}
-                className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer group transition-all"
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer group transition-all"
             >
                 <div className="flex flex-col items-center gap-2">
                     <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/50 group-hover:text-white transition-colors">Descubrir</span>

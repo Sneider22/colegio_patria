@@ -81,19 +81,19 @@ const Hymns = () => {
     const RingButton = ({ item }) => (
         <button
             onClick={() => setActiveRing(item.id)}
-            className={`group relative flex flex-col items-center transition-all duration-500 ${activeRing === item.id ? 'scale-110 md:scale-125' : 'hover:scale-110 opacity-60 hover:opacity-100'}`}
+            className={`group relative flex flex-col items-center transition-all duration-500 ${activeRing === item.id ? 'scale-110 md:scale-125' : 'hover:scale-110'}`}
         >
             <div
-                className={`w-14 h-14 md:w-20 md:h-20 rounded-full border-[5px] md:border-[6px] flex items-center justify-center transition-all duration-500 shadow-xl ${activeRing === item.id ? 'z-10 bg-white ring-8 ring-white/20' : 'bg-transparent'}`}
+                className={`w-14 h-14 md:w-20 md:h-20 rounded-full border-[5px] md:border-[6px] flex items-center justify-center transition-all duration-500 shadow-xl ${activeRing === item.id ? 'z-10 bg-white ring-8 ring-white/20' : 'bg-transparent opacity-40 hover:opacity-100 hover:bg-white/5'}`}
                 style={{ borderColor: item.hex }}
             >
                 <div
-                    className={`w-3 h-3 rounded-full transition-all duration-500 ${activeRing === item.id ? 'scale-150' : 'scale-0'}`}
+                    className={`w-3 h-3 rounded-full transition-all duration-500 ${activeRing === item.id ? 'scale-150 opacity-100' : 'scale-0 opacity-0'}`}
                     style={{ backgroundColor: item.hex }}
                 ></div>
             </div>
             <span
-                className={`mt-3 text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all duration-500 ${activeRing === item.id ? 'text-gray-900 opacity-100' : 'text-gray-400 opacity-0 group-hover:opacity-100'}`}
+                className={`mt-3 text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all duration-500 ${activeRing === item.id ? 'text-gray-900 opacity-100 translate-y-0' : 'text-gray-400 opacity-60 group-hover:opacity-100 group-hover:text-gray-600'}`}
             >
                 {item.title}
             </span>
@@ -127,14 +127,14 @@ const Hymns = () => {
                     </div>
 
                     {/* Right/Bottom: Information Card - Stabilized Height and Size */}
-                    <div key={activeRing} className="flex-1 animate-slide-up bg-white p-8 md:p-14 lg:p-16 rounded-[3rem] lg:rounded-[4rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-100 min-h-[550px] md:min-h-[500px] flex items-center justify-center relative overflow-hidden group self-stretch">
+                    <div key={activeRing} className="flex-1 animate-slide-up bg-white p-8 md:p-14 lg:p-16 pt-16 md:pt-20 rounded-[3rem] lg:rounded-[4rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-100 min-h-[550px] md:min-h-[500px] flex items-start justify-center relative overflow-hidden group self-stretch">
                         <div
                             className="absolute inset-0 opacity-[0.06] transition-all duration-1000 group-hover:scale-110"
                             style={{ backgroundColor: activeItem.hex }}
                         ></div>
 
-                        <div className="relative z-10 w-full text-center lg:text-left">
-                            <div className="flex flex-col items-center lg:items-start gap-5 mb-8">
+                        <div className="relative z-10 w-full text-center lg:text-left flex flex-col items-center lg:items-start">
+                            <div className="flex flex-col items-center lg:items-start gap-5 mb-8 w-full">
                                 <div className="w-12 h-1 rounded-full" style={{ backgroundColor: activeItem.hex }}></div>
                                 <h3 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase">{activeItem.title}</h3>
                                 <div className="px-3 py-0.5 rounded-full bg-gray-50 border border-gray-100">
