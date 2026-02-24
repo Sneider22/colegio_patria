@@ -12,6 +12,18 @@ const Navbar = ({ activeView, onNavigate }) => {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
+    // Bloqueo de scroll cuando el menú está abierto
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'unset'
+        }
+        return () => {
+            document.body.style.overflow = 'unset'
+        }
+    }, [isOpen])
+
     const navLinks = [
         { name: 'Inicio', id: 'inicio' },
         { name: 'Nosotros', id: 'nosotros' },
@@ -49,21 +61,22 @@ const Navbar = ({ activeView, onNavigate }) => {
                     ))}
                 </div>
 
-                {/* Mobile Menu Button - PREMIUM STYLE */}
+                {/* Botón de Menú Móvil - Optimizado */}
                 <button
-                    className="md:hidden relative z-[100] p-2 focus:outline-none"
+                    className="md:hidden relative z-[110] w-12 h-12 flex items-center justify-center focus:outline-none"
                     onClick={() => setIsOpen(!isOpen)}
+                    aria-label="Toggle Menu"
                 >
-                    <div className="w-6 h-5 relative flex flex-col justify-between">
-                        <span className={`w-full h-[3px] rounded-full transition-all duration-500 ${isOpen ? 'bg-primary rotate-45 translate-y-2' : (scrolled || activeView !== 'home' ? 'bg-primary' : 'bg-white')}`}></span>
-                        <span className={`w-full h-[3px] rounded-full transition-all duration-500 ${isOpen ? 'opacity-0 -translate-x-2' : (scrolled || activeView !== 'home' ? 'bg-primary' : 'bg-white')}`}></span>
-                        <span className={`w-full h-[3px] rounded-full transition-all duration-500 ${isOpen ? 'bg-primary -rotate-45 -translate-y-2' : (scrolled || activeView !== 'home' ? 'bg-primary' : 'bg-white')}`}></span>
+                    <div className="w-6 h-5 relative">
+                        <span className={`absolute left-0 w-full h-[3px] rounded-full transition-all duration-500 ease-in-out ${isOpen ? 'bg-primary rotate-45 top-2' : `top-0 ${scrolled || activeView !== 'home' ? 'bg-primary' : 'bg-white'}`}`}></span>
+                        <span className={`absolute left-0 w-full h-[3px] rounded-full transition-all duration-500 ease-in-out top-2 ${isOpen ? 'opacity-0 -translate-x-full' : (scrolled || activeView !== 'home' ? 'bg-primary' : 'bg-white')}`}></span>
+                        <span className={`absolute left-0 w-full h-[3px] rounded-full transition-all duration-500 ease-in-out ${isOpen ? 'bg-primary -rotate-45 top-2' : `top-4 ${scrolled || activeView !== 'home' ? 'bg-primary' : 'bg-white'}`}`}></span>
                     </div>
                 </button>
             </div>
 
-            {/* Mobile Menu Overlay - SLIDE DOWN PREMIUM */}
-            <div className={`md:hidden fixed inset-0 z-[90] bg-white transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
+            {/* Overlay de Menú Móvil - Robusto e Independiente */}
+            <div className={`md:hidden fixed inset-0 w-full h-screen bg-white z-[100] transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] ${isOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}`}>
                 <div className="flex flex-col h-full justify-center px-10 space-y-8">
                     <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Navegación</span>
                     {navLinks.map((link, idx) => (

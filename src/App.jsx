@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Mission from './components/Mission'
 import About from './components/About'
 import Hymns from './components/Hymns'
 import Contact from './components/Contact'
@@ -14,7 +13,6 @@ function App() {
     if (id === 'inicio' || id === 'nosotros') {
       if (activeView !== 'home') {
         setActiveView('home')
-        // Dar tiempo al re-render antes de scrollear
         setTimeout(() => {
           const targetId = id === 'inicio' ? 'inicio-view' : 'nosotros-section'
           const elem = document.getElementById(targetId)
@@ -51,7 +49,6 @@ function App() {
               <Hero onNavigate={handleNavigation} />
             </div>
             <div id="nosotros-section">
-              <Mission />
               <About />
             </div>
           </>
@@ -72,7 +69,6 @@ function App() {
         return (
           <>
             <Hero onNavigate={handleNavigation} />
-            <Mission />
             <About />
           </>
         )
@@ -80,7 +76,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-secondary antialiased flex flex-col font-inter">
+    <div className="min-h-screen bg-secondary antialiased flex flex-col font-inter transition-all duration-700">
       <Navbar activeView={activeView} onNavigate={handleNavigation} />
       <main className="flex-grow">
         {renderContent()}
