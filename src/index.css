@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --font-outfit: "Outfit", sans-serif;
+  --font-inter: "Inter", sans-serif;
+
+  --color-primary: #0056b3;
+  --color-primary-dark: #004494;
+  --color-secondary: #f8f9fa;
+  --color-accent: #ffc107;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-secondary text-gray-900 font-inter antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-outfit tracking-tight;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-primary-dark hover:scale-105 active:scale-95;
+  }
+}
