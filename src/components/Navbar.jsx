@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const Navbar = ({ activeView, onNavigate }) => {
-    const [isOpen, setIsOpen] = useState(false)
+const Navbar = ({ activeView, onNavigate, isOpen, onToggle }) => {
     const [scrolled, setScrolled] = useState(false)
 
     useEffect(() => {
@@ -27,22 +26,22 @@ const Navbar = ({ activeView, onNavigate }) => {
     const navLinks = [
         { name: 'Inicio', id: 'inicio' },
         { name: 'Nosotros', id: 'nosotros' },
-        { name: 'Símbolos', id: 'simbolos' },
+        { name: 'Identidad', id: 'identidad' },
         { name: 'Contacto', id: 'contacto' },
     ]
 
     const handleLinkClick = (id) => {
         onNavigate(id)
-        setIsOpen(false)
+        onToggle(false)
         // Eliminado window.scrollTo(0,0) de aquí para no interferir con el scroll de App.jsx
     }
 
     return (
-        <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled || activeView !== 'home' ? 'bg-white/95 backdrop-blur-xl shadow-lg py-3' : 'bg-transparent py-6'}`}>
+        <nav className="fixed top-0 w-full z-50 transition-all duration-500 bg-white/95 backdrop-blur-xl shadow-lg py-3">
             <div className="container mx-auto px-6 flex justify-between items-center">
                 <button
                     onClick={() => handleLinkClick('inicio')}
-                    className={`text-2xl font-black tracking-tighter transition-colors ${(scrolled || activeView !== 'home') ? 'text-primary' : 'text-white'}`}
+                    className="text-2xl font-black tracking-tighter transition-colors text-primary"
                 >
                     Colegio<span className="text-accent">Patria</span>
                 </button>
@@ -53,7 +52,7 @@ const Navbar = ({ activeView, onNavigate }) => {
                         <button
                             key={link.id}
                             onClick={() => handleLinkClick(link.id)}
-                            className={`font-black uppercase text-[10px] tracking-[0.2em] hover:text-accent transition-all relative group ${(scrolled || activeView !== 'home') ? 'text-gray-900' : 'text-white'}`}
+                            className={`font-black uppercase text-[10px] tracking-[0.2em] hover:text-accent transition-all relative group ${activeView === link.id ? 'text-primary' : 'text-gray-950'}`}
                         >
                             {link.name}
                             <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-accent transition-transform duration-300 origin-left ${activeView === link.id || (activeView === 'home' && (link.id === 'inicio' || link.id === 'nosotros')) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
@@ -64,13 +63,13 @@ const Navbar = ({ activeView, onNavigate }) => {
                 {/* Botón de Menú Móvil - Optimizado */}
                 <button
                     className="md:hidden relative z-[110] w-12 h-12 flex items-center justify-center focus:outline-none"
-                    onClick={() => setIsOpen(!isOpen)}
+                    onClick={() => onToggle(!isOpen)}
                     aria-label="Toggle Menu"
                 >
                     <div className="w-6 h-5 relative">
-                        <span className={`absolute left-0 w-full h-[3px] rounded-full transition-all duration-500 ease-in-out ${isOpen ? 'bg-primary rotate-45 top-2' : `top-0 ${scrolled || activeView !== 'home' ? 'bg-primary' : 'bg-white'}`}`}></span>
-                        <span className={`absolute left-0 w-full h-[3px] rounded-full transition-all duration-500 ease-in-out top-2 ${isOpen ? 'opacity-0 -translate-x-full' : (scrolled || activeView !== 'home' ? 'bg-primary' : 'bg-white')}`}></span>
-                        <span className={`absolute left-0 w-full h-[3px] rounded-full transition-all duration-500 ease-in-out ${isOpen ? 'bg-primary -rotate-45 top-2' : `top-4 ${scrolled || activeView !== 'home' ? 'bg-primary' : 'bg-white'}`}`}></span>
+                        <span className={`absolute left-0 w-full h-[3px] rounded-full transition-all duration-500 ease-in-out ${isOpen ? 'bg-primary rotate-45 top-2' : 'bg-primary top-0'}`}></span>
+                        <span className={`absolute left-0 w-full h-[3px] rounded-full transition-all duration-500 ease-in-out top-2 ${isOpen ? 'opacity-0 -translate-x-full' : 'bg-primary'}`}></span>
+                        <span className={`absolute left-0 w-full h-[3px] rounded-full transition-all duration-500 ease-in-out ${isOpen ? 'bg-primary -rotate-45 top-2' : 'bg-primary top-4'}`}></span>
                     </div>
                 </button>
             </div>
@@ -91,8 +90,10 @@ const Navbar = ({ activeView, onNavigate }) => {
                     ))}
                     <div className={`mt-12 pt-8 border-t border-gray-100 transition-all duration-1000 delay-500 ${isOpen ? 'opacity-100 blur-0' : 'opacity-0 blur-xl'}`}>
                         <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-4">Información</p>
-                        <p className="text-gray-900 font-bold text-sm">Av. Los Mangos, Los Chorros</p>
-                        <p className="text-primary font-black text-sm mt-1">+58 412 177 2899</p>
+                        <p className="text-gray-950 font-black text-sm uppercase tracking-tighter mb-1">Colegio ítalo-venezolano</p>
+                        <p className="text-gray-600 font-medium text-xs leading-relaxed max-w-[250px]">
+                            Av los mangos, los chorros estado Miranda, Caracas 1071
+                        </p>
                     </div>
                 </div>
 

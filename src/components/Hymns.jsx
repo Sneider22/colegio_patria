@@ -109,34 +109,39 @@ const Hymns = () => {
                     <p className="text-gray-500 max-w-2xl mx-auto text-sm font-medium">La unión de los cinco continentes representada en nuestra esencia.</p>
                 </div>
 
-                {/* Olympic Rings Visual Layout */}
-                <div className="max-w-4xl mx-auto mb-32">
-                    <div className="bg-secondary/30 p-8 md:p-14 rounded-[4rem] border border-gray-100 shadow-inner flex flex-col items-center gap-4 md:gap-6">
-                        <div className="flex justify-center gap-6 md:gap-14">
+                {/* Olympic Rings Visual Layout - Optimized for Side-by-Side on Desktop */}
+                <div className="max-w-6xl mx-auto mb-32 flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
+
+                    {/* Left/Top: Rings Selector */}
+                    <div className="w-full lg:w-[400px] bg-secondary/30 p-8 md:p-14 lg:p-10 rounded-[3rem] lg:rounded-[4rem] border border-gray-100 shadow-inner flex flex-col items-center justify-center gap-6 md:gap-8 min-h-[300px]">
+                        <div className="flex justify-center gap-6 md:gap-12 lg:gap-8">
                             {identityItems.filter(i => i.position === 'top').map(item => (
                                 <RingButton key={item.id} item={item} />
                             ))}
                         </div>
-                        <div className="flex justify-center gap-6 md:gap-14 -mt-2">
+                        <div className="flex justify-center gap-6 md:gap-12 lg:gap-8 -mt-2 lg:mt-0">
                             {identityItems.filter(i => i.position === 'bottom').map(item => (
                                 <RingButton key={item.id} item={item} />
                             ))}
                         </div>
                     </div>
 
-                    <div className="mt-12 animate-slide-up bg-white p-10 md:p-20 rounded-[4rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-100 min-h-[400px] flex items-center relative overflow-hidden group">
+                    {/* Right/Bottom: Information Card - Stabilized Height and Size */}
+                    <div key={activeRing} className="flex-1 animate-slide-up bg-white p-8 md:p-14 lg:p-16 rounded-[3rem] lg:rounded-[4rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-100 min-h-[550px] md:min-h-[500px] flex items-center justify-center relative overflow-hidden group self-stretch">
                         <div
-                            className="absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-[0.03] transition-all duration-1000 group-hover:scale-110"
+                            className="absolute inset-0 opacity-[0.06] transition-all duration-1000 group-hover:scale-110"
                             style={{ backgroundColor: activeItem.hex }}
                         ></div>
 
-                        <div className="relative z-10 w-full">
-                            <div className="flex items-center gap-6 mb-10">
-                                <div className="w-16 h-1 bg-gray-900 rounded-full" style={{ backgroundColor: activeItem.hex }}></div>
-                                <h3 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase italic">{activeItem.title}</h3>
-                                <span className="text-[10px] font-black uppercase text-gray-400 tracking-[0.3em]">{activeItem.colorName}</span>
+                        <div className="relative z-10 w-full text-center lg:text-left">
+                            <div className="flex flex-col items-center lg:items-start gap-5 mb-8">
+                                <div className="w-12 h-1 rounded-full" style={{ backgroundColor: activeItem.hex }}></div>
+                                <h3 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase italic">{activeItem.title}</h3>
+                                <div className="px-3 py-0.5 rounded-full bg-gray-50 border border-gray-100">
+                                    <span className="text-[9px] font-black uppercase text-gray-400 tracking-[0.3em]">{activeItem.colorName}</span>
+                                </div>
                             </div>
-                            <p className="text-lg md:text-2xl text-gray-600 leading-relaxed font-light italic text-balance">
+                            <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium italic text-balance mx-auto lg:mx-0 max-w-2xl">
                                 "{activeItem.text}"
                             </p>
                         </div>
@@ -163,7 +168,7 @@ const Hymns = () => {
                                         </div>
                                         <div>
                                             <h4 className="font-black text-sm md:text-lg uppercase tracking-widest text-gray-900">{anthem.title}</h4>
-                                            {anthem.subtitle && <p className="text-[10px] text-primary font-black uppercase tracking-widest">{anthem.subtitle}</p>}
+                                            {anthem.subtitle && <p className="text-[10px] text-primary font-black uppercase tracking-widest leading-none mt-1">{anthem.subtitle}</p>}
                                             <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">
                                                 {activeAnthem === anthem.id ? 'Ocultar Letra' : 'Ver Letra'}
                                             </p>
@@ -174,14 +179,14 @@ const Hymns = () => {
                                     </span>
                                 </button>
 
-                                <div className={`transition-all duration-700 ease-in-out overflow-hidden ${activeAnthem === anthem.id ? 'max-h-[1500px] border-t border-gray-100' : 'max-h-0'}`}>
+                                <div className={`transition-all duration-1000 ease-in-out overflow-hidden ${activeAnthem === anthem.id ? 'max-h-[3000px] opacity-100 border-t border-gray-100' : 'max-h-0 opacity-0'}`}>
                                     <div className="p-10 md:p-16 bg-white/80">
                                         {anthem.author && (
-                                            <p className="text-center text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 mb-10 border-b border-gray-50 pb-6 italic">
+                                            <p className="text-center text-[9px] font-black uppercase tracking-[0.3em] text-gray-400 mb-8 border-b border-gray-50 pb-6 italic">
                                                 {anthem.author}
                                             </p>
                                         )}
-                                        <p className="text-gray-700 md:text-xl leading-loose font-serif italic text-center whitespace-pre-line">
+                                        <p className="text-gray-700 md:text-xl leading-relaxed font-serif italic text-center whitespace-pre-line">
                                             {anthem.content}
                                         </p>
                                         <div className="mt-12 flex justify-center">

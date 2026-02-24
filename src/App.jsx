@@ -5,9 +5,11 @@ import About from './components/About'
 import Hymns from './components/Hymns'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import WhatsAppFAB from './components/WhatsAppFAB'
 
 function App() {
-  const [activeView, setActiveView] = useState('home') // 'home', 'simbolos', 'contacto'
+  const [activeView, setActiveView] = useState('home') // 'home', 'identidad', 'contacto'
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const handleNavigation = (id) => {
     if (id === 'inicio' || id === 'nosotros') {
@@ -31,8 +33,8 @@ function App() {
           window.scrollTo({ top: 0, behavior: 'smooth' })
         }
       }
-    } else if (id === 'simbolos') {
-      setActiveView('simbolos')
+    } else if (id === 'identidad') {
+      setActiveView('identidad')
       window.scrollTo(0, 0)
     } else if (id === 'contacto') {
       setActiveView('contacto')
@@ -53,7 +55,7 @@ function App() {
             </div>
           </>
         )
-      case 'simbolos':
+      case 'identidad':
         return (
           <div className="pt-20">
             <Hymns />
@@ -77,11 +79,12 @@ function App() {
 
   return (
     <div className="min-h-screen bg-secondary antialiased flex flex-col font-inter transition-all duration-700">
-      <Navbar activeView={activeView} onNavigate={handleNavigation} />
+      <Navbar activeView={activeView} onNavigate={handleNavigation} isOpen={isMenuOpen} onToggle={setIsMenuOpen} />
       <main className="flex-grow">
         {renderContent()}
       </main>
       <Footer onNavigate={handleNavigation} />
+      <WhatsAppFAB isMenuOpen={isMenuOpen} />
     </div>
   )
 }

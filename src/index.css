@@ -7,7 +7,9 @@
   --color-primary: #0056b3;
   --color-primary-dark: #004494;
   --color-secondary: #f8f9fa;
-  --color-accent: #ffc107;
+  --color-accent: #2d2d2d;
+  --color-gold: #D4AF37;
+  --color-footer-blue: #001a33;
 }
 
 @layer base {

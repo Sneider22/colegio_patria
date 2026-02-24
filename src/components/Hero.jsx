@@ -16,7 +16,7 @@ const Hero = ({ onNavigate }) => {
             <div className="relative z-10 text-center px-4 max-w-4xl">
                 <h1 className="text-6xl md:text-8xl font-bold mb-8 drop-shadow-2xl animate-slide-up">
                     Excelencia <br />
-                    <span className="text-accent underline decoration-accent/30 decoration-8 underline-offset-8">Educativa</span>
+                    <span className="text-gold underline decoration-gold/30 decoration-8 underline-offset-8 uppercase tracking-tighter">Educativa</span>
                 </h1>
                 <p className="text-xl md:text-2xl mb-12 text-gray-200 drop-shadow-lg max-w-2xl mx-auto font-light leading-relaxed animate-slide-up [animation-delay:200ms]">
                     Formando líderes con propósito desde hace más de 30 años en el corazón de Caracas.

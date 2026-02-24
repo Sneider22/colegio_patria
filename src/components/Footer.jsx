@@ -30,55 +30,52 @@ const Footer = () => {
     ]
 
     return (
-        <footer className="bg-gray-950 text-white py-16 border-t border-gray-900 animate-fade-in relative overflow-hidden">
+        <footer className="bg-footer-blue text-white py-10 border-t border-white/5 animate-fade-in relative overflow-hidden">
             {/* Ambient light effect */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[100px] bg-primary/10 blur-[100px] -z-10"></div>
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[150px] bg-primary/10 blur-[120px] -z-10"></div>
 
             <div className="container mx-auto px-6">
-                <div className="flex flex-col md:flex-row justify-between items-center gap-12">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-8">
 
                     {/* Brand & Location */}
-                    <div className="flex flex-col items-center md:items-start gap-3">
-                        <h3 className="text-2xl font-black text-accent tracking-tighter">
+                    <div className="flex flex-col items-center md:items-start gap-1">
+                        <h3 className="text-xl font-black text-gold tracking-tighter">
                             Colegio<span className="text-white">Patria</span>
                         </h3>
-                        <p className="text-[10px] text-gray-500 uppercase tracking-[0.5em] font-black italic">
+                        <p className="text-[9px] text-white/40 uppercase tracking-[0.4em] font-black italic">
                             Caracas • Los Chorros
                         </p>
                     </div>
 
-                    {/* Social Media Section */}
-                    <div className="flex flex-col items-center gap-6">
-                        <span className="text-[9px] text-gray-600 font-black uppercase tracking-[0.3em]">Conecta con nosotros</span>
-                        <div className="flex gap-4">
-                            {socialLinks.map((social) => (
-                                <a
-                                    key={social.name}
-                                    href={social.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-12 h-12 bg-gray-900/50 rounded-2xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition-all duration-500 border border-gray-800 hover:border-primary group"
-                                    aria-label={social.name}
-                                >
-                                    <div className="group-hover:scale-110 transition-transform duration-500">
-                                        {social.icon}
-                                    </div>
-                                </a>
-                            ))}
-                        </div>
+                    {/* Social Media - Compact */}
+                    <div className="flex gap-3">
+                        {socialLinks.map((social) => (
+                            <a
+                                key={social.name}
+                                href={social.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-white/40 hover:text-white hover:bg-primary transition-all duration-500 border border-white/5 hover:border-primary group"
+                                aria-label={social.name}
+                            >
+                                <div className="scale-90 group-hover:scale-100 transition-transform duration-500">
+                                    {social.icon}
+                                </div>
+                            </a>
+                        ))}
                     </div>
 
-                    {/* Copyright & Slogan */}
-                    <div className="flex flex-col items-center md:items-end gap-3 text-center md:text-right">
-                        <div className="flex flex-col gap-1">
-                            <p className="text-[11px] text-gray-400 font-black uppercase tracking-widest italic">
-                                "Una educación integral con ambiente familiar"
-                            </p>
-                            <p className="text-[9px] text-gray-600 font-bold uppercase tracking-widest opacity-60">
-                                © {new Date().getFullYear()} Colegio Patria • Todos los derechos reservados
+                    {/* Copyright & Slogan - Highly Visible */}
+                    <div className="flex flex-col items-center md:items-end gap-1 text-center md:text-right">
+                        <p className="text-[10px] text-white font-black uppercase tracking-widest italic mb-1">
+                            "Una educación integral con ambiente familiar"
+                        </p>
+                        <div className="flex items-center gap-3">
+                            <span className="w-8 h-[1px] bg-gold/30 hidden md:block"></span>
+                            <p className="text-[9px] text-white/60 font-bold uppercase tracking-widest">
+                                © {new Date().getFullYear()} Colegio Patria
                             </p>
                         </div>
-                        <div className="w-12 h-1 bg-accent/20 rounded-full"></div>
                     </div>
 
                 </div>
