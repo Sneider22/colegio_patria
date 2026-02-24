@@ -136,12 +136,12 @@ const Hymns = () => {
                         <div className="relative z-10 w-full text-center lg:text-left">
                             <div className="flex flex-col items-center lg:items-start gap-5 mb-8">
                                 <div className="w-12 h-1 rounded-full" style={{ backgroundColor: activeItem.hex }}></div>
-                                <h3 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase italic">{activeItem.title}</h3>
+                                <h3 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase">{activeItem.title}</h3>
                                 <div className="px-3 py-0.5 rounded-full bg-gray-50 border border-gray-100">
                                     <span className="text-[9px] font-black uppercase text-gray-400 tracking-[0.3em]">{activeItem.colorName}</span>
                                 </div>
                             </div>
-                            <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium italic text-balance mx-auto lg:mx-0 max-w-2xl">
+                            <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium text-balance mx-auto lg:mx-0 max-w-2xl">
                                 "{activeItem.text}"
                             </p>
                         </div>
@@ -152,7 +152,7 @@ const Hymns = () => {
                 <div className="max-w-4xl mx-auto pb-20">
                     <div className="text-center mb-16">
                         <span className="text-primary font-black tracking-[0.4em] uppercase text-[10px] mb-4 block">Cultura</span>
-                        <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase italic">Identidad Sonora</h2>
+                        <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase">Identidad Sonora</h2>
                     </div>
 
                     <div className="grid gap-6">
@@ -182,11 +182,11 @@ const Hymns = () => {
                                 <div className={`transition-all duration-1000 ease-in-out overflow-hidden ${activeAnthem === anthem.id ? 'max-h-[3000px] opacity-100 border-t border-gray-100' : 'max-h-0 opacity-0'}`}>
                                     <div className="p-10 md:p-16 bg-white/80">
                                         {anthem.author && (
-                                            <p className="text-center text-[9px] font-black uppercase tracking-[0.3em] text-gray-400 mb-8 border-b border-gray-50 pb-6 italic">
+                                            <p className="text-center text-[9px] font-black uppercase tracking-[0.3em] text-gray-400 mb-8 border-b border-gray-50 pb-6">
                                                 {anthem.author}
                                             </p>
                                         )}
-                                        <p className="text-gray-700 md:text-xl leading-relaxed font-serif italic text-center whitespace-pre-line">
+                                        <p className="text-gray-700 md:text-xl leading-relaxed font-serif text-center whitespace-pre-line">
                                             {anthem.content}
                                         </p>
                                         <div className="mt-12 flex justify-center">

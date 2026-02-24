@@ -1,16 +1,67 @@
-# React + Vite
+# 🏛️ Unidad Educativa Colegio Patria
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto de modernización de la plataforma digital para la **U.E. Colegio Patria**, una institución con más de 60 años de trayectoria en la formación académica de excelencia en Caracas, Venezuela.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías Implementadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19**: Biblioteca principal para la interfaz de usuario.
+- **Vite**: Herramienta de construcción para una experiencia de desarrollo ultra-rápida.
+- **Tailwind CSS 4**: Framework de diseño para una estética moderna, limpia e institucional.
+- **Lucide React / Heroicons**: Iconografía profesional y minimalista.
 
-## React Compiler
+## ✨ Características Principales
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🏛️ Identidad Sonora e Institucional
+- **Sección de Pilares (Aros Olímpicos)**: Layout interactivo que detalla la Misión, Visión e Historia del colegio.
+- **Identidad Sonora**: Portal de Himnos (Nacional, Miranda, Italia y el del Colegio) con letras desplegables.
 
-## Expanding the ESLint configuration
+### 📚 Oferta Educativa
+- **Niveles**: Detalle visual desde Preescolar hasta 5to año de Bachillerato.
+- **Contadores de Impacto**: Marcador animado que muestra la trayectoria (+60 años de historia, +2000 estudiantes).
+- **Cocurriculares**: Sección visual con hover animado para deportes (Fútbol, Voleibol, Baile) y apoyo pedagógico.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 📍 Portal de Atención (Contacto)
+- **Mapa Interactivo**: Integración directa con Google Maps para ubicación exacta en Los Chorros.
+- **FAQ Dinámico**: Sistema de acordeón para resolver dudas comunes de inscripciones y horarios.
+- **WhatsApp FAB**: Botón flotante inteligente para atención inmediata.
+
+---
+
+## 📸 Guía para Imágenes (Multimedia)
+
+Para que el sitio se vea completo, asegúrate de colocar tus fotos en `public/images/` con los siguientes nombres:
+
+### Niveles Educativos
+- `preescolar.jpg`
+- `primaria.jpg`
+- `bachillerato1.jpg`
+- `bachillerato2.jpg`
+
+### Actividades y Sedes
+- `extra_futbol.jpg`
+- `extra_voleibol.jpg`
+- `extra_baile.jpg`
+- `extra_tareas.jpg`
+- `extra_canchas.jpg`
+
+---
+
+## 🛠️ Desarrollo Local
+
+1. Instalar dependencias:
+```bash
+npm install
+```
+
+2. Iniciar el servidor de desarrollo:
+```bash
+npm run dev
+```
+
+3. Construir para producción:
+```bash
+npm run build
+```
+
+---
+*Diseñado con excelencia para la formación del ciudadano del mañana.* 🎓🏛️🇻🇪

@@ -52,10 +52,10 @@ const Navbar = ({ activeView, onNavigate, isOpen, onToggle }) => {
                         <button
                             key={link.id}
                             onClick={() => handleLinkClick(link.id)}
-                            className={`font-black uppercase text-[10px] tracking-[0.2em] hover:text-accent transition-all relative group ${activeView === link.id ? 'text-primary' : 'text-gray-950'}`}
+                            className={`font-black uppercase text-[10px] tracking-[0.2em] hover:text-gold transition-all relative group ${activeView === link.id ? 'text-primary' : 'text-primary'}`}
                         >
                             {link.name}
-                            <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-accent transition-transform duration-300 origin-left ${activeView === link.id || (activeView === 'home' && (link.id === 'inicio' || link.id === 'nosotros')) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                            <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-primary transition-transform duration-300 origin-left ${activeView === link.id || (activeView === 'home' && (link.id === 'inicio' || link.id === 'nosotros')) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
                         </button>
                     ))}
                 </div>

@@ -49,7 +49,7 @@ const StatItem = ({ end, label, suffix = "" }) => {
             <div className="text-4xl md:text-5xl font-black text-gold mb-2 tracking-tighter flex items-center transition-transform duration-500 group-hover:scale-110">
                 {count}{suffix}
             </div>
-            <div className="text-[10px] font-black uppercase text-white/40 tracking-[0.3em] group-hover:text-white/60 transition-colors italic">
+            <div className="text-[10px] font-black uppercase text-white/40 tracking-[0.3em] group-hover:text-white/60 transition-colors">
                 {label}
             </div>
         </div>
@@ -110,13 +110,14 @@ const About = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
                     {levels.map((level, idx) => (
                         <div key={idx} className="group relative bg-white rounded-[2.5rem] shadow-sm overflow-hidden hover:shadow-2xl transition-all duration-700 hover:-translate-y-2">
-                            <div className="h-48 bg-gray-100 relative">
+                            <div className="aspect-square bg-gray-100 relative">
                                 <img
                                     src={level.image}
                                     alt={level.title}
-                                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
+                                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
                                     onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
                                 />
+                                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                                 <div className="absolute inset-0 hidden items-center justify-center bg-gray-50 p-6 text-center text-gray-300">
                                     <p className="text-[8px] uppercase font-black tracking-widest">Subir: {level.image}</p>
                                 </div>
@@ -163,14 +164,15 @@ const About = () => {
 
                                     {/* Expanded Detail Card */}
                                     <div className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] ${activeExtra === item.id ? 'max-h-[500px] mt-3 opacity-100' : 'max-h-0 opacity-0'}`}>
-                                        <div className="bg-secondary/50 rounded-[2rem] p-5 flex flex-col md:flex-row gap-5 border border-gray-100 italic">
-                                            <div className="w-full md:w-1/4 h-32 bg-gray-200 rounded-xl overflow-hidden relative group">
+                                        <div className="bg-secondary/50 rounded-[2rem] p-5 flex flex-col md:flex-row gap-5 border border-gray-100">
+                                            <div className="w-full md:w-1/3 aspect-square bg-gray-200 rounded-2xl overflow-hidden relative group shrink-0 shadow-lg">
                                                 <img
                                                     src={item.image}
                                                     alt={item.title}
                                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                                     onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
                                                 />
+                                                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/10"></div>
                                                 <div className="absolute inset-0 hidden items-center justify-center bg-gray-100 p-4 text-center text-gray-300">
                                                     <p className="text-[7px] uppercase font-black leading-tight">Subir foto a:<br />{item.image}</p>
                                                 </div>
@@ -190,9 +192,9 @@ const About = () => {
 
                     <div className="w-full lg:w-1/2 bg-gray-900 p-12 md:p-16 rounded-[3rem] text-center text-white relative overflow-hidden group shadow-2xl lg:sticky lg:top-32">
                         <div className="absolute top-0 right-0 w-48 h-48 bg-primary/20 rounded-full -mr-24 -mt-24 blur-3xl opacity-50 group-hover:scale-150 transition-transform duration-1000"></div>
-                        <h4 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter uppercase italic">Admisiones</h4>
+                        <h4 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter uppercase">Admisiones</h4>
                         <p className="text-white/60 mb-10 font-bold tracking-widest uppercase text-[10px]">Forma parte de nuestra historia académica.</p>
-                        <a href="https://wa.me/584121772899" target="_blank" className="inline-block bg-white text-gray-900 font-black uppercase tracking-widest text-[11px] px-12 py-5 rounded-full hover:bg-accent transition-all duration-500 shadow-2xl active:scale-95">
+                        <a href="https://wa.me/584121772899" target="_blank" className="inline-block bg-white text-gray-900 font-black uppercase tracking-widest text-[10px] px-8 py-3.5 rounded-full hover:bg-accent transition-all duration-500 shadow-2xl active:scale-95">
                             CONSULTAR CUPO
                         </a>
                     </div>
