@@ -8,7 +8,7 @@ const FAQItem = ({ question, answer }) => {
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full py-6 flex items-center justify-between text-left group focus:outline-none"
             >
-                <span className={`text-[11px] md:text-base font-black uppercase tracking-widest transition-colors duration-300 ${isOpen ? 'text-primary' : 'text-gray-700 group-hover:text-primary'}`}>
+                <span className={`text-[14px] md:text-base font-black uppercase tracking-widest transition-colors duration-300 ${isOpen ? 'text-primary' : 'text-gray-700 group-hover:text-primary'}`}>
                     {question}
                 </span>
                 <span className={`text-xl transition-transform duration-500 ${isOpen ? 'rotate-180 text-gold' : 'text-gray-300'}`}>
@@ -16,7 +16,7 @@ const FAQItem = ({ question, answer }) => {
                 </span>
             </button>
             <div className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] ${isOpen ? 'max-h-[500px] pb-8 opacity-100' : 'max-h-0 opacity-0'}`}>
-                <p className="text-gray-500 text-xs md:text-base leading-relaxed font-medium whitespace-pre-line">
+                <p className="text-gray-500 text-sm md:text-base leading-relaxed font-medium whitespace-pre-line">
                     {answer}
                 </p>
             </div>
@@ -78,7 +78,7 @@ const Contact = () => {
         <section id="contacto" className="py-24 bg-white animate-fade-in relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-16 md:mb-20">
-                    <span className="text-gold font-black tracking-[0.4em] uppercase text-[9px] mb-4 block">Contacto Institucional</span>
+                    <span className="text-gold font-black tracking-[0.4em] uppercase text-[11px] mb-4 block">Contacto Institucional</span>
                     <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter uppercase mb-6">Portal de Atención</h2>
                     <div className="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
                 </div>
@@ -96,7 +96,7 @@ const Contact = () => {
                                         <h4 className="font-black text-gray-900 mb-2 uppercase tracking-tighter text-xs md:text-lg leading-none">
                                             {info.title}
                                         </h4>
-                                        <p className="text-gray-500 text-[9px] md:text-xs font-bold leading-tight max-w-[120px] md:max-w-none">
+                                        <p className="text-gray-500 text-[11px] md:text-xs font-bold leading-tight max-w-[120px] md:max-w-none">
                                             {info.content}
                                         </p>
                                     </div>
@@ -136,8 +136,8 @@ const Contact = () => {
                                     📍
                                 </div>
                                 <div>
-                                    <p className="text-[8px] md:text-[11px] font-black uppercase text-primary tracking-[0.2em] leading-none mb-1.5">Nuestra Sede</p>
-                                    <p className="text-[12px] md:text-[16px] font-black text-gray-900 tracking-tight">Los Chorros, Caracas</p>
+                                    <p className="text-[10px] md:text-[11px] font-black uppercase text-primary tracking-[0.2em] leading-none mb-1.5">Nuestra Sede</p>
+                                    <p className="text-[13px] md:text-[16px] font-black text-gray-900 tracking-tight">Los Chorros, Caracas</p>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +148,7 @@ const Contact = () => {
                 <div className="max-w-4xl mx-auto">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 border-b-2 border-primary/10 pb-6">
                         <div>
-                            <span className="text-gold font-black tracking-[0.4em] uppercase text-[9px] mb-2 block">Resolución de Dudas</span>
+                            <span className="text-gold font-black tracking-[0.4em] uppercase text-[11px] mb-2 block">Resolución de Dudas</span>
                             <h3 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase">Preguntas Frecuentes</h3>
                         </div>
                         <div className="hidden md:block">
@@ -166,7 +166,7 @@ const Contact = () => {
                         <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-sm mb-4">
                             ℹ️
                         </div>
-                        <p className="text-gray-400 text-[9px] md:text-[11px] font-black uppercase tracking-[0.2em] max-w-md">
+                        <p className="text-gray-400 text-[11px] md:text-[12px] font-black uppercase tracking-[0.2em] max-w-md">
                             Si tienes consultas adicionales, nuestro equipo está a tu disposición a través de los canales oficiales.
                         </p>
                     </div>

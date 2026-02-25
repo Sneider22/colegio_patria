@@ -42,7 +42,7 @@ const Footer = () => {
                         <h3 className="text-xl font-black text-gold tracking-tighter">
                             Colegio<span className="text-white">Patria</span>
                         </h3>
-                        <p className="text-[9px] text-white/40 uppercase tracking-[0.4em] font-black italic">
+                        <p className="text-[11px] text-white/40 uppercase tracking-[0.4em] font-black italic">
                             Caracas • Los Chorros
                         </p>
                     </div>
@@ -67,12 +67,12 @@ const Footer = () => {
 
                     {/* Copyright & Slogan - Highly Visible */}
                     <div className="flex flex-col items-center md:items-end gap-1 text-center md:text-right">
-                        <p className="text-[10px] text-white font-black uppercase tracking-widest italic mb-1">
+                        <p className="text-[10px] md:text-[9.5px] text-white/90 font-black uppercase tracking-[0.15em] italic mb-1 whitespace-nowrap">
                             "Una educación integral con ambiente familiar"
                         </p>
                         <div className="flex items-center gap-3">
                             <span className="w-8 h-[1px] bg-gold/30 hidden md:block"></span>
-                            <p className="text-[9px] text-white/60 font-bold uppercase tracking-widest">
+                            <p className="text-[12px] md:text-[10px] text-white/60 font-bold uppercase tracking-widest">
                                 © {new Date().getFullYear()} Colegio Patria
                             </p>
                         </div>

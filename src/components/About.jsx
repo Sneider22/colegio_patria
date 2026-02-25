@@ -28,7 +28,7 @@ const StatItem = ({ end, label, suffix = "" }) => {
         if (!isVisible) return
 
         let start = 0
-        const duration = 2000
+        const duration = 4000
         const increment = end / (duration / 16)
 
         const timer = setInterval(() => {
@@ -49,7 +49,7 @@ const StatItem = ({ end, label, suffix = "" }) => {
             <div className="text-4xl md:text-5xl font-black text-gold mb-2 tracking-tighter flex items-center transition-transform duration-500 group-hover:scale-110">
                 {count}{suffix}
             </div>
-            <div className="text-[10px] font-black uppercase text-white/40 tracking-[0.3em] group-hover:text-white/60 transition-colors">
+            <div className="text-[12px] font-black uppercase text-white/40 tracking-[0.3em] group-hover:text-white/60 transition-colors">
                 {label}
             </div>
         </div>
@@ -70,14 +70,14 @@ const CarouselSection = ({ title, tag, description, images, isReversed = false, 
 
     return (
         <div
-            className={`mb-32 animate-slide-up flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center justify-center gap-12 lg:gap-12 max-w-6xl mx-auto`}
+            className={`mb-20 animate-slide-up flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center justify-center gap-10 lg:gap-10 max-w-6xl mx-auto`}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
             <div className="w-full lg:w-5/12">
-                <div className={`space-y-8 text-center ${isReversed ? 'lg:text-right' : 'lg:text-left'}`}>
+                <div className={`space-y-5 text-center ${isReversed ? 'lg:text-right' : 'lg:text-left'}`}>
                     <div className="inline-block bg-primary/5 px-6 py-2 rounded-2xl border border-primary/10">
-                        <span className="text-primary font-black text-xs uppercase tracking-[0.3em]">{tag}</span>
+                        <span className="text-primary font-black text-[13px] md:text-xs uppercase tracking-[0.3em]">{tag}</span>
                     </div>
                     <h3 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase leading-none">
                         {title.split(' ')[0]} <span className="text-primary">{title.split(' ').slice(1).join(' ')}</span>
@@ -138,7 +138,7 @@ const CarouselSection = ({ title, tag, description, images, isReversed = false, 
 
                     <div className="absolute top-6 right-6 z-20">
                         <div className="bg-white/10 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
-                            <p className="text-white text-[8px] font-black uppercase tracking-[0.2em]">
+                            <p className="text-white text-[11px] font-black uppercase tracking-[0.2em]">
                                 {currentSlide + 1} / {images.length}
                             </p>
                         </div>
@@ -149,7 +149,14 @@ const CarouselSection = ({ title, tag, description, images, isReversed = false, 
     )
 }
 
-const About = ({ isFullView = false }) => {
+const About = ({ isFullView = false, onNavigate }) => {
+    const levels = [
+        { title: "Preescolar", detail: "1er Nivel - 3er Nivel", image: "/images/preescolar.jpg", id: 'preescolar' },
+        { title: "Primaria", detail: "1er Grado - 6to Grado", image: "/images/primaria.jpg", id: 'primaria' },
+        { title: "Bachillerato", detail: "1er Año - 3er Año", image: "/images/bachillerato1.jpg", id: 'bachillerato' },
+        { title: "Bachillerato", detail: "4to Año - 5to Año", image: "/images/bachillerato2.jpg", id: 'bachillerato' }
+    ]
+
     const teamImages = [
         "/images/equipo.jpg",
         "/images/equipo2.jpg",
@@ -187,13 +194,6 @@ const About = ({ isFullView = false }) => {
         "/images/cartelera5.jpg"
     ]
 
-    const levels = [
-        { title: "Preescolar", detail: "1er Nivel - 3er Nivel", image: "/images/preescolar.jpg" },
-        { title: "Primaria", detail: "1er Grado - 6to Grado", image: "/images/primaria.jpg" },
-        { title: "Bachillerato", detail: "1er Año - 3er Año", image: "/images/bachillerato1.jpg" },
-        { title: "Bachillerato", detail: "4to Año - 5to Año", image: "/images/bachillerato2.jpg" }
-    ]
-
     const extras = [
         {
             id: 'futbol',
@@ -222,36 +222,48 @@ const About = ({ isFullView = false }) => {
     ]
 
     return (
-        <section id="nosotros" className="py-24 bg-secondary animate-fade-in">
-            <div className="container mx-auto px-4">
-                <div className="text-center mb-20">
-                    <h2 className="text-4xl md:text-6xl font-black text-primary mb-6 tracking-tighter uppercase">Nuestra Oferta</h2>
-                    <div className="w-16 h-2 bg-accent mx-auto rounded-full"></div>
-                </div>
+        <section id="nosotros" className="py-24 bg-white animate-fade-in outline-none">
+            <div className="container mx-auto px-6">
+                {/* Educational Levels Grid */}
+                <div className="mb-24">
+                    <div className="text-center mb-20">
+                        <span className="text-gold font-black tracking-[0.4em] uppercase text-[11px] mb-4 block">Formación Académica</span>
+                        <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter uppercase mb-6">Nuestra Oferta</h2>
+                        <div className="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
+                    </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
-                    {levels.map((level, idx) => (
-                        <div key={idx} className="group relative bg-white rounded-[2.5rem] shadow-sm overflow-hidden hover:shadow-2xl transition-all duration-700 hover:-translate-y-2">
-                            <div className="aspect-square bg-gray-100 relative">
-                                <img
-                                    src={level.image}
-                                    alt={level.title}
-                                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
-                                    onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
-                                />
-                                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                                <div className="absolute inset-0 hidden items-center justify-center bg-gray-50 p-6 text-center text-gray-300">
-                                    <p className="text-[8px] uppercase font-black tracking-widest">Subir: {level.image}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {levels.map((level, idx) => (
+                            <div
+                                key={idx}
+                                onClick={() => onNavigate && onNavigate(`academic-${level.id}`)}
+                                className="group relative bg-white rounded-[2.5rem] shadow-sm overflow-hidden hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 cursor-pointer"
+                            >
+                                <div className="aspect-square bg-gray-100 relative overflow-hidden">
+                                    <img
+                                        src={level.image}
+                                        alt={level.title}
+                                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                                        onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
+                                    />
+                                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                                    <div className="absolute inset-0 hidden items-center justify-center bg-gray-50 p-6 text-center text-gray-300">
+                                        <p className="text-[11px] md:text-[8px] uppercase font-black tracking-widest">Subir: {level.image}</p>
+                                    </div>
+                                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                                        <span className="bg-white/90 backdrop-blur-md text-primary font-black uppercase text-[10px] tracking-widest px-6 py-3 rounded-full shadow-xl">Ver más detalles</span>
+                                    </div>
+                                </div>
+                                <div className="p-8 text-center">
+                                    <h3 className="text-xl font-black text-gray-900 mb-1 tracking-tight transition-colors group-hover:text-primary">{level.title}</h3>
+                                    <p className="text-[#0056b3] text-[12px] md:text-[11px] font-black uppercase tracking-widest opacity-100">{level.detail}</p>
                                 </div>
                             </div>
-                            <div className="p-8 text-center">
-                                <h3 className="text-xl font-black text-gray-900 mb-2 tracking-tight group-hover:text-primary transition-colors">{level.title}</h3>
-                                <p className="text-primary text-[10px] font-black uppercase tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">{level.detail}</p>
-                            </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
 
+                {/* Stats Marker - ONLY IN INICIO/HOME VIEW */}
                 {!isFullView && (
                     <div className="mb-24 bg-footer-blue rounded-[3rem] p-12 md:p-16 relative overflow-hidden group shadow-2xl">
                         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,rgba(0,86,179,0.1),transparent)]"></div>
@@ -264,8 +276,9 @@ const About = ({ isFullView = false }) => {
                     </div>
                 )}
 
+                {/* FULL VIEW SECTIONS */}
                 {isFullView && (
-                    <div className="space-y-40">
+                    <div className="space-y-24">
                         <CarouselSection
                             title="Nuestro Equipo"
                             tag="Vocación & Excelencia"
@@ -300,8 +313,9 @@ const About = ({ isFullView = false }) => {
                     </div>
                 )}
 
-                <div className="bg-white rounded-[4rem] p-10 md:p-20 shadow-[-20px_20px_60px_#bebebe,20px_-20px_60px_#ffffff] border border-gray-50 mb-24">
-                    <div className="text-center lg:text-left mb-16">
+                {/* Extracurriculars Grid (Visible in both views often, but usually bottom-heavy) */}
+                <div className="bg-white rounded-[4rem] p-6 md:p-20 shadow-[-20px_20px_60px_#bebebe,20px_-20px_60px_#ffffff] border border-gray-50 mb-16 md:mb-24 mt-20 md:mt-40">
+                    <div className="text-center lg:text-left mb-10 md:mb-16">
                         <h3 className="text-3xl md:text-5xl font-black text-gray-900 mb-6 tracking-tighter uppercase flex flex-col lg:flex-row lg:items-center gap-4">
                             <span className="w-12 h-12 bg-accent/20 rounded-2xl flex items-center justify-center text-accent text-xl rotate-3 shrink-0 mx-auto lg:mx-0">✦</span>
                             Actividades Extracurriculares
@@ -345,7 +359,7 @@ const About = ({ isFullView = false }) => {
                             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full -mr-32 -mt-32 blur-3xl opacity-50 group-hover:scale-150 transition-transform duration-1000"></div>
                             <div className="relative z-10 max-w-2xl">
                                 <h4 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter uppercase">Admisiones</h4>
-                                <p className="text-white/60 mb-10 font-bold tracking-widest uppercase text-xs">Forma parte de nuestra historia académica de excelencia.</p>
+                                <p className="text-white/60 mb-10 font-bold tracking-widest uppercase text-sm">Forma parte de nuestra historia académica de excelencia.</p>
                                 <a href="https://wa.me/584121772899" target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-gray-900 font-black uppercase tracking-widest text-xs px-12 py-5 rounded-full hover:bg-gold transition-all duration-500 shadow-2xl active:scale-95">
                                     CONSULTAR CUPO
                                 </a>

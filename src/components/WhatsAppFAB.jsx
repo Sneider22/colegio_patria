@@ -9,7 +9,7 @@ const WhatsAppFAB = ({ isMenuOpen }) => {
             aria-label="Contactar por WhatsApp"
         >
             {/* Tooltip - Desktop Only */}
-            <div className="absolute right-full mr-4 px-4 py-2 bg-gray-900 text-white text-[9px] font-black uppercase tracking-widest rounded-xl opacity-0 translate-x-4 pointer-events-none transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0 whitespace-nowrap shadow-2xl border border-white/10 italic hidden md:block">
+            <div className="absolute right-full mr-4 px-4 py-2 bg-gray-900 text-white text-[11px] font-black uppercase tracking-widest rounded-xl opacity-0 translate-x-4 pointer-events-none transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0 whitespace-nowrap shadow-2xl border border-white/10 italic hidden md:block">
                 Contáctanos ahora
             </div>
 

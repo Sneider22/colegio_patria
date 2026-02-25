@@ -60,7 +60,7 @@ const Navbar = ({ activeView, onNavigate, isOpen, onToggle }) => {
                         <button
                             key={link.id}
                             onClick={() => handleLinkClick(link.id)}
-                            className={`font-black uppercase text-[10px] tracking-[0.2em] transition-all relative group ${activeView === link.id ? 'text-primary' : 'text-primary/60 hover:text-primary'}`}
+                            className={`font-black uppercase text-[12px] md:text-[10px] tracking-[0.2em] transition-all relative group ${activeView === link.id ? 'text-primary' : 'text-primary/60 hover:text-primary'}`}
                         >
                             {link.name}
                             <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-primary transition-transform duration-300 origin-left ${activeView === link.id || (activeView === 'home' && (link.id === 'inicio' || link.id === 'nosotros')) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
@@ -85,7 +85,7 @@ const Navbar = ({ activeView, onNavigate, isOpen, onToggle }) => {
             {/* Overlay de Menú Móvil - Robusto e Independiente */}
             <div className={`md:hidden fixed inset-0 w-full h-screen bg-white z-[100] transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] ${isOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}`}>
                 <div className="flex flex-col h-full justify-center px-10 space-y-8">
-                    <span className="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-2">Navegación</span>
+                    <span className="text-accent font-black tracking-[0.4em] uppercase text-[12px] md:text-[10px] mb-2">Navegación</span>
                     {navLinks.map((link, idx) => (
                         <button
                             key={link.id}
@@ -97,9 +97,9 @@ const Navbar = ({ activeView, onNavigate, isOpen, onToggle }) => {
                         </button>
                     ))}
                     <div className={`mt-12 pt-8 border-t border-gray-100 transition-all duration-1000 delay-500 ${isOpen ? 'opacity-100 blur-0' : 'opacity-0 blur-xl'}`}>
-                        <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-4">Información</p>
-                        <p className="text-gray-950 font-black text-sm uppercase tracking-tighter mb-1">Colegio ítalo-venezolano</p>
-                        <p className="text-gray-600 font-medium text-xs leading-relaxed max-w-[250px]">
+                        <p className="text-gray-400 text-sm md:text-xs font-bold uppercase tracking-widest mb-4">Información</p>
+                        <p className="text-gray-950 font-black text-base md:text-sm uppercase tracking-tighter mb-1">Colegio ítalo-venezolano</p>
+                        <p className="text-gray-600 font-medium text-sm md:text-xs leading-relaxed max-w-[250px]">
                             Av los mangos, los chorros estado Miranda, Caracas 1071
                         </p>
                     </div>

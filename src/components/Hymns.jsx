@@ -93,7 +93,7 @@ const Hymns = () => {
                 ></div>
             </div>
             <span
-                className={`mt-2 text-[8px] md:text-[9px] font-black uppercase tracking-widest transition-all duration-500 ${activeRing === item.id ? 'text-gray-900 opacity-100 translate-y-0' : 'text-gray-400 opacity-60 group-hover:opacity-100 group-hover:text-gray-600'}`}
+                className={`mt-2 text-[10px] md:text-[9px] font-black uppercase tracking-widest transition-all duration-500 ${activeRing === item.id ? 'text-gray-900 opacity-100 translate-y-0' : 'text-gray-400 opacity-60 group-hover:opacity-100 group-hover:text-gray-600'}`}
             >
                 {item.title}
             </span>
@@ -104,7 +104,7 @@ const Hymns = () => {
         <section id="identidad" className="py-16 bg-white animate-fade-in outline-none">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
-                    <span className="text-primary font-black tracking-[0.4em] uppercase text-[10px] mb-4 block">Identidad Institucional</span>
+                    <span className="text-primary font-black tracking-[0.4em] uppercase text-[12px] md:text-[10px] mb-4 block">Identidad Institucional</span>
                     <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase mb-4">Nuestros Pilares</h2>
                     <p className="text-gray-500 max-w-2xl mx-auto text-xs font-medium uppercase tracking-widest">La unión representada en nuestra esencia.</p>
                 </div>
@@ -138,10 +138,10 @@ const Hymns = () => {
                                 <div className="w-8 h-1 rounded-full mb-1 animate-slide-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]" style={{ backgroundColor: activeItem.hex }}></div>
                                 <h3 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase leading-none animate-slide-up [animation-delay:300ms] opacity-0 [animation-fill-mode:forwards]">{activeItem.title}</h3>
                                 <div className="px-3 py-0.5 rounded-full shadow-sm animate-slide-up [animation-delay:400ms] opacity-0 [animation-fill-mode:forwards]" style={{ backgroundColor: activeItem.hex }}>
-                                    <span className="text-[8px] font-black uppercase text-white tracking-[0.2em]">{activeItem.colorName}</span>
+                                    <span className="text-[10px] font-black uppercase text-white tracking-[0.2em]">{activeItem.colorName}</span>
                                 </div>
                             </div>
-                            <p className="text-[13px] md:text-sm text-gray-500 leading-relaxed font-bold text-balance max-w-md animate-slide-up [animation-delay:500ms] opacity-0 [animation-fill-mode:forwards]">
+                            <p className="text-[15px] md:text-sm text-gray-500 leading-relaxed font-bold text-balance max-w-md animate-slide-up [animation-delay:500ms] opacity-0 [animation-fill-mode:forwards]">
                                 {activeItem.text}
                             </p>
                         </div>
@@ -151,7 +151,7 @@ const Hymns = () => {
                 {/* Anthems Section */}
                 <div className="max-w-4xl mx-auto pb-20">
                     <div className="text-center mb-16">
-                        <span className="text-primary font-black tracking-[0.4em] uppercase text-[10px] mb-4 block">Cultura</span>
+                        <span className="text-primary font-black tracking-[0.4em] uppercase text-[12px] md:text-[10px] mb-4 block">Cultura</span>
                         <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase">Identidad Sonora</h2>
                     </div>
 
@@ -168,8 +168,8 @@ const Hymns = () => {
                                         </div>
                                         <div>
                                             <h4 className="font-black text-sm md:text-lg uppercase tracking-widest text-gray-900">{anthem.title}</h4>
-                                            {anthem.subtitle && <p className="text-[10px] text-primary font-black uppercase tracking-widest leading-none mt-1">{anthem.subtitle}</p>}
-                                            <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">
+                                            {anthem.subtitle && <p className="text-[11px] md:text-[10px] text-primary font-black uppercase tracking-widest leading-none mt-1">{anthem.subtitle}</p>}
+                                            <p className="text-[11px] md:text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">
                                                 {activeAnthem === anthem.id ? 'Ocultar Letra' : 'Ver Letra'}
                                             </p>
                                         </div>
@@ -182,7 +182,7 @@ const Hymns = () => {
                                 <div className={`transition-all duration-1000 ease-in-out overflow-hidden ${activeAnthem === anthem.id ? 'max-h-[3000px] opacity-100 border-t border-gray-100' : 'max-h-0 opacity-0'}`}>
                                     <div className="p-10 md:p-16 bg-white/80">
                                         {anthem.author && (
-                                            <p className="text-center text-[9px] font-black uppercase tracking-[0.3em] text-gray-400 mb-8 border-b border-gray-50 pb-6">
+                                            <p className="text-center text-[11px] md:text-[9px] font-black uppercase tracking-[0.3em] text-gray-400 mb-8 border-b border-gray-50 pb-6">
                                                 {anthem.author}
                                             </p>
                                         )}
