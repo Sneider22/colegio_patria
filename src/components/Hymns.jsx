@@ -126,22 +126,22 @@ const Hymns = () => {
                         </div>
                     </div>
 
-                    {/* Right/Bottom: Information Card - Stabilized Height and Size */}
-                    <div key={activeRing} className="flex-1 animate-slide-up bg-white p-8 md:p-14 lg:p-16 pt-16 md:pt-20 rounded-[3rem] lg:rounded-[4rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-100 min-h-[550px] md:min-h-[500px] flex items-start justify-center relative overflow-hidden group self-stretch">
+                    {/* Right/Bottom: Information Card - Compact & Centered */}
+                    <div key={activeRing} className="flex-1 animate-reveal-scale bg-white p-10 md:p-12 lg:p-14 rounded-[3.5rem] lg:rounded-[4rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-100 min-h-[450px] md:min-h-[400px] flex items-center justify-center relative overflow-hidden group self-stretch">
                         <div
-                            className="absolute inset-0 opacity-[0.06] transition-all duration-1000 group-hover:scale-110"
+                            className="absolute inset-0 opacity-[0.12] transition-all duration-1000 group-hover:scale-110"
                             style={{ backgroundColor: activeItem.hex }}
                         ></div>
 
-                        <div className="relative z-10 w-full text-center lg:text-left flex flex-col items-center lg:items-start">
-                            <div className="flex flex-col items-center lg:items-start gap-5 mb-8 w-full">
-                                <div className="w-12 h-1 rounded-full" style={{ backgroundColor: activeItem.hex }}></div>
-                                <h3 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase">{activeItem.title}</h3>
-                                <div className="px-3 py-0.5 rounded-full bg-gray-50 border border-gray-100">
-                                    <span className="text-[9px] font-black uppercase text-gray-400 tracking-[0.3em]">{activeItem.colorName}</span>
+                        <div className="relative z-10 w-full text-center flex flex-col items-center">
+                            <div className="flex flex-col items-center gap-4 mb-8 w-full">
+                                <div className="w-12 h-1 rounded-full mb-2 animate-slide-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]" style={{ backgroundColor: activeItem.hex }}></div>
+                                <h3 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase leading-none animate-slide-up [animation-delay:300ms] opacity-0 [animation-fill-mode:forwards]">{activeItem.title}</h3>
+                                <div className="px-4 py-1 rounded-full shadow-sm animate-slide-up [animation-delay:400ms] opacity-0 [animation-fill-mode:forwards]" style={{ backgroundColor: activeItem.hex }}>
+                                    <span className="text-[10px] font-black uppercase text-white tracking-[0.3em]">{activeItem.colorName}</span>
                                 </div>
                             </div>
-                            <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium text-balance mx-auto lg:mx-0 max-w-2xl">
+                            <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium text-balance max-w-xl animate-slide-up [animation-delay:500ms] opacity-0 [animation-fill-mode:forwards]">
                                 {activeItem.text}
                             </p>
                         </div>

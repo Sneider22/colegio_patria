@@ -58,6 +58,30 @@ const StatItem = ({ end, label, suffix = "" }) => {
 
 const About = ({ isFullView = false }) => {
     const [activeExtra, setActiveExtra] = useState(null)
+    const [currentSlide, setCurrentSlide] = useState(0)
+
+    const teamImages = [
+        "/images/equipo.jpg",
+        "/images/equipo2.jpg",
+        "/images/equipo3.jpg",
+        "/images/equipo4.jpg",
+        "/images/equipo5.jpg",
+        "/images/equipo6.jpg",
+        "/images/equipo7.jpg",
+        "/images/equipo8.jpg",
+        "/images/equipo9.jpg",
+        "/images/equipo10.jpg"
+    ]
+
+    const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % teamImages.length)
+    const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + teamImages.length) % teamImages.length)
+
+    useEffect(() => {
+        if (isFullView) {
+            const timer = setInterval(nextSlide, 12000)
+            return () => clearInterval(timer)
+        }
+    }, [isFullView])
 
     const levels = [
         { title: "Preescolar", detail: "1er Nivel - 3er Nivel", image: "/images/preescolar.jpg" },
@@ -124,53 +148,94 @@ const About = ({ isFullView = false }) => {
                     ))}
                 </div>
 
-                {/* Animated Stats Section */}
-                <div className="mb-24 bg-footer-blue rounded-[3rem] p-12 md:p-16 relative overflow-hidden group shadow-2xl">
-                    <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,rgba(0,86,179,0.1),transparent)]"></div>
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
-                        <StatItem end={2000} label="Estudiantes Graduados" suffix="+" />
-                        <StatItem end={1500} label="Familias Unidas" suffix="+" />
-                        <StatItem end={60} label="Años de Historia" suffix="+" />
-                        <StatItem end={100} label="Excelencia" suffix="%" />
+                {/* Animated Stats Section - Only visible on Inicio */}
+                {!isFullView && (
+                    <div className="mb-24 bg-footer-blue rounded-[3rem] p-12 md:p-16 relative overflow-hidden group shadow-2xl">
+                        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,rgba(0,86,179,0.1),transparent)]"></div>
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+                            <StatItem end={2000} label="Estudiantes Graduados" suffix="+" />
+                            <StatItem end={1500} label="Familias Unidas" suffix="+" />
+                            <StatItem end={60} label="Años de Historia" suffix="+" />
+                            <StatItem end={100} label="Excelencia" suffix="%" />
+                        </div>
                     </div>
-                </div>
+                )}
 
                 {/* Extended "Our Team" Content - Only visible in full nosotros view */}
                 {isFullView && (
-                    <div className="mb-24 animate-slide-up">
-                        <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-8">
-                            <div className="max-w-xl">
-                                <h3 className="text-3xl md:text-5xl font-black text-gray-900 mb-6 tracking-tighter uppercase leading-none">
-                                    Nuestro <br />
-                                    <span className="text-primary">Capital Humano</span>
+                    <div className="mb-32 animate-slide-up flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                        <div className="w-full lg:w-5/12">
+                            <div className="space-y-8 text-center lg:text-left">
+                                <div className="inline-block bg-primary/5 px-6 py-2 rounded-2xl border border-primary/10">
+                                    <span className="text-primary font-black text-xs uppercase tracking-[0.3em]">Vocación & Excelencia</span>
+                                </div>
+                                <h3 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase leading-none">
+                                    Nuestro <span className="text-primary">Equipo</span>
                                 </h3>
-                                <p className="text-gray-600 text-lg font-medium leading-relaxed">
+                                <p className="text-gray-600 text-lg font-medium leading-relaxed max-w-lg mx-auto lg:mx-0">
                                     Contamos con un equipo de profesionales apasionados, comprometidos con la formación académica y humana de cada uno de nuestros estudiantes.
                                 </p>
-                            </div>
-                            <div className="bg-primary/5 px-8 py-4 rounded-3xl border border-primary/10">
-                                <span className="text-primary font-black text-xs uppercase tracking-[0.3em]">Vocación & Excelencia</span>
+                                <div className="w-20 h-1.5 bg-gold rounded-full mx-auto lg:mx-0"></div>
                             </div>
                         </div>
 
-                        <div className="relative group rounded-[3.5rem] overflow-hidden shadow-2xl bg-gray-200 aspect-[21/9]">
-                            <img
-                                src="/images/equipo.jpg"
-                                alt="Nuestro Equipo"
-                                className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105"
-                                onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                            <div className="absolute inset-0 hidden items-center justify-center bg-gray-50 text-gray-300">
-                                <div className="text-center">
-                                    <p className="text-[10px] uppercase font-black tracking-widest mb-2">Subir Foto de Equipo a:</p>
-                                    <p className="text-primary font-black text-sm">/images/equipo.jpg</p>
+                        <div className="w-full lg:w-7/12">
+                            <div className="relative group rounded-[3.5rem] overflow-hidden shadow-2xl bg-black h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center">
+                                {teamImages.map((img, idx) => (
+                                    <div
+                                        key={idx}
+                                        className={`absolute inset-0 transition-all duration-1000 ease-in-out transform ${idx === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-110 pointer-events-none'}`}
+                                    >
+                                        <img
+                                            src={img}
+                                            alt={`Nuestro Equipo ${idx + 1}`}
+                                            className="w-full h-full object-cover object-top"
+                                            onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                                        <div className="absolute inset-0 hidden items-center justify-center bg-gray-50 text-gray-300">
+                                            <div className="text-center">
+                                                <p className="text-[10px] uppercase font-black tracking-widest mb-2">Subir Foto a:</p>
+                                                <p className="text-primary font-black text-sm">{img}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+
+                                {/* Carousel Arrows */}
+                                <button
+                                    onClick={prevSlide}
+                                    className="absolute left-3 md:left-6 w-9 h-9 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all hover:bg-white/20 hover:scale-110 z-30"
+                                >
+                                    <span className="text-xl md:text-2xl">←</span>
+                                </button>
+                                <button
+                                    onClick={nextSlide}
+                                    className="absolute right-3 md:left-auto md:right-6 w-9 h-9 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all hover:bg-white/20 hover:scale-110 z-30"
+                                >
+                                    <span className="text-xl md:text-2xl">→</span>
+                                </button>
+
+                                {/* Carousel Controls */}
+                                <div className="absolute bottom-10 inset-x-0 flex justify-center gap-3 z-20">
+                                    {teamImages.map((_, idx) => (
+                                        <button
+                                            key={idx}
+                                            onClick={() => setCurrentSlide(idx)}
+                                            className={`h-1.5 rounded-full transition-all duration-500 ${idx === currentSlide ? 'w-8 bg-gold' : 'w-2 bg-white/50 hover:bg-white'}`}
+                                            aria-label={`Go to slide ${idx + 1}`}
+                                        />
+                                    ))}
                                 </div>
-                            </div>
-                            {/* Overlay info */}
-                            <div className="absolute bottom-10 left-10 text-white">
-                                <p className="font-black text-xs uppercase tracking-[0.4em] opacity-80 mb-2">Cuerpo Docente</p>
-                                <div className="w-12 h-1 bg-gold rounded-full transition-all duration-700 group-hover:w-32"></div>
+
+                                {/* Photo Content Overlay */}
+                                <div className="absolute top-10 right-10 z-20">
+                                    <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                                        <p className="text-white text-[10px] font-black uppercase tracking-widest">
+                                            {currentSlide + 1} / {teamImages.length}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -192,7 +257,7 @@ const About = ({ isFullView = false }) => {
                                 <img
                                     src={item.image}
                                     alt={item.title}
-                                    className="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110 group-hover:opacity-40"
+                                    className="w-full h-full object-cover opacity-100 transition-transform duration-1000 group-hover:scale-110 group-hover:opacity-80"
                                     onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
                                 />
 
@@ -204,7 +269,7 @@ const About = ({ isFullView = false }) => {
                                 </div>
 
                                 {/* Gradient Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
 
                                 {/* Content */}
                                 <div className="absolute inset-x-0 bottom-0 p-8 md:p-12 transition-transform duration-500 translate-y-8 md:translate-y-12 group-hover:translate-y-0">
@@ -221,17 +286,21 @@ const About = ({ isFullView = false }) => {
                     </div>
                 </div>
 
-                {/* Admisiones CTA - Separated and High Impact */}
-                <div className="w-full bg-gray-900 p-12 md:p-16 rounded-[4rem] text-center text-white relative overflow-hidden group shadow-2xl flex flex-col items-center">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full -mr-32 -mt-32 blur-3xl opacity-50 group-hover:scale-150 transition-transform duration-1000"></div>
-                    <div className="relative z-10 max-w-2xl">
-                        <h4 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter uppercase">Admisiones</h4>
-                        <p className="text-white/60 mb-10 font-bold tracking-widest uppercase text-xs">Forma parte de nuestra historia académica de excelencia.</p>
-                        <a href="https://wa.me/584121772899" target="_blank" className="inline-block bg-white text-gray-900 font-black uppercase tracking-widest text-xs px-12 py-5 rounded-full hover:bg-gold transition-all duration-500 shadow-2xl active:scale-95">
-                            CONSULTAR CUPO
-                        </a>
+                {/* Admisiones CTA - Only visible on Inicio, not in full Nosotros view */}
+                {!isFullView && (
+                    <div className="max-w-4xl mx-auto">
+                        <div className="w-full bg-gray-900 p-12 md:p-16 rounded-[4rem] text-center text-white relative overflow-hidden group shadow-2xl flex flex-col items-center">
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full -mr-32 -mt-32 blur-3xl opacity-50 group-hover:scale-150 transition-transform duration-1000"></div>
+                            <div className="relative z-10 max-w-2xl">
+                                <h4 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter uppercase">Admisiones</h4>
+                                <p className="text-white/60 mb-10 font-bold tracking-widest uppercase text-xs">Forma parte de nuestra historia académica de excelencia.</p>
+                                <a href="https://wa.me/584121772899" target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-gray-900 font-black uppercase tracking-widest text-xs px-12 py-5 rounded-full hover:bg-gold transition-all duration-500 shadow-2xl active:scale-95">
+                                    CONSULTAR CUPO
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </section>
     )

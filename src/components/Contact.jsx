@@ -16,7 +16,7 @@ const FAQItem = ({ question, answer }) => {
                 </span>
             </button>
             <div className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] ${isOpen ? 'max-h-[500px] pb-8 opacity-100' : 'max-h-0 opacity-0'}`}>
-                <p className="text-gray-500 text-xs md:text-base leading-relaxed font-medium">
+                <p className="text-gray-500 text-xs md:text-base leading-relaxed font-medium whitespace-pre-line">
                     {answer}
                 </p>
             </div>
@@ -30,7 +30,7 @@ const Contact = () => {
             icon: "📍",
             title: "Ubicación",
             content: "Av. Los Mangos, Los Chorros, Caracas 1071.",
-            link: "https://maps.app.goo.gl/XMA4d5FFbKbfouvg8",
+            link: "https://maps.app.goo.gl/kTYyb83vgJTKnFa9A",
             color: "border-blue-500/20"
         },
         {
@@ -58,7 +58,7 @@ const Contact = () => {
     const faqs = [
         {
             question: "¿CUÁLES SON LOS REQUISITOS DE INSCRIPCIÓN?",
-            answer: "Los requisitos incluyen: Partida de nacimiento original y copia, 4 fotos tipo carnet del alumno y representantes, notas certificadas (para bachillerato) y solventación administrativa del colegio de procedencia."
+            answer: "Los requisitos incluyen:\n\n• Partida de nacimiento (Original y copia).\n• 4 fotos tipo carnet del alumno.\n• 4 fotos tipo carnet de los representantes.\n• Notas certificadas (para bachillerato).\n• Solvencia administrativa del colegio de procedencia."
         },
         {
             question: "¿OFRECEN ACTIVIDADES EXTRACURRICULARES?",
@@ -124,8 +124,8 @@ const Contact = () => {
                     {/* Maps Column (Second on Mobile, First on Desktop) */}
                     <div className="lg:col-span-7 order-last lg:order-first h-[400px] md:h-[650px] rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-2xl border-4 border-gray-50 relative group">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3922.9567994348505!2d-66.8258333!3d10.4908333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5840d24c0001%3A0xe9c3818e3d36b8c9!2sColegio%20Patria!5e0!3m2!1ses!2sve!4v1700000000000!5m2!1ses!2sve"
-                            className="w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-1000"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3922.909068032704!2d-66.8331309252495!3d10.499446700000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a59c849f73bcf%3A0xf5f34e3cfacec42!2zVW5pZGFkIEVkdWNhdGl2YSBDb2xlZ2lvIFBhdHJpYSBMb3MgQ2hvcnJvcyBJbnN0aXR1c2lvbg!5e0!3m2!1ses!2sve!4v1740452356000!5m2!1ses!2sve"
+                            className="w-full h-full border-0 transition-all duration-1000"
                             allowFullScreen=""
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"

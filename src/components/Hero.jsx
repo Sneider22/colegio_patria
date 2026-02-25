@@ -27,14 +27,14 @@ const Hero = ({ onNavigate }) => {
                     <button onClick={() => onNavigate('contacto')} className="btn-primary text-lg shadow-xl shadow-primary/20">
                         Inscripciones Abiertas
                     </button>
-                    <button onClick={() => onNavigate('nosotros')} className="px-10 py-4 rounded-full font-bold border-2 border-white/50 hover:border-white hover:bg-white hover:text-primary transition-all duration-500 backdrop-blur-sm">
+                    <button onClick={() => onNavigate('identidad')} className="px-10 py-4 rounded-full font-bold border-2 border-white/50 hover:border-white hover:bg-white hover:text-primary transition-all duration-500 backdrop-blur-sm">
                         Nuestra Historia
                     </button>
                 </div>
             </div>
 
             <div
-                onClick={() => onNavigate('nosotros')}
+                onClick={() => onNavigate('identidad')}
                 className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer group transition-all"
             >
                 <div className="flex flex-col items-center gap-2">

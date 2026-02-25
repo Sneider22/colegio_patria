@@ -26,3 +26,42 @@ Proyecto de modernización de la plataforma digital para la **U.E. Colegio Patri
 - **WhatsApp FAB**: Botón flotante inteligente para atención inmediata.
 
 ---
+
+## 📸 Guía para Imágenes (Multimedia)
+
+Para que el sitio se vea completo, asegúrate de colocar tus fotos en `public/images/` con los siguientes nombres:
+
+### Niveles Educativos
+- `preescolar.jpg`
+- `primaria.jpg`
+- `bachillerato1.jpg`
+- `bachillerato2.jpg`
+
+### Actividades y Sedes
+- `extra_futbol.jpg`
+- `extra_voleibol.jpg`
+- `extra_baile.jpg`
+- `extra_tareas.jpg`
+- `extra_canchas.jpg`
+
+---
+
+## 🛠️ Desarrollo Local
+
+1. Instalar dependencias:
+```bash
+npm install
+```
+
+2. Iniciar el servidor de desarrollo:
+```bash
+npm run dev
+```
+
+3. Construir para producción:
+```bash
+npm run build
+```
+
+---
+*Diseñado con excelencia para la formación del ciudadano del mañana.* 🎓🏛️🇻🇪
