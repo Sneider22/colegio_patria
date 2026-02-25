@@ -125,7 +125,7 @@ const CarouselSection = ({ title, tag, description, images, isReversed = false, 
                         <span className="text-lg">→</span>
                     </button>
 
-                    <div className="absolute bottom-10 inset-x-0 flex justify-center gap-3 z-20">
+                    <div className="absolute bottom-4 inset-x-0 flex justify-center gap-3 z-20">
                         {images.map((_, idx) => (
                             <button
                                 key={idx}

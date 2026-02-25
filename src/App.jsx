@@ -46,7 +46,7 @@ function App() {
         { name: 'Kaikuse', icon: '🥋', color: '#FFF1F2' },
         { name: 'Matemáticas', icon: '🔢', color: '#FDF2F8' },
         { name: 'Dictado', icon: '📝', color: '#EEF2FF' },
-        { name: 'Inglés', icon: '🇬🇧', color: '#F0F9FF' },
+        { name: 'Inglés', icon: '🇺🇸', color: '#F0F9FF' },
         { name: 'Lenguaje', icon: '🗣️', color: '#F0FDFA' },
         { name: 'Comprensión Lectora', icon: '📖', color: '#F8FAFC' },
         { name: 'Italiano', icon: '🇮🇹', color: '#ECFDF5' },
@@ -73,11 +73,18 @@ function App() {
       ],
       subjects: [
         { name: 'Matemática', icon: '📐', color: '#FDF2F8' },
-        { name: 'Física', icon: '⚡', color: '#F0F9FF' },
+        { name: 'Castellano', icon: '📚', color: '#F0FDF4' },
+        { name: 'Inglés', icon: '🇺🇸', color: '#F0F9FF' },
+        { name: 'Física', icon: '⚡', color: '#F5F3FF' },
         { name: 'Química', icon: '🧪', color: '#ECFDF5' },
         { name: 'Biología', icon: '🧬', color: '#FFFBEB' },
-        { name: 'FPS', icon: '🤝', color: '#EEF2FF' },
-        { name: 'Educación Física', icon: '🏃', color: '#F5F3FF' }
+        { name: 'Historia', icon: '⏳', color: '#FEF3C7' },
+        { name: 'Geografía', icon: '🗺️', color: '#F0FDFA' },
+        { name: 'Dibujo Técnico', icon: '📏', color: '#F8FAFC' },
+        { name: 'Artes Plásticas', icon: '🎨', color: '#FFF1F2' },
+        { name: 'Informática', icon: '💻', color: '#EEF2FF' },
+        { name: 'FPS', icon: '🤝', color: '#F0F7FF' },
+        { name: 'Educación Física', icon: '🏃', color: '#F9FAFB' }
       ],
       uniform: [
         '1ero, 2do y 3er año: Chemise azul con insignia',

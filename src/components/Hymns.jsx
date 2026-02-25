@@ -127,7 +127,11 @@ const Hymns = () => {
                     </div>
 
                     {/* Right/Bottom: Information Card */}
-                    <div key={activeRing} className={`flex-1 animate-reveal-scale bg-white p-6 md:p-10 rounded-[2rem] lg:rounded-[3rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-gray-100 min-h-[350px] md:min-h-[450px] flex justify-center relative overflow-hidden group self-stretch ${activeRing === 'negro' ? 'items-center' : 'items-start pt-6 md:pt-14'}`}>
+                    <div
+                        key={activeRing}
+                        className={`flex-1 animate-reveal-scale bg-white p-6 md:p-10 rounded-[2rem] lg:rounded-[3rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border-2 min-h-[350px] md:min-h-[450px] flex justify-center relative overflow-hidden group self-stretch ${activeRing === 'negro' ? 'items-center' : 'items-start pt-6 md:pt-14'}`}
+                        style={{ borderColor: activeItem.hex }}
+                    >
                         <div
                             className="absolute inset-0 opacity-[0.08] transition-all duration-1000 group-hover:scale-110"
                             style={{ backgroundColor: activeItem.hex }}
@@ -141,7 +145,7 @@ const Hymns = () => {
                                     <span className="text-[10px] font-black uppercase text-white tracking-[0.2em]">{activeItem.colorName}</span>
                                 </div>
                             </div>
-                            <p className="text-[15px] md:text-sm text-gray-500 leading-relaxed font-bold text-balance max-w-md animate-slide-up [animation-delay:500ms] opacity-0 [animation-fill-mode:forwards]">
+                            <p className="text-[15px] md:text-base text-gray-500 leading-relaxed font-bold text-balance max-w-md animate-slide-up [animation-delay:500ms] opacity-0 [animation-fill-mode:forwards]">
                                 {activeItem.text}
                             </p>
                         </div>
