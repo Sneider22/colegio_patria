@@ -8,31 +8,23 @@ import Footer from './components/Footer'
 import WhatsAppFAB from './components/WhatsAppFAB'
 
 function App() {
-  const [activeView, setActiveView] = useState('home') // 'home', 'identidad', 'contacto'
+  const [activeView, setActiveView] = useState('inicio') // 'inicio', 'nosotros', 'identidad', 'contacto'
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const handleNavigation = (id) => {
-    if (id === 'inicio' || id === 'nosotros') {
-      if (activeView !== 'home') {
-        setActiveView('home')
+    if (id === 'inicio') {
+      if (activeView !== 'inicio') {
+        setActiveView('inicio')
         setTimeout(() => {
-          const targetId = id === 'inicio' ? 'inicio-view' : 'nosotros-section'
-          const elem = document.getElementById(targetId)
-          if (elem) {
-            elem.scrollIntoView({ behavior: 'smooth' })
-          } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-          }
+          const elem = document.getElementById('inicio-view')
+          if (elem) elem.scrollIntoView({ behavior: 'smooth' })
         }, 150)
       } else {
-        const targetId = id === 'inicio' ? 'inicio-view' : 'nosotros-section'
-        const elem = document.getElementById(targetId)
-        if (elem) {
-          elem.scrollIntoView({ behavior: 'smooth' })
-        } else {
-          window.scrollTo({ top: 0, behavior: 'smooth' })
-        }
+        window.scrollTo({ top: 0, behavior: 'smooth' })
       }
+    } else if (id === 'nosotros') {
+      setActiveView('nosotros')
+      window.scrollTo(0, 0)
     } else if (id === 'identidad') {
       setActiveView('identidad')
       window.scrollTo(0, 0)
@@ -44,16 +36,20 @@ function App() {
 
   const renderContent = () => {
     switch (activeView) {
-      case 'home':
+      case 'inicio':
         return (
           <>
             <div id="inicio-view">
               <Hero onNavigate={handleNavigation} />
             </div>
-            <div id="nosotros-section">
-              <About />
-            </div>
+            <About isFullView={false} />
           </>
+        )
+      case 'nosotros':
+        return (
+          <div className="pt-20">
+            <About isFullView={true} />
+          </div>
         )
       case 'identidad':
         return (

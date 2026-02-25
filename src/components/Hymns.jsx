@@ -142,7 +142,7 @@ const Hymns = () => {
                                 </div>
                             </div>
                             <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium text-balance mx-auto lg:mx-0 max-w-2xl">
-                                "{activeItem.text}"
+                                {activeItem.text}
                             </p>
                         </div>
                     </div>

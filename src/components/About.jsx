@@ -56,7 +56,7 @@ const StatItem = ({ end, label, suffix = "" }) => {
     )
 }
 
-const About = () => {
+const About = ({ isFullView = false }) => {
     const [activeExtra, setActiveExtra] = useState(null)
 
     const levels = [
@@ -90,12 +90,6 @@ const About = () => {
             title: "Tareas Dirigidas",
             description: "Refuerzo pedagógico personalizado para garantizar la excelencia académica.",
             image: "/images/extra_tareas.jpg"
-        },
-        {
-            id: 'canchas',
-            title: "Canchas Deportivas",
-            description: "Instalaciones de alto nivel para el esparcimiento y la práctica deportiva segura.",
-            image: "/images/extra_canchas.jpg"
         }
     ]
 
@@ -134,67 +128,106 @@ const About = () => {
                 <div className="mb-24 bg-footer-blue rounded-[3rem] p-12 md:p-16 relative overflow-hidden group shadow-2xl">
                     <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,rgba(0,86,179,0.1),transparent)]"></div>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
-                        <StatItem end={2000} label="Estudiantes Gradas" suffix="+" />
+                        <StatItem end={2000} label="Estudiantes Graduados" suffix="+" />
                         <StatItem end={1500} label="Familias Unidas" suffix="+" />
                         <StatItem end={60} label="Años de Historia" suffix="+" />
                         <StatItem end={100} label="Excelencia" suffix="%" />
                     </div>
                 </div>
 
-                <div className="bg-white rounded-[4rem] p-10 md:p-20 shadow-[-20px_20px_60px_#bebebe,20px_-20px_60px_#ffffff] flex flex-col lg:flex-row gap-16 items-start border border-gray-50">
-                    <div className="w-full lg:w-1/2">
-                        <h3 className="text-3xl md:text-4xl font-black text-gray-900 mb-10 flex items-center gap-6">
-                            <span className="w-14 h-14 bg-accent/20 rounded-2xl flex items-center justify-center text-accent text-2xl rotate-3 group-hover:rotate-12 transition-transform">✦</span>
-                            Cocurriculares
-                        </h3>
+                {/* Extended "Our Team" Content - Only visible in full nosotros view */}
+                {isFullView && (
+                    <div className="mb-24 animate-slide-up">
+                        <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-8">
+                            <div className="max-w-xl">
+                                <h3 className="text-3xl md:text-5xl font-black text-gray-900 mb-6 tracking-tighter uppercase leading-none">
+                                    Nuestro <br />
+                                    <span className="text-primary">Capital Humano</span>
+                                </h3>
+                                <p className="text-gray-600 text-lg font-medium leading-relaxed">
+                                    Contamos con un equipo de profesionales apasionados, comprometidos con la formación académica y humana de cada uno de nuestros estudiantes.
+                                </p>
+                            </div>
+                            <div className="bg-primary/5 px-8 py-4 rounded-3xl border border-primary/10">
+                                <span className="text-primary font-black text-xs uppercase tracking-[0.3em]">Vocación & Excelencia</span>
+                            </div>
+                        </div>
 
-                        <div className="grid grid-cols-1 gap-4">
-                            {extras.map((item, idx) => (
-                                <div key={item.id} className="relative">
-                                    <button
-                                        onClick={() => setActiveExtra(activeExtra === item.id ? null : item.id)}
-                                        className={`w-full flex items-center justify-between p-3 px-6 rounded-2xl transition-all duration-500 text-left border ${activeExtra === item.id ? 'bg-primary text-white border-primary shadow-xl shadow-primary/20' : 'bg-secondary/50 text-gray-900 border-transparent hover:bg-white hover:border-gray-100'}`}
-                                    >
-                                        <div className="flex items-center gap-4 text-gray-900 font-black uppercase text-[10px] tracking-widest group">
-                                            <div className={`w-3 h-[2px] transition-all duration-500 ${activeExtra === item.id ? 'bg-accent w-6' : 'bg-accent group-hover:w-6'}`}></div>
-                                            <span className={`${activeExtra === item.id ? 'text-white' : 'group-hover:text-primary'} transition-colors`}>{item.title}</span>
-                                        </div>
-                                        <span className={`text-lg transition-transform duration-500 ${activeExtra === item.id ? 'rotate-180 text-accent' : 'text-gray-300'}`}>↓</span>
-                                    </button>
-
-                                    {/* Expanded Detail Card */}
-                                    <div className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] ${activeExtra === item.id ? 'max-h-[500px] mt-3 opacity-100' : 'max-h-0 opacity-0'}`}>
-                                        <div className="bg-secondary/50 rounded-[2rem] p-5 flex flex-col md:flex-row gap-5 border border-gray-100">
-                                            <div className="w-full md:w-1/3 aspect-square bg-gray-200 rounded-2xl overflow-hidden relative group shrink-0 shadow-lg">
-                                                <img
-                                                    src={item.image}
-                                                    alt={item.title}
-                                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                                    onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
-                                                />
-                                                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/10"></div>
-                                                <div className="absolute inset-0 hidden items-center justify-center bg-gray-100 p-4 text-center text-gray-300">
-                                                    <p className="text-[7px] uppercase font-black leading-tight">Subir foto a:<br />{item.image}</p>
-                                                </div>
-                                            </div>
-                                            <div className="flex-1 flex flex-col justify-center">
-                                                <p className="text-gray-600 text-sm leading-relaxed">
-                                                    "{item.description}"
-                                                </p>
-                                                <div className="w-12 h-1 bg-accent rounded-full mt-4 opacity-50"></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div className="relative group rounded-[3.5rem] overflow-hidden shadow-2xl bg-gray-200 aspect-[21/9]">
+                            <img
+                                src="/images/equipo.jpg"
+                                alt="Nuestro Equipo"
+                                className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105"
+                                onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                            <div className="absolute inset-0 hidden items-center justify-center bg-gray-50 text-gray-300">
+                                <div className="text-center">
+                                    <p className="text-[10px] uppercase font-black tracking-widest mb-2">Subir Foto de Equipo a:</p>
+                                    <p className="text-primary font-black text-sm">/images/equipo.jpg</p>
                                 </div>
-                            ))}
+                            </div>
+                            {/* Overlay info */}
+                            <div className="absolute bottom-10 left-10 text-white">
+                                <p className="font-black text-xs uppercase tracking-[0.4em] opacity-80 mb-2">Cuerpo Docente</p>
+                                <div className="w-12 h-1 bg-gold rounded-full transition-all duration-700 group-hover:w-32"></div>
+                            </div>
                         </div>
                     </div>
+                )}
 
-                    <div className="w-full lg:w-1/2 bg-gray-900 p-12 md:p-16 rounded-[3rem] text-center text-white relative overflow-hidden group shadow-2xl lg:sticky lg:top-32">
-                        <div className="absolute top-0 right-0 w-48 h-48 bg-primary/20 rounded-full -mr-24 -mt-24 blur-3xl opacity-50 group-hover:scale-150 transition-transform duration-1000"></div>
-                        <h4 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter uppercase">Admisiones</h4>
-                        <p className="text-white/60 mb-10 font-bold tracking-widest uppercase text-[10px]">Forma parte de nuestra historia académica.</p>
-                        <a href="https://wa.me/584121772899" target="_blank" className="inline-block bg-white text-gray-900 font-black uppercase tracking-widest text-[10px] px-8 py-3.5 rounded-full hover:bg-accent transition-all duration-500 shadow-2xl active:scale-95">
+                <div className="bg-white rounded-[4rem] p-10 md:p-20 shadow-[-20px_20px_60px_#bebebe,20px_-20px_60px_#ffffff] border border-gray-50 mb-24">
+                    <div className="text-center lg:text-left mb-16">
+                        <h3 className="text-3xl md:text-5xl font-black text-gray-900 mb-6 tracking-tighter uppercase flex flex-col lg:flex-row lg:items-center gap-4">
+                            <span className="w-12 h-12 bg-accent/20 rounded-2xl flex items-center justify-center text-accent text-xl rotate-3 shrink-0 mx-auto lg:mx-0">✦</span>
+                            Actividades Extracurriculares
+                        </h3>
+                        <p className="text-gray-500 font-medium max-w-2xl mx-auto lg:mx-0">Programas diseñados para potenciar el talento, la disciplina y el bienestar de nuestros estudiantes fuera del aula.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {extras.map((item) => (
+                            <div key={item.id} className="group relative h-[300px] md:h-[400px] rounded-[3rem] overflow-hidden shadow-xl transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl bg-gray-900">
+                                {/* Background Image */}
+                                <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    className="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110 group-hover:opacity-40"
+                                    onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
+                                />
+
+                                {/* Fallback */}
+                                <div className="absolute inset-0 hidden items-center justify-center bg-gray-800 text-gray-500">
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-center px-6">
+                                        Subir foto: {item.image}
+                                    </p>
+                                </div>
+
+                                {/* Gradient Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+
+                                {/* Content */}
+                                <div className="absolute inset-x-0 bottom-0 p-8 md:p-12 transition-transform duration-500 translate-y-8 md:translate-y-12 group-hover:translate-y-0">
+                                    <div className="flex items-center gap-4 mb-4">
+                                        <div className="w-8 h-1 bg-gold rounded-full transition-all duration-500 group-hover:w-16"></div>
+                                        <h4 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tighter">{item.title}</h4>
+                                    </div>
+                                    <p className="text-white/70 text-sm md:text-base font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Admisiones CTA - Separated and High Impact */}
+                <div className="w-full bg-gray-900 p-12 md:p-16 rounded-[4rem] text-center text-white relative overflow-hidden group shadow-2xl flex flex-col items-center">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full -mr-32 -mt-32 blur-3xl opacity-50 group-hover:scale-150 transition-transform duration-1000"></div>
+                    <div className="relative z-10 max-w-2xl">
+                        <h4 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter uppercase">Admisiones</h4>
+                        <p className="text-white/60 mb-10 font-bold tracking-widest uppercase text-xs">Forma parte de nuestra historia académica de excelencia.</p>
+                        <a href="https://wa.me/584121772899" target="_blank" className="inline-block bg-white text-gray-900 font-black uppercase tracking-widest text-xs px-12 py-5 rounded-full hover:bg-gold transition-all duration-500 shadow-2xl active:scale-95">
                             CONSULTAR CUPO
                         </a>
                     </div>

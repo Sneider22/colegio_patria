@@ -20,7 +20,8 @@ const Hero = ({ onNavigate }) => {
                     <span className="text-gold underline decoration-gold/30 decoration-8 underline-offset-8 uppercase tracking-tighter">Educativa</span>
                 </h1>
                 <p className="text-xl md:text-2xl mb-12 text-gray-200 drop-shadow-lg max-w-2xl mx-auto font-light leading-relaxed animate-slide-up [animation-delay:200ms]">
-                    Formando líderes con propósito desde hace más de 30 años en el corazón de Caracas.
+                    Colegio Italo-Venezolano <br />
+                    Formando líderes con propósito desde hace más de 60 años.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6 justify-center animate-slide-up [animation-delay:400ms]">
                     <button onClick={() => onNavigate('contacto')} className="btn-primary text-lg shadow-xl shadow-primary/20">

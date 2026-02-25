@@ -60,7 +60,7 @@ const Navbar = ({ activeView, onNavigate, isOpen, onToggle }) => {
                         <button
                             key={link.id}
                             onClick={() => handleLinkClick(link.id)}
-                            className={`font-black uppercase text-[10px] tracking-[0.2em] hover:text-gold transition-all relative group ${activeView === link.id ? 'text-primary' : 'text-primary'}`}
+                            className={`font-black uppercase text-[10px] tracking-[0.2em] transition-all relative group ${activeView === link.id ? 'text-primary' : 'text-primary/60 hover:text-primary'}`}
                         >
                             {link.name}
                             <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-primary transition-transform duration-300 origin-left ${activeView === link.id || (activeView === 'home' && (link.id === 'inicio' || link.id === 'nosotros')) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
@@ -90,7 +90,7 @@ const Navbar = ({ activeView, onNavigate, isOpen, onToggle }) => {
                         <button
                             key={link.id}
                             onClick={() => handleLinkClick(link.id)}
-                            className={`text-left text-4xl font-black uppercase tracking-tighter text-gray-900 hover:text-primary transition-all duration-500 transform ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}
+                            className={`text-left text-4xl font-black uppercase tracking-tighter text-primary hover:text-primary-dark transition-all duration-500 transform ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}
                             style={{ transitionDelay: `${idx * 100}ms` }}
                         >
                             {link.name}
