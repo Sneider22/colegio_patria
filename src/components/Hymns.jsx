@@ -81,19 +81,19 @@ const Hymns = () => {
     const RingButton = ({ item }) => (
         <button
             onClick={() => setActiveRing(item.id)}
-            className={`group relative flex flex-col items-center transition-all duration-500 ${activeRing === item.id ? 'scale-110 md:scale-125' : 'hover:scale-110'}`}
+            className={`group relative flex flex-col items-center transition-all duration-500 ${activeRing === item.id ? 'scale-105 md:scale-115' : 'hover:scale-110'}`}
         >
             <div
-                className={`w-14 h-14 md:w-20 md:h-20 rounded-full border-[5px] md:border-[6px] flex items-center justify-center transition-all duration-500 shadow-xl ${activeRing === item.id ? 'z-10 bg-white ring-8 ring-white/20' : 'bg-transparent opacity-40 hover:opacity-100 hover:bg-white/5'}`}
+                className={`w-12 h-12 md:w-16 md:h-16 rounded-full border-[4px] md:border-[5px] flex items-center justify-center transition-all duration-500 shadow-lg ${activeRing === item.id ? 'z-10 bg-white ring-6 ring-white/20' : 'bg-transparent opacity-40 hover:opacity-100 hover:bg-white/5'}`}
                 style={{ borderColor: item.hex }}
             >
                 <div
-                    className={`w-3 h-3 rounded-full transition-all duration-500 ${activeRing === item.id ? 'scale-150 opacity-100' : 'scale-0 opacity-0'}`}
+                    className={`w-2 h-2 rounded-full transition-all duration-500 ${activeRing === item.id ? 'scale-150 opacity-100' : 'scale-0 opacity-0'}`}
                     style={{ backgroundColor: item.hex }}
                 ></div>
             </div>
             <span
-                className={`mt-3 text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all duration-500 ${activeRing === item.id ? 'text-gray-900 opacity-100 translate-y-0' : 'text-gray-400 opacity-60 group-hover:opacity-100 group-hover:text-gray-600'}`}
+                className={`mt-2 text-[8px] md:text-[9px] font-black uppercase tracking-widest transition-all duration-500 ${activeRing === item.id ? 'text-gray-900 opacity-100 translate-y-0' : 'text-gray-400 opacity-60 group-hover:opacity-100 group-hover:text-gray-600'}`}
             >
                 {item.title}
             </span>
@@ -101,47 +101,47 @@ const Hymns = () => {
     )
 
     return (
-        <section className="py-24 bg-white animate-fade-in min-h-screen">
+        <section id="identidad" className="py-16 bg-white animate-fade-in outline-none">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-16">
+                <div className="text-center mb-12">
                     <span className="text-primary font-black tracking-[0.4em] uppercase text-[10px] mb-4 block">Identidad Institucional</span>
-                    <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter uppercase mb-6">Nuestros Pilares</h2>
-                    <p className="text-gray-500 max-w-2xl mx-auto text-sm font-medium">La unión de los cinco continentes representada en nuestra esencia.</p>
+                    <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase mb-4">Nuestros Pilares</h2>
+                    <p className="text-gray-500 max-w-2xl mx-auto text-xs font-medium uppercase tracking-widest">La unión representada en nuestra esencia.</p>
                 </div>
 
-                {/* Olympic Rings Visual Layout - Optimized for Side-by-Side on Desktop */}
-                <div className="max-w-6xl mx-auto mb-32 flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
+                {/* Olympic Rings Visual Layout */}
+                <div className="max-w-5xl mx-auto mb-20 flex flex-col lg:flex-row gap-4 lg:gap-6 items-stretch">
 
                     {/* Left/Top: Rings Selector */}
-                    <div className="w-full lg:w-[400px] bg-secondary/30 p-8 md:p-14 lg:p-10 rounded-[3rem] lg:rounded-[4rem] border border-gray-100 shadow-inner flex flex-col items-center justify-center gap-6 md:gap-8 min-h-[300px]">
-                        <div className="flex justify-center gap-6 md:gap-12 lg:gap-8">
+                    <div className="w-full lg:w-[320px] bg-secondary/30 p-6 md:p-8 rounded-[2rem] lg:rounded-[3rem] border border-gray-100 shadow-inner flex flex-col items-center justify-center gap-4 md:gap-6 min-h-[200px] md:min-h-[450px]">
+                        <div className="flex justify-center gap-4 md:gap-6">
                             {identityItems.filter(i => i.position === 'top').map(item => (
                                 <RingButton key={item.id} item={item} />
                             ))}
                         </div>
-                        <div className="flex justify-center gap-6 md:gap-12 lg:gap-8 -mt-2 lg:mt-0">
+                        <div className="flex justify-center gap-4 md:gap-6 -mt-1 lg:mt-0">
                             {identityItems.filter(i => i.position === 'bottom').map(item => (
                                 <RingButton key={item.id} item={item} />
                             ))}
                         </div>
                     </div>
 
-                    {/* Right/Bottom: Information Card - Compact & Centered */}
-                    <div key={activeRing} className="flex-1 animate-reveal-scale bg-white p-10 md:p-12 lg:p-14 rounded-[3.5rem] lg:rounded-[4rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-100 min-h-[450px] md:min-h-[400px] flex items-center justify-center relative overflow-hidden group self-stretch">
+                    {/* Right/Bottom: Information Card */}
+                    <div key={activeRing} className={`flex-1 animate-reveal-scale bg-white p-6 md:p-10 rounded-[2rem] lg:rounded-[3rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-gray-100 min-h-[350px] md:min-h-[450px] flex justify-center relative overflow-hidden group self-stretch ${activeRing === 'negro' ? 'items-center' : 'items-start pt-6 md:pt-14'}`}>
                         <div
-                            className="absolute inset-0 opacity-[0.12] transition-all duration-1000 group-hover:scale-110"
+                            className="absolute inset-0 opacity-[0.08] transition-all duration-1000 group-hover:scale-110"
                             style={{ backgroundColor: activeItem.hex }}
                         ></div>
 
-                        <div className="relative z-10 w-full text-center flex flex-col items-center">
-                            <div className="flex flex-col items-center gap-4 mb-8 w-full">
-                                <div className="w-12 h-1 rounded-full mb-2 animate-slide-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]" style={{ backgroundColor: activeItem.hex }}></div>
-                                <h3 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase leading-none animate-slide-up [animation-delay:300ms] opacity-0 [animation-fill-mode:forwards]">{activeItem.title}</h3>
-                                <div className="px-4 py-1 rounded-full shadow-sm animate-slide-up [animation-delay:400ms] opacity-0 [animation-fill-mode:forwards]" style={{ backgroundColor: activeItem.hex }}>
-                                    <span className="text-[10px] font-black uppercase text-white tracking-[0.3em]">{activeItem.colorName}</span>
+                        <div className="relative z-10 w-full text-center flex flex-col items-center pt-2">
+                            <div className="flex flex-col items-center gap-2 mb-4 w-full">
+                                <div className="w-8 h-1 rounded-full mb-1 animate-slide-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]" style={{ backgroundColor: activeItem.hex }}></div>
+                                <h3 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase leading-none animate-slide-up [animation-delay:300ms] opacity-0 [animation-fill-mode:forwards]">{activeItem.title}</h3>
+                                <div className="px-3 py-0.5 rounded-full shadow-sm animate-slide-up [animation-delay:400ms] opacity-0 [animation-fill-mode:forwards]" style={{ backgroundColor: activeItem.hex }}>
+                                    <span className="text-[8px] font-black uppercase text-white tracking-[0.2em]">{activeItem.colorName}</span>
                                 </div>
                             </div>
-                            <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium text-balance max-w-xl animate-slide-up [animation-delay:500ms] opacity-0 [animation-fill-mode:forwards]">
+                            <p className="text-[13px] md:text-sm text-gray-500 leading-relaxed font-bold text-balance max-w-md animate-slide-up [animation-delay:500ms] opacity-0 [animation-fill-mode:forwards]">
                                 {activeItem.text}
                             </p>
                         </div>

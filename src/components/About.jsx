@@ -56,10 +56,100 @@ const StatItem = ({ end, label, suffix = "" }) => {
     )
 }
 
-const About = ({ isFullView = false }) => {
-    const [activeExtra, setActiveExtra] = useState(null)
+const CarouselSection = ({ title, tag, description, images, isReversed = false, aspect = "aspect-square", rounded = "rounded-[3.5rem]" }) => {
     const [currentSlide, setCurrentSlide] = useState(0)
+    const [isPaused, setIsPaused] = useState(false)
+    const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % images.length)
+    const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + images.length) % images.length)
 
+    useEffect(() => {
+        if (isPaused) return
+        const timer = setInterval(nextSlide, 18000)
+        return () => clearInterval(timer)
+    }, [images.length, isPaused])
+
+    return (
+        <div
+            className={`mb-32 animate-slide-up flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center justify-center gap-12 lg:gap-12 max-w-6xl mx-auto`}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+        >
+            <div className="w-full lg:w-5/12">
+                <div className={`space-y-8 text-center ${isReversed ? 'lg:text-right' : 'lg:text-left'}`}>
+                    <div className="inline-block bg-primary/5 px-6 py-2 rounded-2xl border border-primary/10">
+                        <span className="text-primary font-black text-xs uppercase tracking-[0.3em]">{tag}</span>
+                    </div>
+                    <h3 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase leading-none">
+                        {title.split(' ')[0]} <span className="text-primary">{title.split(' ').slice(1).join(' ')}</span>
+                    </h3>
+                    <p className={`text-gray-600 text-lg font-medium leading-relaxed max-w-lg mx-auto ${isReversed ? 'lg:ml-auto lg:mr-0 lg:text-right' : 'lg:mx-0'}`}>
+                        {description}
+                    </p>
+                    <div className={`w-20 h-1.5 bg-gold rounded-full mx-auto ${isReversed ? 'lg:ml-auto lg:mr-0' : 'lg:mx-0'}`}></div>
+                </div>
+            </div>
+
+            <div className={`w-full ${aspect === 'aspect-square' ? 'lg:w-5/12' : 'lg:w-6/12'} flex justify-center`}>
+                <div className={`relative group ${rounded} overflow-hidden shadow-2xl bg-black w-full ${aspect === 'aspect-square' ? 'max-w-[450px]' : 'max-w-[650px]'} ${aspect} flex items-center justify-center`}>
+                    {images.map((img, idx) => (
+                        <div
+                            key={idx}
+                            className={`absolute inset-0 transition-all duration-1000 ease-in-out transform ${idx === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-110 pointer-events-none'}`}
+                        >
+                            <img
+                                src={img}
+                                alt={`${title} ${idx + 1}`}
+                                className="w-full h-full object-cover object-top"
+                                onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                            <div className="absolute inset-0 hidden items-center justify-center bg-gray-50 text-gray-300">
+                                <div className="text-center">
+                                    <p className="text-[10px] uppercase font-black tracking-widest mb-2">Subir Foto a:</p>
+                                    <p className="text-primary font-black text-sm">{img}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+
+                    <button
+                        onClick={prevSlide}
+                        className="absolute left-3 md:left-4 w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all hover:bg-white/20 hover:scale-110 z-30"
+                    >
+                        <span className="text-lg">←</span>
+                    </button>
+                    <button
+                        onClick={nextSlide}
+                        className="absolute right-3 md:right-4 w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all hover:bg-white/20 hover:scale-110 z-30"
+                    >
+                        <span className="text-lg">→</span>
+                    </button>
+
+                    <div className="absolute bottom-10 inset-x-0 flex justify-center gap-3 z-20">
+                        {images.map((_, idx) => (
+                            <button
+                                key={idx}
+                                onClick={() => setCurrentSlide(idx)}
+                                className={`h-1.5 rounded-full transition-all duration-500 ${idx === currentSlide ? 'w-8 bg-gold' : 'w-2 bg-white/50 hover:bg-white'}`}
+                                aria-label={`Go to slide ${idx + 1}`}
+                            />
+                        ))}
+                    </div>
+
+                    <div className="absolute top-6 right-6 z-20">
+                        <div className="bg-white/10 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
+                            <p className="text-white text-[8px] font-black uppercase tracking-[0.2em]">
+                                {currentSlide + 1} / {images.length}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const About = ({ isFullView = false }) => {
     const teamImages = [
         "/images/equipo.jpg",
         "/images/equipo2.jpg",
@@ -73,15 +163,29 @@ const About = ({ isFullView = false }) => {
         "/images/equipo10.jpg"
     ]
 
-    const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % teamImages.length)
-    const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + teamImages.length) % teamImages.length)
+    const culturalImages = [
+        "/images/cultural1.jpg",
+        "/images/cultural2.jpg",
+        "/images/cultural3.jpg",
+        "/images/cultural4.jpg",
+        "/images/cultural5.jpg"
+    ]
 
-    useEffect(() => {
-        if (isFullView) {
-            const timer = setInterval(nextSlide, 12000)
-            return () => clearInterval(timer)
-        }
-    }, [isFullView])
+    const gradoImages = [
+        "/images/grado1.jpg",
+        "/images/grado2.jpg",
+        "/images/grado3.jpg",
+        "/images/grado4.jpg",
+        "/images/grado5.jpg"
+    ]
+
+    const carteleraImages = [
+        "/images/cartelera1.jpg",
+        "/images/cartelera2.jpg",
+        "/images/cartelera3.jpg",
+        "/images/cartelera4.jpg",
+        "/images/cartelera5.jpg"
+    ]
 
     const levels = [
         { title: "Preescolar", detail: "1er Nivel - 3er Nivel", image: "/images/preescolar.jpg" },
@@ -100,7 +204,7 @@ const About = ({ isFullView = false }) => {
         {
             id: 'voleibol',
             title: "Voleibol",
-            description: "Desarrollo de habilidades motrices y coordinación en un ambiente competitivo saludable.",
+            description: "Desarrollo de habilidades motrices y coordination en un ambiente competitivo saludable.",
             image: "/images/extra_voleibol.jpg"
         },
         {
@@ -148,7 +252,6 @@ const About = ({ isFullView = false }) => {
                     ))}
                 </div>
 
-                {/* Animated Stats Section - Only visible on Inicio */}
                 {!isFullView && (
                     <div className="mb-24 bg-footer-blue rounded-[3rem] p-12 md:p-16 relative overflow-hidden group shadow-2xl">
                         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,rgba(0,86,179,0.1),transparent)]"></div>
@@ -161,83 +264,39 @@ const About = ({ isFullView = false }) => {
                     </div>
                 )}
 
-                {/* Extended "Our Team" Content - Only visible in full nosotros view */}
                 {isFullView && (
-                    <div className="mb-32 animate-slide-up flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-                        <div className="w-full lg:w-5/12">
-                            <div className="space-y-8 text-center lg:text-left">
-                                <div className="inline-block bg-primary/5 px-6 py-2 rounded-2xl border border-primary/10">
-                                    <span className="text-primary font-black text-xs uppercase tracking-[0.3em]">Vocación & Excelencia</span>
-                                </div>
-                                <h3 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase leading-none">
-                                    Nuestro <span className="text-primary">Equipo</span>
-                                </h3>
-                                <p className="text-gray-600 text-lg font-medium leading-relaxed max-w-lg mx-auto lg:mx-0">
-                                    Contamos con un equipo de profesionales apasionados, comprometidos con la formación académica y humana de cada uno de nuestros estudiantes.
-                                </p>
-                                <div className="w-20 h-1.5 bg-gold rounded-full mx-auto lg:mx-0"></div>
-                            </div>
-                        </div>
+                    <div className="space-y-40">
+                        <CarouselSection
+                            title="Nuestro Equipo"
+                            tag="Vocación & Excelencia"
+                            description="Contamos con un equipo de profesionales apasionados, comprometidos con la formación académica y humana de cada uno de nuestros estudiantes."
+                            images={teamImages}
+                        />
 
-                        <div className="w-full lg:w-7/12">
-                            <div className="relative group rounded-[3.5rem] overflow-hidden shadow-2xl bg-black h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center">
-                                {teamImages.map((img, idx) => (
-                                    <div
-                                        key={idx}
-                                        className={`absolute inset-0 transition-all duration-1000 ease-in-out transform ${idx === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-110 pointer-events-none'}`}
-                                    >
-                                        <img
-                                            src={img}
-                                            alt={`Nuestro Equipo ${idx + 1}`}
-                                            className="w-full h-full object-cover object-top"
-                                            onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                                        <div className="absolute inset-0 hidden items-center justify-center bg-gray-50 text-gray-300">
-                                            <div className="text-center">
-                                                <p className="text-[10px] uppercase font-black tracking-widest mb-2">Subir Foto a:</p>
-                                                <p className="text-primary font-black text-sm">{img}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
+                        <CarouselSection
+                            title="Actos Culturales"
+                            tag="Tradición & Talento"
+                            description="Encuentros donde celebramos nuestras raíces y fomentamos la expresión artística, fortaleciendo la identidad cultural de nuestros estudiantes."
+                            images={culturalImages}
+                            isReversed={true}
+                        />
 
-                                {/* Carousel Arrows */}
-                                <button
-                                    onClick={prevSlide}
-                                    className="absolute left-3 md:left-6 w-9 h-9 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all hover:bg-white/20 hover:scale-110 z-30"
-                                >
-                                    <span className="text-xl md:text-2xl">←</span>
-                                </button>
-                                <button
-                                    onClick={nextSlide}
-                                    className="absolute right-3 md:left-auto md:right-6 w-9 h-9 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all hover:bg-white/20 hover:scale-110 z-30"
-                                >
-                                    <span className="text-xl md:text-2xl">→</span>
-                                </button>
+                        <CarouselSection
+                            title="Actos de Grado"
+                            tag="Éxito & Futuro"
+                            description="Celebración solemne del logro académico, donde honramos el esfuerzo y la dedicación de nuestros graduandos al culminar su etapa escolar."
+                            images={gradoImages}
+                        />
 
-                                {/* Carousel Controls */}
-                                <div className="absolute bottom-10 inset-x-0 flex justify-center gap-3 z-20">
-                                    {teamImages.map((_, idx) => (
-                                        <button
-                                            key={idx}
-                                            onClick={() => setCurrentSlide(idx)}
-                                            className={`h-1.5 rounded-full transition-all duration-500 ${idx === currentSlide ? 'w-8 bg-gold' : 'w-2 bg-white/50 hover:bg-white'}`}
-                                            aria-label={`Go to slide ${idx + 1}`}
-                                        />
-                                    ))}
-                                </div>
-
-                                {/* Photo Content Overlay */}
-                                <div className="absolute top-10 right-10 z-20">
-                                    <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-                                        <p className="text-white text-[10px] font-black uppercase tracking-widest">
-                                            {currentSlide + 1} / {teamImages.length}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <CarouselSection
+                            title="Nuestras Carteleras"
+                            tag="Arte & Creatividad"
+                            description="Espacios dedicados a la expresión del talento, donde se plasman conocimientos, valores y creatividad a través de trabajos manuales y artísticos."
+                            images={carteleraImages}
+                            isReversed={true}
+                            aspect="aspect-[4/3]"
+                            rounded="rounded-3xl"
+                        />
                     </div>
                 )}
 
@@ -253,25 +312,19 @@ const About = ({ isFullView = false }) => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {extras.map((item) => (
                             <div key={item.id} className="group relative h-[300px] md:h-[400px] rounded-[3rem] overflow-hidden shadow-xl transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl bg-gray-900">
-                                {/* Background Image */}
                                 <img
                                     src={item.image}
                                     alt={item.title}
                                     className="w-full h-full object-cover opacity-100 transition-transform duration-1000 group-hover:scale-110 group-hover:opacity-80"
                                     onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
                                 />
-
-                                {/* Fallback */}
+                                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                                 <div className="absolute inset-0 hidden items-center justify-center bg-gray-800 text-gray-500">
                                     <p className="text-[10px] font-black uppercase tracking-widest text-center px-6">
                                         Subir foto: {item.image}
                                     </p>
                                 </div>
-
-                                {/* Gradient Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-
-                                {/* Content */}
                                 <div className="absolute inset-x-0 bottom-0 p-8 md:p-12 transition-transform duration-500 translate-y-8 md:translate-y-12 group-hover:translate-y-0">
                                     <div className="flex items-center gap-4 mb-4">
                                         <div className="w-8 h-1 bg-gold rounded-full transition-all duration-500 group-hover:w-16"></div>
@@ -286,7 +339,6 @@ const About = ({ isFullView = false }) => {
                     </div>
                 </div>
 
-                {/* Admisiones CTA - Only visible on Inicio, not in full Nosotros view */}
                 {!isFullView && (
                     <div className="max-w-4xl mx-auto">
                         <div className="w-full bg-gray-900 p-12 md:p-16 rounded-[4rem] text-center text-white relative overflow-hidden group shadow-2xl flex flex-col items-center">
