@@ -90,7 +90,7 @@ const CarouselSection = ({ title, tag, description, images, isReversed = false, 
             </div>
 
             <div className={`w-full ${aspect === 'aspect-square' ? 'lg:w-5/12' : 'lg:w-6/12'} flex justify-center`}>
-                <div className={`relative group ${rounded} overflow-hidden shadow-2xl bg-black w-full ${aspect === 'aspect-square' ? 'max-w-[450px]' : 'max-w-[650px]'} ${aspect} flex items-center justify-center`}>
+                <div className={`relative group ${rounded} overflow-hidden shadow-2xl bg-black w-full ${aspect === 'aspect-square' ? 'max-w-[450px]' : 'max-w-[650px]'} ${aspect} flex items-center justify-center transition-all duration-700 hover:-translate-y-2 cursor-pointer`}>
                     {images.map((img, idx) => (
                         <div
                             key={idx}
@@ -102,7 +102,7 @@ const CarouselSection = ({ title, tag, description, images, isReversed = false, 
                                 className="w-full h-full object-cover object-top"
                                 onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                             <div className="absolute inset-0 hidden items-center justify-center bg-gray-50 text-gray-300">
                                 <div className="text-center">
                                     <p className="text-[10px] uppercase font-black tracking-widest mb-2">Subir Foto a:</p>
@@ -175,7 +175,9 @@ const About = ({ isFullView = false, onNavigate }) => {
         "/images/cultural2.jpg",
         "/images/cultural3.jpg",
         "/images/cultural4.jpg",
-        "/images/cultural5.jpg"
+        "/images/cultural5.jpg",
+        "/images/cultural6.jpg",
+        "/images/cultural7.jpg"
     ]
 
     const gradoImages = [
@@ -183,7 +185,8 @@ const About = ({ isFullView = false, onNavigate }) => {
         "/images/grado2.jpg",
         "/images/grado3.jpg",
         "/images/grado4.jpg",
-        "/images/grado5.jpg"
+        "/images/grado5.jpg",
+        "/images/grado6.jpg"
     ]
 
     const carteleraImages = [
@@ -206,6 +209,12 @@ const About = ({ isFullView = false, onNavigate }) => {
             title: "Voleibol",
             description: "Desarrollo de habilidades motrices y coordination en un ambiente competitivo saludable.",
             image: "/images/extra_voleibol.jpg"
+        },
+        {
+            id: 'ajedrez',
+            title: "Ajedrez",
+            description: "Desarrollo del pensamiento estratégico, la concentración y la resolución de problemas.",
+            image: "/images/extra_ajedrez.jpg"
         },
         {
             id: 'baile',
@@ -323,9 +332,9 @@ const About = ({ isFullView = false, onNavigate }) => {
                         <p className="text-gray-500 font-medium max-w-2xl mx-auto lg:mx-0">Programas diseñados para potenciar el talento, la disciplina y el bienestar de nuestros estudiantes fuera del aula.</p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="flex flex-wrap justify-center gap-8">
                         {extras.map((item) => (
-                            <div key={item.id} className="group relative h-[300px] md:h-[400px] rounded-[3rem] overflow-hidden shadow-xl transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl bg-gray-900">
+                            <div key={item.id} className="group relative w-full md:w-[calc(50%-16px)] h-[300px] md:h-[400px] rounded-[3rem] overflow-hidden shadow-xl transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl bg-gray-900">
                                 <img
                                     src={item.image}
                                     alt={item.title}
@@ -338,13 +347,13 @@ const About = ({ isFullView = false, onNavigate }) => {
                                         Subir foto: {item.image}
                                     </p>
                                 </div>
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                                 <div className="absolute inset-x-0 bottom-0 p-8 md:p-12 transition-transform duration-500 translate-y-8 md:translate-y-12 group-hover:translate-y-0">
                                     <div className="flex items-center gap-4 mb-4">
                                         <div className="w-8 h-1 bg-gold rounded-full transition-all duration-500 group-hover:w-16"></div>
                                         <h4 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tighter">{item.title}</h4>
                                     </div>
-                                    <p className="text-white/70 text-sm md:text-base font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                    <p className="text-white/70 text-sm md:text-base font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                                         {item.description}
                                     </p>
                                 </div>

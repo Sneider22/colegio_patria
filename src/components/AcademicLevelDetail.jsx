@@ -70,7 +70,7 @@ const AcademicLevelDetail = ({ levelData, onBack }) => {
                                     style={{ backgroundColor: subject.color }}
                                 >
                                     <span className="text-sm md:text-base">{subject.icon}</span>
-                                    <span className="font-bold text-[10px] md:text-[11px] tracking-tight text-gray-800">
+                                    <span className="font-bold text-[9px] md:text-[10px] tracking-tight text-gray-800">
                                         {subject.name}
                                     </span>
                                 </div>

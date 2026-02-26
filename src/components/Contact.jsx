@@ -89,7 +89,7 @@ const Contact = () => {
                         <div className="grid grid-cols-2 gap-4 md:gap-8">
                             {contactInfo.map((info, idx) => {
                                 const CardContent = (
-                                    <div className="h-full flex flex-col items-center justify-center p-6 md:p-10 rounded-[2.5rem] md:rounded-[3.5rem] border-2 border-transparent bg-secondary/40 transition-all duration-500 text-center hover:bg-white hover:border-primary/20 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-3 cursor-pointer group">
+                                    <div className="h-full flex flex-col items-center justify-center p-6 md:p-10 rounded-[2.5rem] md:rounded-[3.5rem] border border-primary/20 bg-secondary/40 transition-all duration-500 text-center hover:bg-white hover:border-primary/40 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-3 cursor-pointer group">
                                         <div className="text-4xl md:text-6xl mb-6 flex items-center justify-center filter drop-shadow-lg group-hover:scale-110 transition-transform duration-700">
                                             {info.icon}
                                         </div>
