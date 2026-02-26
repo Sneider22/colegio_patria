@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -96,10 +96,41 @@ function App() {
     }
   }
 
-  const handleNavigation = (id) => {
+  useEffect(() => {
+    // Inicializar el historial si es la primera vez
+    if (!window.history.state) {
+      window.history.replaceState({ view: 'inicio' }, '')
+    }
+
+    const handlePopState = (event) => {
+      if (event.state && event.state.view) {
+        // Al navegar hacia atrás, actualizamos la vista sin hacer pushState de nuevo
+        setActiveView(event.state.view)
+        if (event.state.view === 'inicio') {
+          setTimeout(() => {
+            const elem = document.getElementById('inicio-view')
+            if (elem) elem.scrollIntoView({ behavior: 'smooth' })
+          }, 150)
+        } else {
+          window.scrollTo(0, 0)
+        }
+      } else {
+        // Por si acaso no hay estado, volvemos a inicio
+        setActiveView('inicio')
+      }
+    }
+
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
+  const handleNavigation = (id, skipHistory = false) => {
     if (id === 'inicio') {
       if (activeView !== 'inicio') {
         setActiveView('inicio')
+        if (!skipHistory) {
+          window.history.pushState({ view: 'inicio' }, '')
+        }
         setTimeout(() => {
           const elem = document.getElementById('inicio-view')
           if (elem) elem.scrollIntoView({ behavior: 'smooth' })
@@ -109,15 +140,19 @@ function App() {
       }
     } else if (id === 'nosotros') {
       setActiveView('nosotros')
+      if (!skipHistory) window.history.pushState({ view: 'nosotros' }, '')
       window.scrollTo(0, 0)
     } else if (id === 'identidad') {
       setActiveView('identidad')
+      if (!skipHistory) window.history.pushState({ view: 'identidad' }, '')
       window.scrollTo(0, 0)
     } else if (id === 'contacto') {
       setActiveView('contacto')
+      if (!skipHistory) window.history.pushState({ view: 'contacto' }, '')
       window.scrollTo(0, 0)
     } else if (id.startsWith('academic-')) {
       setActiveView(id)
+      if (!skipHistory) window.history.pushState({ view: id }, '')
       window.scrollTo(0, 0)
     }
   }

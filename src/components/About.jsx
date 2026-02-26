@@ -218,7 +218,7 @@ const About = ({ isFullView = false, onNavigate }) => {
         },
         {
             id: 'baile',
-            title: "Baile",
+            title: "Danza",
             description: "Expresión artística y rítmica que fomenta la confianza y la disciplina creativa.",
             image: "/images/extra_baile.jpg"
         },
@@ -311,7 +311,7 @@ const About = ({ isFullView = false, onNavigate }) => {
                         />
 
                         <CarouselSection
-                            title="Nuestras Carteleras"
+                            title="Nuestra Galería"
                             tag="Arte & Creatividad"
                             description="Espacios dedicados a la expresión del talento, donde se plasman conocimientos, valores y creatividad a través de trabajos manuales y artísticos."
                             images={carteleraImages}
