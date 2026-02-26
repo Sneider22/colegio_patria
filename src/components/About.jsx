@@ -172,6 +172,11 @@ const About = ({ isFullView = false, onNavigate }) => {
 
     const culturalImages = [
         "/images/cultural1.jpg",
+        "/images/cultural11.jpg",
+        "/images/cultural12.jpg",
+        "/images/cultural13.jpg",
+        "/images/cultural14.jpg",
+        "/images/cultural15.jpg",
         "/images/cultural2.jpg",
         "/images/cultural3.jpg",
         "/images/cultural4.jpg",
@@ -191,10 +196,15 @@ const About = ({ isFullView = false, onNavigate }) => {
 
     const carteleraImages = [
         "/images/cartelera1.jpg",
+        "/images/cartelera11.jpg",
         "/images/cartelera2.jpg",
+        "/images/cartelera12.jpg",
         "/images/cartelera3.jpg",
+        "/images/cartelera13.jpg",
         "/images/cartelera4.jpg",
-        "/images/cartelera5.jpg"
+        "/images/cartelera14.jpg",
+        "/images/cartelera5.jpg",
+        "/images/cartelera15.jpg"
     ]
 
     const extras = [
@@ -316,8 +326,6 @@ const About = ({ isFullView = false, onNavigate }) => {
                             description="Espacios dedicados a la expresión del talento, donde se plasman conocimientos, valores y creatividad a través de trabajos manuales y artísticos."
                             images={carteleraImages}
                             isReversed={true}
-                            aspect="aspect-[4/3]"
-                            rounded="rounded-3xl"
                         />
                     </div>
                 )}
