@@ -18,9 +18,17 @@ function App() {
       title: 'Preescolar',
       description: 'La etapa preescolar, destinada a niños de 3 a 6 años, es el cimiento de todo su camino académico. Aquí, el aprendizaje se vive a través del juego didáctico, enfocándonos en el desarrollo de sus habilidades motrices, la iniciación a la lectoescritura y la consolidación de modales y valores fundamentales. Además, fomentamos su curiosidad natural mediante una introducción básica y dinámica a los idiomas inglés e italiano, garantizando un ambiente donde aprenden mientras se divierten y desarrollan su autonomía.',
       requirements: [
-        { title: 'Requisitos y lista de útiles para 1er nivel', content: '• Partida de Nacimiento (Original y Copia)\n• 4 Fotos tipo carnet del alumno\n• Fotocopia de la Cédula de Identidad de los representantes\n• Certificado de Salud y Vacunas\n• Lista de útiles institucional (Consultar en administración)' },
-        { title: 'Requisitos y lista de útiles para 2do nivel', content: '• Boleta de promoción del nivel anterior\n• Solventar compromisos administrativos previos\n• Actualización de ficha acumulativa\n• Lista de útiles institucional para 2do nivel' },
-        { title: 'Requisitos y lista de útiles para 3er nivel', content: '• Preparación para la transición a primaria\n• Evaluación diagnóstica de madurez\n• Lista de útiles completa para pre-escolar avanzado' }
+        '4 fotos del alumno, tipo carnet',
+        '2 fotos del representante, tipo carnet',
+        'Fotocopia de la partida de nacimiento',
+        'Constancia de vacunas actualizada',
+        'Cédula de identidad de los representantes (copia)',
+        'Certificado de salud vigente'
+      ],
+      supplies: [
+        { label: 'Lista de útiles para 1er nivel', link: '/pdf/utiles-preescolar-1er-nivel.pdf' },
+        { label: 'Lista de útiles para 2do nivel', link: '/pdf/utiles-preescolar-2do-nivel.pdf' },
+        { label: 'Lista de útiles para 3er nivel', link: '/pdf/utiles-preescolar-3er-nivel.pdf' }
       ],
       subjects: [
         { name: 'Dibujo', icon: '🎨', color: '#FFF0F0' },
@@ -38,12 +46,20 @@ function App() {
       title: 'Primaria',
       description: 'En el nivel de primaria, que abarca de los 6 a los 12 años, los estudiantes transitan hacia una formación más estructurada y profunda. A lo largo de estos grados, fortalecen su dominio académico, perfeccionando la escritura mediante dictados y el uso de letra cursiva, mientras avanzan en el estudio de los idiomas inglés e italiano y el desarrollo físico a través de deportes. Un pilar fundamental de nuestra metodología es la conexión con nuestras raíces, por lo que incentivamos constantemente la realización de exposiciones sobre historia, cultura general y el patrimonio de nuestra Venezuela, formando ciudadanos con conciencia crítica y conocimiento.',
       requirements: [
-        { title: 'Requisitos y lista de útiles para 1er grado', content: '• Certificado de promoción de preescolar\n• Boleta de evaluación final\n• Solventar compromisos administrativos\n• Lista de útiles institucional para 1er grado' },
-        { title: 'Requisitos y lista de útiles para 2do grado', content: '• Boleta de promoción firmada y sellada\n• Carta de buena conducta\n• Lista de útiles institucional para 2do grado' },
-        { title: 'Requisitos y lista de útiles para 3er grado', content: '• Expediente académico completo\n• Fotos actualizadas carnet\n• Lista de útiles institucional para 3er grado' },
-        { title: 'Requisitos y lista de útiles para 4to grado', content: '• Certificado de notas parciales si aplica\n• Solvencia administrativa\n• Lista de útiles institucional para 4to grado' },
-        { title: 'Requisitos y lista de útiles para 5to grado', content: '• Actualización de datos representantes\n• Boleta de promoción\n• Lista de útiles institucional para 5to grado' },
-        { title: 'Requisitos y lista de útiles para 6to grado', content: '• Preparación para ingreso a media general\n• Documentación completa para certificación\n• Lista de útiles institucional para 6to grado' }
+        'Boleta de promoción del grado anterior',
+        'Constancia de conducta del colegio de procedencia',
+        '4 fotos del alumno, tipo carnet',
+        '2 fotos del representante, tipo carnet',
+        'Fotocopia de la partida de nacimiento',
+        'Copia de la C.I. del alumno (si posee)'
+      ],
+      supplies: [
+        { label: 'Lista de útiles para 1er grado', link: '/pdf/utiles-primaria-1er-grado.pdf' },
+        { label: 'Lista de útiles para 2do grado', link: '/pdf/utiles-primaria-2do-grado.pdf' },
+        { label: 'Lista de útiles para 3er grado', link: '/pdf/utiles-primaria-3er-grado.pdf' },
+        { label: 'Lista de útiles para 4to grado', link: '/pdf/utiles-primaria-4to-grado.pdf' },
+        { label: 'Lista de útiles para 5to grado', link: '/pdf/utiles-primaria-5to-grado.pdf' },
+        { label: 'Lista de útiles para 6to grado', link: '/pdf/utiles-primaria-6to-grado.pdf' }
       ],
       subjects: [
         { name: 'Kaikuse', icon: '🥋', color: '#FFF1F2' },
@@ -66,14 +82,20 @@ function App() {
       ]
     },
     'bachillerato': {
-      title: 'Bachillerato',
-      description: 'Finalmente, el bachillerato representa la consolidación académica para jóvenes de 12 a 17 años. En esta etapa, el rigor intelectual aumenta con la inclusión de materias como física y química, preparando a los alumnos para la excelencia académica. Nuestros estudiantes se gradúan como Bachilleres en Ciencias, habiendo cultivado competencias esenciales como el trabajo colaborativo, la capacidad de autogestión y el liderazgo. Este aprendizaje trasciende el aula gracias a una vibrante vida escolar, donde los eventos deportivos y las actividades socioculturales juegan un rol clave en su formación integral y sentido de pertenencia.',
+      title: 'Bachillerato (1ro - 3ro)',
+      description: 'En esta etapa de Media General, los estudiantes profundizan en diversas áreas del saber, desarrollando capacidades analíticas y críticas. El currículo está diseñado para fortalecer las bases científicas y humanísticas, preparando a los jóvenes para los retos del ciclo diversificado y fomentando valores de responsabilidad y autonomía.',
       requirements: [
-        { title: 'Requisitos y lista de útiles para 1er año', content: '• Certificado de 6to grado\n• Notas certificadas\n• Solvencia administrativa\n• Lista de útiles para 1er año' },
-        { title: 'Requisitos y lista de útiles para 2do año', content: '• Boleta de promoción de 1er año\n• Carta de conducta\n• Lista de útiles para 2do año' },
-        { title: 'Requisitos y lista de útiles para 3er año', content: '• Expediente de 1er y 2do año\n• Solvencia administrativa\n• Lista de útiles para 3er año' },
-        { title: 'Requisitos y lista de útiles para 4to año', content: '• Boleta de 3er año aprobada\n• Registro de inscripción militar (si aplica)\n• Lista de útiles para 4to año' },
-        { title: 'Requisitos y lista de útiles para 5to año', content: '• Documentación para título de bachiller\n• Fotos para el título\n• Lista de útiles para 5to año' }
+        'Certificado de 6to grado (para 1er año)',
+        'Notas certificadas originales y copia',
+        'Carta de buena conducta',
+        '4 fotos del alumno, tipo carnet',
+        'Copia de la Cédula de Identidad del alumno',
+        'Solvencia académica del colegio anterior'
+      ],
+      supplies: [
+        { label: 'Lista de útiles para 1er año', link: '/pdf/utiles-bachillerato-1er-año.pdf' },
+        { label: 'Lista de útiles para 2do año', link: '/pdf/utiles-bachillerato-2do-año.pdf' },
+        { label: 'Lista de útiles para 3er año', link: '/pdf/utiles-bachillerato-3er-año.pdf' }
       ],
       subjects: [
         { name: 'Matemática', icon: '📐', color: '#FDF2F8' },
@@ -84,17 +106,47 @@ function App() {
         { name: 'Biología', icon: '🧬', color: '#FFFBEB' },
         { name: 'Historia', icon: '⏳', color: '#FEF3C7' },
         { name: 'Geografía', icon: '🗺️', color: '#F0FDFA' },
-        { name: 'Dibujo Técnico', icon: '📏', color: '#F8FAFC' },
-        { name: 'Artes Plásticas', icon: '🎨', color: '#FFF1F2' },
         { name: 'Informática', icon: '💻', color: '#EEF2FF' },
-        { name: 'FPS', icon: '🤝', color: '#F0F7FF' },
         { name: 'Educación Física', icon: '🏃', color: '#F9FAFB' }
       ],
       uniform: [
-        '1ero, 2do y 3er año: Chemise azul con insignia',
-        '4to y 5to año: Chemise beige con insignia',
+        'Chemise azul institucional con insignia',
         'Pantalón de vestir negro',
-        'Zapatos blancos o negros',
+        'Zapatos negros',
+        'Uniforme de Educación Física institucional'
+      ]
+    },
+    'diversificado': {
+      title: 'Bachillerato (4to - 5to)',
+      description: 'El ciclo diversificado representa la culminación académica para jóvenes de 15 a 17 años. Nuestros estudiantes se gradúan como Bachilleres en Ciencias, habiendo cultivado competencias esenciales como el trabajo colaborativo, la capacidad de autogestión y el liderazgo. Este periodo se enfoca en la preparación pre-universitaria y la excelencia científica.',
+      requirements: [
+        'Certificado de 3er año aprobado',
+        'Notas certificadas actualizadas',
+        '4 fotos del alumno, tipo carnet',
+        'Copia de la Cédula de Identidad del alumno',
+        'Solvencia administrativa vigente',
+        'Partida de nacimiento (copia)'
+      ],
+      supplies: [
+        { label: 'Lista de útiles para 4to año', link: '/pdf/utiles-bachillerato-4to-año.pdf' },
+        { label: 'Lista de útiles para 5to año', link: '/pdf/utiles-bachillerato-5to-año.pdf' }
+      ],
+      subjects: [
+        { name: 'Matemática', icon: '📐', color: '#FDF2F8' },
+        { name: 'Castellano', icon: '📚', color: '#F0FDF4' },
+        { name: 'Inglés', icon: '🇺🇸', color: '#F0F9FF' },
+        { name: 'Física', icon: '⚡', color: '#F5F3FF' },
+        { name: 'Química', icon: '🧪', color: '#ECFDF5' },
+        { name: 'Biología', icon: '🧬', color: '#FFFBEB' },
+        { name: 'Historia', icon: '⏳', color: '#FEF3C7' },
+        { name: 'Ciencias de la Tierra', icon: '🌍', color: '#F0FDFA' },
+        { name: 'Dibujo Técnico', icon: '📏', color: '#F8FAFC' },
+        { name: 'Educación Física', icon: '🏃', color: '#F9FAFB' }
+      ],
+      uniform: [
+        'Chemise beige institucional con insignia',
+        'Pantalón de vestir negro',
+        'Zapatos negros',
         'Uniforme de Educación Física institucional'
       ]
     }

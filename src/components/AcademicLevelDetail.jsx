@@ -1,28 +1,27 @@
 import { useState } from 'react'
 
 const AcademicLevelDetail = ({ levelData, onBack }) => {
-    const [openRequirement, setOpenRequirement] = useState(null);
-
-    const toggleRequirement = (idx) => {
-        setOpenRequirement(openRequirement === idx ? null : idx);
-    };
-
     return (
         <div className="min-h-screen bg-white">
             <div className="container mx-auto px-6 py-12">
                 {/* Back Button */}
                 <button
                     onClick={onBack}
-                    className="flex items-center gap-2 text-primary font-black uppercase text-xs tracking-widest hover:gap-4 transition-all mb-8"
+                    className="flex items-center gap-2 text-primary font-black uppercase text-xs tracking-widest hover:gap-4 transition-all mb-8 shadow-sm px-4 py-2 rounded-xl bg-primary/5 hover:bg-primary/10"
                 >
-                    ← Volver a Oferta
+                    <span className="text-lg">←</span> Volver a Oferta
                 </button>
 
                 <div className="max-w-4xl mx-auto">
                     {/* Header */}
                     <div className="text-center mb-12 animate-fade-in">
                         <span className="text-gold font-black tracking-[0.4em] uppercase text-[11px] mb-3 block">Detalle Académico</span>
-                        <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter uppercase mb-6">{levelData.title}</h2>
+                        <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter uppercase mb-6 leading-none">
+                            {levelData.title.split(' (')[0]}
+                            {levelData.title.includes(' (') && (
+                                <span className="block text-primary text-2xl md:text-3xl mt-2">{levelData.title.split(' (')[1].replace(')', '')}</span>
+                            )}
+                        </h2>
                         <div className="w-20 h-1.5 bg-primary mx-auto rounded-full mb-8"></div>
 
                         {levelData.description && (
@@ -35,31 +34,49 @@ const AcademicLevelDetail = ({ levelData, onBack }) => {
                     {/* Requirements Section */}
                     <section className="mb-12 animate-slide-up">
                         <div className="flex items-center gap-4 mb-6 pb-6 border-b-2 border-primary/10">
-                            <h3 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tighter uppercase">Requisitos y Útiles</h3>
+                            <h3 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tighter uppercase">Requisitos de Inscripción</h3>
                         </div>
-                        <div className="space-y-2">
-                            {levelData.requirements.map((req, idx) => (
-                                <div key={idx} className="border-b border-gray-100 last:border-0">
-                                    <button
-                                        onClick={() => toggleRequirement(idx)}
-                                        className="w-full py-6 flex items-center justify-between text-left group transition-all"
+
+                        <div className="grid md:grid-cols-1 gap-6 mb-10">
+                            <div className="bg-secondary/30 p-6 md:p-8 rounded-[2.5rem] border border-gray-100 shadow-sm">
+                                <ul className="space-y-3">
+                                    {levelData.requirements.map((req, idx) => (
+                                        <li key={idx} className="flex items-start gap-3 group">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0 group-hover:scale-125 transition-transform duration-300"></div>
+                                            <span className="text-gray-800 text-sm md:text-base font-bold leading-snug">
+                                                {req}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Supplies Section */}
+                        <div className="mt-10">
+                            <div className="flex items-center gap-4 mb-6">
+                                <h4 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tighter uppercase">Lista de Útiles</h4>
+                            </div>
+
+                            <div className="grid sm:grid-cols-2 gap-3">
+                                {levelData.supplies.map((item, idx) => (
+                                    <a
+                                        key={idx}
+                                        href={item.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-4 p-5 bg-white border-2 border-gray-100 rounded-[2rem] hover:border-primary hover:bg-primary/5 transition-all duration-300 group shadow-sm hover:shadow-md"
                                     >
-                                        <span className={`text-base md:text-xl font-black transition-colors ${openRequirement === idx ? 'text-primary' : 'text-gray-900 group-hover:text-primary'}`}>
-                                            {req.title}
+                                        <div className="text-2xl grayscale group-hover:grayscale-0 transition-all duration-500">📄</div>
+                                        <span className="font-black text-[11px] md:text-xs uppercase tracking-widest text-gray-700 group-hover:text-primary leading-tight">
+                                            {item.label}
                                         </span>
-                                        <span className={`text-2xl transition-transform duration-500 ${openRequirement === idx ? 'rotate-180 text-gold' : 'text-gray-300'}`}>
-                                            ↓
-                                        </span>
-                                    </button>
-                                    <div className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] ${openRequirement === idx ? 'max-h-[1000px] pb-8 opacity-100' : 'max-h-0 opacity-0'}`}>
-                                        <div className="p-8 bg-secondary/30 rounded-[2rem] border border-gray-50">
-                                            <p className="text-gray-800 text-sm md:text-base leading-relaxed font-bold whitespace-pre-line">
-                                                {req.content}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+                                    </a>
+                                ))}
+                            </div>
+                            <p className="mt-6 text-center text-gray-400 text-[10px] font-bold uppercase tracking-widest">
+                                * Los archivos se abrirán en formato PDF para su descarga o impresión.
+                            </p>
                         </div>
                     </section>
 

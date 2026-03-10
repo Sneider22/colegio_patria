@@ -154,7 +154,7 @@ const About = ({ isFullView = false, onNavigate }) => {
         { title: "Preescolar", detail: "1er Nivel - 3er Nivel", image: "/images/preescolar.jpg", id: 'preescolar' },
         { title: "Primaria", detail: "1er Grado - 6to Grado", image: "/images/primaria.jpg", id: 'primaria' },
         { title: "Bachillerato", detail: "1er Año - 3er Año", image: "/images/bachillerato1.jpg", id: 'bachillerato' },
-        { title: "Bachillerato", detail: "4to Año - 5to Año", image: "/images/bachillerato2.jpg", id: 'bachillerato' }
+        { title: "Diversificado", detail: "4to Año - 5to Año", image: "/images/bachillerato2.jpg", id: 'diversificado' }
     ]
 
     const teamImages = [
