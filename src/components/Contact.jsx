@@ -75,7 +75,7 @@ const Contact = () => {
     ]
 
     return (
-        <section id="contacto" className="py-24 bg-white animate-fade-in relative overflow-hidden">
+        <section id="contacto" className="pt-24 pb-12 bg-white animate-fade-in relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-16 md:mb-20">
                     <span className="text-gold font-black tracking-[0.4em] uppercase text-[11px] mb-4 block">Contacto Institucional</span>
@@ -159,13 +159,21 @@ const Contact = () => {
                         ))}
                     </div>
 
-                    <div className="mt-16 py-8 border-t border-gray-50 flex flex-col items-center text-center">
+                    <div className="mt-8 py-8 border-t border-gray-50 flex flex-col items-center text-center">
                         <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-sm mb-4">
                             ℹ️
                         </div>
-                        <p className="text-gray-400 text-[11px] md:text-[12px] font-black uppercase tracking-[0.2em] max-w-md">
+                        <p className="text-gray-400 text-[11px] md:text-[12px] font-black uppercase tracking-[0.2em] max-w-md mb-6">
                             Si tienes consultas adicionales, nuestro equipo está a tu disposición a través de los canales oficiales.
                         </p>
+                        <div className="space-y-1 mt-6">
+                            <p className="text-primary text-[12px] md:text-[13px] font-black uppercase tracking-wider">
+                                Inscrito en el M. E. bajo el N° S0634D1505
+                            </p>
+                            <p className="text-gold text-[12px] md:text-[13px] font-black uppercase tracking-wider">
+                                Fundado en el año 1959
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

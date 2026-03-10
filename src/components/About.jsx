@@ -377,9 +377,20 @@ const About = ({ isFullView = false, onNavigate }) => {
                             <div className="relative z-10 max-w-2xl">
                                 <h4 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter uppercase">Admisiones</h4>
                                 <p className="text-white/60 mb-10 font-bold tracking-widest uppercase text-sm">Forma parte de nuestra historia académica de excelencia.</p>
-                                <a href="https://wa.me/584121772899" target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-gray-900 font-black uppercase tracking-widest text-xs px-12 py-5 rounded-full hover:bg-gold transition-all duration-500 shadow-2xl active:scale-95">
+                                <button
+                                    onClick={() => {
+                                        const hour = new Date().getHours();
+                                        let greeting = "Buenas noches";
+                                        if (hour >= 6 && hour < 12) greeting = "Buenos días";
+                                        else if (hour >= 12 && hour <= 18) greeting = "Buenas tardes";
+
+                                        const message = `${greeting} Colegio Patria. Deseo solicitar información sobre la disponibilidad de cupos para el próximo período escolar.`;
+                                        window.open(`https://wa.me/584121772899?text=${encodeURIComponent(message)}`, '_blank');
+                                    }}
+                                    className="inline-block bg-white text-gray-900 font-black uppercase tracking-widest text-xs px-12 py-5 rounded-full hover:bg-gold transition-all duration-500 shadow-2xl active:scale-95 cursor-pointer"
+                                >
                                     CONSULTAR CUPO
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>

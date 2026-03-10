@@ -34,7 +34,7 @@ const Hymns = () => {
             title: 'Historia',
             colorName: 'Amarillo',
             hex: '#ffc107',
-            text: 'La unidad educativa colegio patria es una institución de carácter privado fundado en 1958 por una familia de inmigrantes italianos de profesión docente: con la idea de expandir la cultura de su pais de origen emprendieron la ardua misión de hacerlo a través de una institución educativa que acogiera de forma amplia a todos aquellos estudiantes de diferentes nacionalidades, tratando una patria que les diera la posibilidad de alcanzar los altisimos fines que le proporciona la cultura de la humanidad.',
+            text: 'La unidad educativa colegio patria es una institución de carácter privado fundado en 1959 por una familia de inmigrantes italianos de profesión docente: con la idea de expandir la cultura de su pais de origen emprendieron la ardua misión de hacerlo a través de una institución educativa que acogiera de forma amplia a todos aquellos estudiantes de diferentes nacionalidades, tratando una patria que les diera la posibilidad de alcanzar los altisimos fines que le proporciona la cultura de la humanidad.',
             position: 'bottom'
         },
         {

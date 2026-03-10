@@ -8,8 +8,6 @@ const Payments = () => {
         originBank: '',
         reference: ''
     });
-    const [file, setFile] = useState(null);
-    const [isDragging, setIsDragging] = useState(false);
     const [status, setStatus] = useState('idle'); // idle, loading, success
 
     const banks = [
@@ -27,28 +25,6 @@ const Payments = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleFileChange = (e) => {
-        if (e.target.files && e.target.files[0]) {
-            setFile(e.target.files[0]);
-        }
-    };
-
-    const onDragOver = useCallback((e) => {
-        e.preventDefault();
-        setIsDragging(true);
-    }, []);
-
-    const onDragLeave = useCallback(() => {
-        setIsDragging(false);
-    }, []);
-
-    const onDrop = useCallback((e) => {
-        e.preventDefault();
-        setIsDragging(false);
-        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-            setFile(e.dataTransfer.files[0]);
-        }
-    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -61,7 +37,7 @@ const Payments = () => {
             `*Cédula:* ${formData.idNumber}\n` +
             `*Banco Origen:* ${formData.originBank}\n` +
             `*Referencia:* ${formData.reference}\n\n` +
-            `⚠️ _Por favor, adjunte el comprobante seleccionado al abrir el chat._`;
+            `*⚠️ NOTA IMPORTANTE: A continuación, adjunte el comprobante (capture/foto) correspondiente a esta transacción.*`;
 
         const encodedMessage = encodeURIComponent(message);
         const phoneNumber = "584143131665"; // Nuevo número para pagos
@@ -81,7 +57,6 @@ const Payments = () => {
                 originBank: '',
                 reference: ''
             });
-            setFile(null);
 
             // Reset status after a while
             setTimeout(() => setStatus('idle'), 3000);
@@ -309,33 +284,6 @@ const Payments = () => {
                                         />
                                     </div>
 
-                                    <div className="group">
-                                        <label className="block text-xs font-black uppercase tracking-widest text-primary mb-3 ml-4">Comprobante de Pago</label>
-                                        <div
-                                            onDragOver={onDragOver}
-                                            onDragLeave={onDragLeave}
-                                            onDrop={onDrop}
-                                            className={`relative w-full py-10 md:py-16 border-2 border-dashed rounded-[2.5rem] transition-all flex flex-col items-center justify-center gap-4 cursor-pointer overflow-hidden ${isDragging ? 'border-primary bg-primary/5' : 'border-gray-100 hover:border-primary/40'}`}
-                                            onClick={() => document.getElementById('fileInput').click()}
-                                        >
-                                            <input
-                                                id="fileInput"
-                                                type="file"
-                                                hidden
-                                                accept="image/*,.pdf"
-                                                onChange={handleFileChange}
-                                            />
-                                            <div className="text-4xl filter grayscale group-hover:grayscale-0 transition-all duration-500">
-                                                {file ? '📄' : '📸'}
-                                            </div>
-                                            <p className="text-xs md:text-sm font-black uppercase tracking-widest text-gray-400 px-6 text-center">
-                                                {file ? file.name : 'Click o Arrastra tu Comprobante'}
-                                            </p>
-                                            {file && (
-                                                <div className="absolute top-6 right-6 text-xs bg-primary text-white px-3 py-1 rounded-full font-black animate-bounce shadow-lg">OK</div>
-                                            )}
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <button
