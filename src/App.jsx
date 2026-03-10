@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Hymns from './components/Hymns'
 import Contact from './components/Contact'
+import Payments from './components/Payments'
 import Footer from './components/Footer'
 import WhatsAppFAB from './components/WhatsAppFAB'
 import AcademicLevelDetail from './components/AcademicLevelDetail'
@@ -15,6 +16,7 @@ function App() {
   const academicData = {
     'preescolar': {
       title: 'Preescolar',
+      description: 'La etapa preescolar, destinada a niños de 3 a 6 años, es el cimiento de todo su camino académico. Aquí, el aprendizaje se vive a través del juego didáctico, enfocándonos en el desarrollo de sus habilidades motrices, la iniciación a la lectoescritura y la consolidación de modales y valores fundamentales. Además, fomentamos su curiosidad natural mediante una introducción básica y dinámica a los idiomas inglés e italiano, garantizando un ambiente donde aprenden mientras se divierten y desarrollan su autonomía.',
       requirements: [
         { title: 'Requisitos y lista de útiles para 1er nivel', content: '• Partida de Nacimiento (Original y Copia)\n• 4 Fotos tipo carnet del alumno\n• Fotocopia de la Cédula de Identidad de los representantes\n• Certificado de Salud y Vacunas\n• Lista de útiles institucional (Consultar en administración)' },
         { title: 'Requisitos y lista de útiles para 2do nivel', content: '• Boleta de promoción del nivel anterior\n• Solventar compromisos administrativos previos\n• Actualización de ficha acumulativa\n• Lista de útiles institucional para 2do nivel' },
@@ -34,6 +36,7 @@ function App() {
     },
     'primaria': {
       title: 'Primaria',
+      description: 'En el nivel de primaria, que abarca de los 6 a los 12 años, los estudiantes transitan hacia una formación más estructurada y profunda. A lo largo de estos grados, fortalecen su dominio académico, perfeccionando la escritura mediante dictados y el uso de letra cursiva, mientras avanzan en el estudio de los idiomas inglés e italiano y el desarrollo físico a través de deportes. Un pilar fundamental de nuestra metodología es la conexión con nuestras raíces, por lo que incentivamos constantemente la realización de exposiciones sobre historia, cultura general y el patrimonio de nuestra Venezuela, formando ciudadanos con conciencia crítica y conocimiento.',
       requirements: [
         { title: 'Requisitos y lista de útiles para 1er grado', content: '• Certificado de promoción de preescolar\n• Boleta de evaluación final\n• Solventar compromisos administrativos\n• Lista de útiles institucional para 1er grado' },
         { title: 'Requisitos y lista de útiles para 2do grado', content: '• Boleta de promoción firmada y sellada\n• Carta de buena conducta\n• Lista de útiles institucional para 2do grado' },
@@ -64,6 +67,7 @@ function App() {
     },
     'bachillerato': {
       title: 'Bachillerato',
+      description: 'Finalmente, el bachillerato representa la consolidación académica para jóvenes de 12 a 17 años. En esta etapa, el rigor intelectual aumenta con la inclusión de materias como física y química, preparando a los alumnos para la excelencia académica. Nuestros estudiantes se gradúan como Bachilleres en Ciencias, habiendo cultivado competencias esenciales como el trabajo colaborativo, la capacidad de autogestión y el liderazgo. Este aprendizaje trasciende el aula gracias a una vibrante vida escolar, donde los eventos deportivos y las actividades socioculturales juegan un rol clave en su formación integral y sentido de pertenencia.',
       requirements: [
         { title: 'Requisitos y lista de útiles para 1er año', content: '• Certificado de 6to grado\n• Notas certificadas\n• Solvencia administrativa\n• Lista de útiles para 1er año' },
         { title: 'Requisitos y lista de útiles para 2do año', content: '• Boleta de promoción de 1er año\n• Carta de conducta\n• Lista de útiles para 2do año' },
@@ -150,6 +154,10 @@ function App() {
       setActiveView('contacto')
       if (!skipHistory) window.history.pushState({ view: 'contacto' }, '')
       window.scrollTo(0, 0)
+    } else if (id === 'pagos') {
+      setActiveView('pagos')
+      if (!skipHistory) window.history.pushState({ view: 'pagos' }, '')
+      window.scrollTo(0, 0)
     } else if (id.startsWith('academic-')) {
       setActiveView(id)
       if (!skipHistory) window.history.pushState({ view: id }, '')
@@ -190,6 +198,12 @@ function App() {
         return (
           <div className="pt-20">
             <Hymns />
+          </div>
+        )
+      case 'pagos':
+        return (
+          <div className="pt-20">
+            <Payments />
           </div>
         )
       case 'contacto':

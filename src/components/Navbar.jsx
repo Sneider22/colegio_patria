@@ -27,6 +27,7 @@ const Navbar = ({ activeView, onNavigate, isOpen, onToggle }) => {
         { name: 'Inicio', id: 'inicio' },
         { name: 'Nosotros', id: 'nosotros' },
         { name: 'Identidad', id: 'identidad' },
+        { name: 'Pagos', id: 'pagos' },
         { name: 'Contacto', id: 'contacto' },
     ]
 

@@ -73,6 +73,11 @@ const Hymns = () => {
             title: 'Himno del Colegio Patria',
             author: 'Letra: Mirtha Cabezas | Música: Antonella Geraci',
             content: `Coro\n\nGloria a tì ¡Oh! Colegio querido\nGloria a tì escuela del deber\nEres fuente de vida inagotable\nDe enseñanza, entusiasmo y saber\n\nI (Estrofa)\n\n¡Oh! Colegio Patria\nRefugio de nuestra juventud\nReunidos tus hijos te alabamos\nCon un canto de gratitud\n\n(Coro)\n\nII (Estrofa)\n\n¡Oh! Colegio Patria\nInstituto de digna admiración\nNombre que nos llega al corazón\nCon alegría y gran exaltación\n\n(Coro)\n\nIII (Estrofa)\n\n¡Oh! Colegio Patria\nHogar de nuestra formación\nAlgún día nuestras luces brillarán\nColegio Patria prosigue tu labor`
+        },
+        {
+            id: 'preescolar',
+            title: 'Himno del Preescolar',
+            content: `I (Estrofa)\n\nDonde vamos entonamos\nRepitiendo sin cesar\nMi canción del kínder es\nFácil de memorizar\n\nII (Estrofa)\n\nEcharemos a volar\nLa gran imaginación\ny diciendo a los demás\nDel Colegio Patria soy\n\nIII (Estrofa)\n\nLas manitas trabajamos\nSin desgano y mucho afán\nInstrumentos utilizamos\nPara las bellas canciones\n\nIV (Estrofa)\n\nLa pintura es creación\nEl bordado formación\nY conozco muchas letras\nLindos cuentos aprendí\n\nV (Estrofa)\n\nSomos los más pequeñitos\nDe este gran colegio aquí\nPero pronto creceremos\nPara luego útil ser\n\nVI (Estrofa)\n\nAyudando a mamá\nAyudando a papá\nY diciendo a los demás\nDel Colegio Patria soy (bis)`
         }
     ]
 

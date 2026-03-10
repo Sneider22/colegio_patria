@@ -87,37 +87,34 @@ const Contact = () => {
                     {/* Contact Info Column - Professional App-style Grid (First on Mobile) */}
                     <div className="lg:col-span-5 order-first lg:order-last">
                         <div className="grid grid-cols-2 gap-4 md:gap-8">
-                            {contactInfo.map((info, idx) => {
-                                const CardContent = (
-                                    <div className="h-full flex flex-col items-center justify-center p-6 md:p-10 rounded-[2.5rem] md:rounded-[3.5rem] border border-primary/20 bg-secondary/40 transition-all duration-500 text-center hover:bg-white hover:border-primary/40 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-3 cursor-pointer group">
-                                        <div className="text-4xl md:text-6xl mb-6 flex items-center justify-center filter drop-shadow-lg group-hover:scale-110 transition-transform duration-700">
-                                            {info.icon}
-                                        </div>
-                                        <h4 className="font-black text-gray-900 mb-2 uppercase tracking-tighter text-xs md:text-lg leading-none">
-                                            {info.title}
-                                        </h4>
-                                        <p className="text-gray-500 text-[11px] md:text-xs font-bold leading-tight max-w-[120px] md:max-w-none">
-                                            {info.content}
-                                        </p>
+                            {contactInfo.map((info, idx) => (
+                                <div
+                                    key={idx}
+                                    className="h-full relative flex flex-col items-center justify-center p-6 md:p-10 rounded-[2.5rem] md:rounded-[3.5rem] border border-primary/20 bg-secondary/40 transition-all duration-500 text-center hover:bg-white hover:border-primary/40 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-3 group overflow-hidden"
+                                >
+                                    {info.link && (
+                                        <a
+                                            href={info.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="absolute inset-0 z-10 cursor-pointer"
+                                        />
+                                    )}
+                                    <div className="text-4xl md:text-6xl mb-6 flex items-center justify-center filter drop-shadow-lg group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+                                        {info.icon}
                                     </div>
-                                );
-
-                                return info.link ? (
-                                    <a
-                                        key={idx}
-                                        href={info.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="block h-full"
+                                    <h4 className="font-black text-gray-900 mb-2 uppercase tracking-tighter text-xs md:text-lg leading-none pointer-events-none">
+                                        {info.title}
+                                    </h4>
+                                    <p
+                                        className="text-gray-500 text-[11px] md:text-xs font-bold leading-tight max-w-[150px] md:max-w-none break-all select-text cursor-text relative z-20 hover:text-primary transition-colors"
+                                        onMouseDown={(e) => e.stopPropagation()}
+                                        onClick={(e) => e.stopPropagation()}
                                     >
-                                        {CardContent}
-                                    </a>
-                                ) : (
-                                    <div key={idx} className="h-full">
-                                        {CardContent}
-                                    </div>
-                                );
-                            })}
+                                        {info.content}
+                                    </p>
+                                </div>
+                            ))}
                         </div>
                     </div>
 

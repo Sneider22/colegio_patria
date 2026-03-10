@@ -23,7 +23,13 @@ const AcademicLevelDetail = ({ levelData, onBack }) => {
                     <div className="text-center mb-12 animate-fade-in">
                         <span className="text-gold font-black tracking-[0.4em] uppercase text-[11px] mb-3 block">Detalle Académico</span>
                         <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter uppercase mb-6">{levelData.title}</h2>
-                        <div className="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
+                        <div className="w-20 h-1.5 bg-primary mx-auto rounded-full mb-8"></div>
+
+                        {levelData.description && (
+                            <p className="text-gray-700 text-sm md:text-base leading-relaxed font-medium max-w-3xl mx-auto text-justify px-4">
+                                {levelData.description}
+                            </p>
+                        )}
                     </div>
 
                     {/* Requirements Section */}
