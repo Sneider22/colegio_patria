@@ -61,10 +61,10 @@ const Payments = () => {
             `*Cédula:* ${formData.idNumber}\n` +
             `*Banco Origen:* ${formData.originBank}\n` +
             `*Referencia:* ${formData.reference}\n\n` +
-            `_Adjunto comprobante de pago._`;
+            `⚠️ _Por favor, adjunte el comprobante seleccionado al abrir el chat._`;
 
         const encodedMessage = encodeURIComponent(message);
-        const phoneNumber = "584121772899"; // Número del colegio
+        const phoneNumber = "584143131665"; // Nuevo número para pagos
 
         // WhatsApp API url
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
@@ -72,28 +72,75 @@ const Payments = () => {
         setTimeout(() => {
             setStatus('success');
             window.open(whatsappUrl, '_blank');
+
+            // Limpiar formulario para seguridad y limpieza
+            setFormData({
+                studentName: '',
+                representativeName: '',
+                idNumber: '',
+                originBank: '',
+                reference: ''
+            });
+            setFile(null);
+
             // Reset status after a while
             setTimeout(() => setStatus('idle'), 3000);
         }, 1000);
     };
 
-    const BankAccount = ({ bank, details, holder, rif }) => (
-        <div className="bg-white p-8 md:p-10 rounded-[2.5rem] border border-primary/10 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
-            <h4 className="text-primary font-black uppercase tracking-widest text-sm mb-4">{bank}</h4>
-            <div className="space-y-3">
-                <p className="text-gray-900 font-black text-lg md:text-2xl selection:bg-primary selection:text-white break-all tracking-tight">{details}</p>
-                <div className="pt-4 border-t border-gray-50">
-                    <p className="text-gray-500 text-[11px] uppercase font-black tracking-widest leading-none mb-2">Titular</p>
-                    <p className="text-gray-700 text-sm md:text-base font-bold">{holder}</p>
-                    <p className="text-gray-400 text-[11px] font-black">{rif}</p>
+    const BankAccount = ({ bank, details, holder, rif }) => {
+        const [copied, setCopied] = useState(false);
+
+        const handleCopy = () => {
+            const textToCopy = `BANCO: ${bank}\nCUENTA: ${details}\nTITULAR: ${holder}\nDOC: ${rif}`;
+            navigator.clipboard.writeText(textToCopy);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        };
+
+        return (
+            <div className="bg-white p-8 md:p-7 rounded-[2rem] border border-primary/10 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 relative group/card">
+                <div className="flex justify-between items-start mb-4">
+                    <h4 className="text-primary font-black uppercase tracking-widest text-[10px] md:text-xs">{bank}</h4>
+                    <button
+                        onClick={handleCopy}
+                        className={`px-3 py-1.5 rounded-lg transition-all duration-300 flex items-center gap-1.5 font-black uppercase text-[9px] md:text-[10px] tracking-widest ${copied ? 'bg-green-500 text-white shadow-lg shadow-green-200 scale-105' : 'bg-secondary text-primary hover:bg-primary hover:text-white shadow-sm'}`}
+                    >
+                        {copied ? (
+                            <>✓ Copiado</>
+                        ) : (
+                            <>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+                                </svg>
+                                Copiar
+                            </>
+                        )}
+                    </button>
+                </div>
+                <div className="space-y-3">
+                    <p className="text-gray-900 font-black text-xl md:text-2xl selection:bg-primary selection:text-white break-all tracking-tight leading-tight">{details}</p>
+                    <div className="pt-4 border-t border-gray-100/50">
+                        <p className="text-gray-500 text-[10px] uppercase font-black tracking-widest leading-none mb-1.5">Titular de la Cuenta</p>
+                        <p className="text-gray-900 text-base md:text-lg font-bold mb-0.5">{holder}</p>
+                        <p className="text-primary text-sm md:text-base font-black">{rif}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    };
+
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const handleSelectBank = (bank) => {
+        setFormData(prev => ({ ...prev, originBank: bank }));
+        setIsDropdownOpen(false);
+    };
 
     return (
         <section id="pagos" className="py-24 bg-white animate-fade-in relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
+                {/* ... (anterior code remains same until return) */}
                 <div className="text-center mb-16 md:mb-20">
                     <span className="text-gold font-black tracking-[0.4em] uppercase text-[11px] mb-4 block">Gestión Administrativa</span>
                     <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter uppercase mb-6">Modalidades de Pago</h2>
@@ -111,7 +158,7 @@ const Payments = () => {
                             <p className="text-gray-600 font-bold text-base md:text-lg mb-10 leading-relaxed">
                                 Realice sus pagos a través de depósitos en efectivo o transferencias electrónicas a nombre de:
                             </p>
-                            <div className="grid gap-6">
+                            <div className="grid md:grid-cols-1 gap-4 md:gap-4">
                                 <BankAccount
                                     bank="BANESCO"
                                     details="0134 0069 5106 9303 5023"
@@ -133,12 +180,12 @@ const Payments = () => {
                             </div>
                         </div>
 
-                        <div className="bg-secondary/30 p-10 md:p-14 rounded-[4rem] border border-primary/5">
-                            <div className="flex items-center gap-4 mb-8">
+                        <div>
+                            <div className="flex items-center gap-4 mb-10">
                                 <div className="w-12 h-12 bg-gold/10 rounded-2xl flex items-center justify-center text-gold text-2xl">🎨</div>
-                                <h3 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tighter uppercase">Uniformes y Tareas</h3>
+                                <h3 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase">Uniformes y Tareas</h3>
                             </div>
-                            <div className="grid gap-6 mb-8">
+                            <div className="grid md:grid-cols-1 gap-4 md:gap-4">
                                 <BankAccount
                                     bank="BANCO DE VENEZUELA"
                                     details="0102 0278 7100 0101 5447"
@@ -146,11 +193,11 @@ const Payments = () => {
                                     rif="CI: 10.111.260"
                                 />
                             </div>
-                            <div className="space-y-4 text-xs md:text-sm font-bold uppercase tracking-widest text-gray-500">
+                            <div className="mt-8 space-y-4 text-xs md:text-sm font-bold uppercase tracking-widest text-gray-500 text-center flex flex-col items-center">
                                 <p>📧 <span className="text-primary tracking-normal">sccolegiopatria@gmail.com</span> (Uniformes)</p>
                                 <p>📧 <span className="text-primary tracking-normal">pagoscolegiopatria@gmail.com</span> (Tareas)</p>
                             </div>
-                            <p className="mt-8 text-[11px] md:text-xs font-black text-gold uppercase tracking-[0.2em] leading-relaxed italic">
+                            <p className="mt-8 text-[11px] md:text-xs font-black text-gold uppercase tracking-[0.2em] leading-relaxed italic text-center">
                                 * Se agradece realizar los pagos por separado.
                             </p>
                         </div>
@@ -167,7 +214,7 @@ const Payments = () => {
                             <form onSubmit={handleSubmit} className="space-y-7">
                                 <div className="space-y-5">
                                     <div className="group">
-                                        <label className="block text-xs font-black uppercase tracking-widest text-gray-400 mb-3 ml-4">Nombre del Alumno</label>
+                                        <label className="block text-xs font-black uppercase tracking-widest text-primary mb-3 ml-4">Nombre del Alumno</label>
                                         <input
                                             required
                                             type="text"
@@ -180,7 +227,7 @@ const Payments = () => {
                                     </div>
 
                                     <div className="group">
-                                        <label className="block text-xs font-black uppercase tracking-widest text-gray-400 mb-3 ml-4">Nombre del Representante</label>
+                                        <label className="block text-xs font-black uppercase tracking-widest text-primary mb-3 ml-4">Nombre del Representante</label>
                                         <input
                                             required
                                             type="text"
@@ -194,7 +241,7 @@ const Payments = () => {
 
                                     <div className="grid md:grid-cols-2 gap-5">
                                         <div className="group">
-                                            <label className="block text-xs font-black uppercase tracking-widest text-gray-400 mb-3 ml-4">Cédula del Titular</label>
+                                            <label className="block text-xs font-black uppercase tracking-widest text-primary mb-3 ml-4">Cédula del Titular</label>
                                             <input
                                                 required
                                                 type="text"
@@ -205,25 +252,52 @@ const Payments = () => {
                                                 className="w-full px-7 py-5 rounded-2xl bg-secondary/50 border border-transparent focus:border-primary focus:bg-white transition-all outline-none font-bold text-gray-800 placeholder:text-gray-300 text-base"
                                             />
                                         </div>
-                                        <div className="group">
-                                            <label className="block text-xs font-black uppercase tracking-widest text-gray-400 mb-3 ml-4">Banco de Origen</label>
-                                            <select
-                                                required
-                                                name="originBank"
-                                                value={formData.originBank}
-                                                onChange={handleInputChange}
-                                                className="w-full px-7 py-5 rounded-2xl bg-secondary/50 border border-transparent focus:border-primary focus:bg-white transition-all outline-none font-bold text-gray-800 appearance-none cursor-pointer text-base"
+                                        <div className="group relative">
+                                            <label className="block text-xs font-black uppercase tracking-widest text-primary mb-3 ml-4">Banco de Origen</label>
+                                            <div
+                                                className={`w-full px-7 py-5 rounded-2xl bg-secondary/50 border transition-all cursor-pointer flex items-center justify-between font-bold text-gray-800 text-base ${isDropdownOpen ? 'border-primary bg-white' : 'border-transparent hover:bg-secondary/70'}`}
+                                                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                                             >
-                                                <option value="" disabled>Seleccione Banco</option>
-                                                {banks.map(bank => (
-                                                    <option key={bank} value={bank}>{bank}</option>
-                                                ))}
-                                            </select>
+                                                <span className={formData.originBank ? 'text-gray-800' : 'text-gray-300'}>
+                                                    {formData.originBank || 'Seleccione Banco'}
+                                                </span>
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    className={`h-5 w-5 text-primary/40 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                                                    viewBox="0 0 20 20"
+                                                    fill="currentColor"
+                                                >
+                                                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                                                </svg>
+                                            </div>
+
+                                            {isDropdownOpen && (
+                                                <>
+                                                    {/* Backdrop to close when clicking outside */}
+                                                    <div
+                                                        className="fixed inset-0 z-40"
+                                                        onClick={() => setIsDropdownOpen(false)}
+                                                    ></div>
+
+                                                    {/* Dropdown List */}
+                                                    <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 py-3 z-50 animate-slide-up">
+                                                        {banks.map((bank) => (
+                                                            <div
+                                                                key={bank}
+                                                                className={`px-7 py-3 cursor-pointer font-bold transition-all text-sm md:text-base ${formData.originBank === bank ? 'text-primary bg-primary/5' : 'text-gray-600 hover:bg-secondary/50 hover:text-primary'}`}
+                                                                onClick={() => handleSelectBank(bank)}
+                                                            >
+                                                                {bank}
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </>
+                                            )}
                                         </div>
                                     </div>
 
                                     <div className="group">
-                                        <label className="block text-xs font-black uppercase tracking-widest text-gray-400 mb-3 ml-4">Número de Referencia</label>
+                                        <label className="block text-xs font-black uppercase tracking-widest text-primary mb-3 ml-4">Número de Referencia</label>
                                         <input
                                             required
                                             type="text"
@@ -236,7 +310,7 @@ const Payments = () => {
                                     </div>
 
                                     <div className="group">
-                                        <label className="block text-xs font-black uppercase tracking-widest text-gray-400 mb-3 ml-4">Comprobante de Pago</label>
+                                        <label className="block text-xs font-black uppercase tracking-widest text-primary mb-3 ml-4">Comprobante de Pago</label>
                                         <div
                                             onDragOver={onDragOver}
                                             onDragLeave={onDragLeave}
@@ -270,7 +344,6 @@ const Payments = () => {
                                 >
                                     <span className={`relative z-10 flex items-center justify-center gap-3 transition-all duration-500 ${status === 'loading' ? 'opacity-0' : 'opacity-100'}`}>
                                         {status === 'success' ? '✓ Enviado con Éxito' : 'Enviar Registro'}
-                                        <span className="text-lg">⚡</span>
                                     </span>
                                     {status === 'loading' && (
                                         <div className="absolute inset-0 flex items-center justify-center">
