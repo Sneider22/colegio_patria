@@ -57,8 +57,12 @@ const Contact = () => {
 
     const faqs = [
         {
-            question: "¿CUÁLES SON LOS REQUISITOS DE INSCRIPCIÓN?",
-            answer: "Los requisitos incluyen:\n\n• Partida de nacimiento (Original y copia).\n• 4 fotos tipo carnet del alumno.\n• 4 fotos tipo carnet de los representantes.\n• Notas certificadas (para bachillerato).\n• Solvencia administrativa del colegio de procedencia."
+            question: "¿CUÁLES SON LOS REQUISITOS GENERALES?",
+            answer: "Los requisitos generales incluyen:\n\n• 4 fotos del alumno, tipo carnet.\n• 2 fotos del representante, tipo carnet.\n• Fotocopia de la partida de nacimiento.\n• Constancia de solvencia del colegio anterior.\n• Boleta de promoción.\n• Carta de buena conducta.\n• Depósito bancario colegio.\n• Cuota Comunidad Educativa.\n• Contrato Colegio-Representante."
+        },
+        {
+            question: "¿CUÁLES SON LOS REQUISITOS DE PREINSCRIPCIÓN?",
+            answer: "Los requisitos de preinscripción son:\n\n• Constancia de buena conducta.\n• Fotocopia de C.I. del alumno o representante.\n• Notas del lapso para el momento de preinscripción.\n• Cartas de trabajo de ambos padres o certificación de ingresos."
         },
         {
             question: "¿OFRECEN ACTIVIDADES EXTRACURRICULARES?",
