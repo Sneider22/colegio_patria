@@ -106,10 +106,10 @@ const Hymns = () => {
     )
 
     return (
-        <section id="identidad" className="py-16 bg-white animate-fade-in outline-none">
+        <section id="identidad" className="py-24 bg-white animate-fade-in outline-none">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
-                    <span className="text-primary font-black tracking-[0.4em] uppercase text-[12px] md:text-[10px] mb-4 block">Identidad Institucional</span>
+                    <span className="text-primary font-black tracking-[0.5em] uppercase text-[13px] md:text-[14px] mb-2 block">Identidad Institucional</span>
                     <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase mb-4">Nuestros Pilares</h2>
                     <p className="text-gray-500 max-w-2xl mx-auto text-xs font-medium uppercase tracking-widest">La unión representada en nuestra esencia.</p>
                 </div>

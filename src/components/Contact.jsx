@@ -82,7 +82,7 @@ const Contact = () => {
         <section id="contacto" className="pt-24 pb-12 bg-white animate-fade-in relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-16 md:mb-20">
-                    <span className="text-gold font-black tracking-[0.4em] uppercase text-[11px] mb-4 block">Contacto Institucional</span>
+                    <span className="text-primary font-black tracking-[0.5em] uppercase text-[13px] md:text-[14px] mb-2 block">Contacto Institucional</span>
                     <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter uppercase mb-6">Portal de Atención</h2>
                     <div className="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
                 </div>

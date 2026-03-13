@@ -154,7 +154,7 @@ const About = ({ isFullView = false, onNavigate }) => {
         { title: "Preescolar", detail: "1er Nivel - 3er Nivel", image: "/images/preescolar.jpg", id: 'preescolar' },
         { title: "Primaria", detail: "1er Grado - 6to Grado", image: "/images/primaria.jpg", id: 'primaria' },
         { title: "Bachillerato", detail: "1er Año - 3er Año", image: "/images/bachillerato1.jpg", id: 'bachillerato' },
-        { title: "Diversificado", detail: "4to Año - 5to Año", image: "/images/bachillerato2.jpg", id: 'diversificado' }
+        { title: "Bachillerato", detail: "4to Año - 5to Año", image: "/images/bachillerato2.jpg", id: 'diversificado' }
     ]
 
     const teamImages = [
@@ -246,7 +246,7 @@ const About = ({ isFullView = false, onNavigate }) => {
                 {/* Educational Levels Grid */}
                 <div className="mb-24">
                     <div className="text-center mb-20">
-                        <span className="text-gold font-black tracking-[0.4em] uppercase text-[11px] mb-4 block">Formación Académica</span>
+                        <span className="text-gold font-black tracking-[0.5em] uppercase text-[13px] md:text-[14px] mb-2 block">Formación Académica</span>
                         <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter uppercase mb-6">Nuestra Oferta</h2>
                         <div className="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
                     </div>
@@ -361,7 +361,7 @@ const About = ({ isFullView = false, onNavigate }) => {
                                         <div className="w-8 h-1 bg-gold rounded-full transition-all duration-500 group-hover:w-16"></div>
                                         <h4 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tighter">{item.title}</h4>
                                     </div>
-                                    <p className="text-white/70 text-sm md:text-base font-bold leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                    <p className="text-white text-sm md:text-base font-black leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                                         {item.description}
                                     </p>
                                 </div>

@@ -9,6 +9,8 @@ const Payments = () => {
         reference: ''
     });
     const [status, setStatus] = useState('idle'); // idle, loading, success
+    const [showCustomBank, setShowCustomBank] = useState(false);
+
 
     const banks = [
         "Banesco",
@@ -59,7 +61,11 @@ const Payments = () => {
             });
 
             // Reset status after a while
-            setTimeout(() => setStatus('idle'), 3000);
+            setTimeout(() => {
+                setStatus('idle');
+                setShowCustomBank(false);
+            }, 3000);
+
         }, 1000);
     };
 
@@ -108,16 +114,22 @@ const Payments = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const handleSelectBank = (bank) => {
-        setFormData(prev => ({ ...prev, originBank: bank }));
+        if (bank === 'Otro') {
+            setShowCustomBank(true);
+            setFormData(prev => ({ ...prev, originBank: '' }));
+        } else {
+            setFormData(prev => ({ ...prev, originBank: bank }));
+        }
         setIsDropdownOpen(false);
     };
+
 
     return (
         <section id="pagos" className="py-24 bg-white animate-fade-in relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
                 {/* ... (anterior code remains same until return) */}
                 <div className="text-center mb-16 md:mb-20">
-                    <span className="text-gold font-black tracking-[0.4em] uppercase text-[11px] mb-4 block">Gestión Administrativa</span>
+                    <span className="text-gold font-black tracking-[0.5em] uppercase text-[13px] md:text-[14px] mb-2 block">Gestión Administrativa</span>
                     <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter uppercase mb-6">Modalidades de Pago</h2>
                     <div className="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
                 </div>
@@ -179,7 +191,7 @@ const Payments = () => {
                     </div>
 
                     {/* Form Column */}
-                    <div className="bg-white p-8 md:p-12 rounded-[3.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-100 animate-slide-up relative overflow-hidden">
+                    <div className="bg-white p-8 md:p-12 rounded-[3.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-100 animate-slide-up relative">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
 
                         <div className="relative z-10">
@@ -228,34 +240,58 @@ const Payments = () => {
                                             />
                                         </div>
                                         <div className="group relative">
-                                            <label className="block text-xs font-black uppercase tracking-widest text-primary mb-3 ml-4">Banco de Origen</label>
-                                            <div
-                                                className={`w-full px-7 py-5 rounded-2xl bg-secondary/50 border transition-all cursor-pointer flex items-center justify-between font-bold text-gray-800 text-base ${isDropdownOpen ? 'border-primary bg-white' : 'border-transparent hover:bg-secondary/70'}`}
-                                                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                            >
-                                                <span className={formData.originBank ? 'text-gray-800' : 'text-gray-300'}>
-                                                    {formData.originBank || 'Seleccione Banco'}
-                                                </span>
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    className={`h-5 w-5 text-primary/40 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
+                                            <label className="block text-xs font-black uppercase tracking-widest text-primary mb-3 ml-4">
+                                                {showCustomBank ? 'Especifique Banco' : 'Banco de Origen'}
+                                            </label>
+                                            {!showCustomBank ? (
+                                                <div
+                                                    className={`w-full px-7 py-5 rounded-2xl bg-secondary/50 border transition-all cursor-pointer flex items-center justify-between font-bold text-gray-800 text-base ${isDropdownOpen ? 'border-primary bg-white' : 'border-transparent hover:bg-secondary/70'}`}
+                                                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                                                 >
-                                                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                                                </svg>
-                                            </div>
+                                                    <span className={formData.originBank ? 'text-gray-800' : 'text-gray-300'}>
+                                                        {formData.originBank || 'Seleccione Banco'}
+                                                    </span>
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        className={`h-5 w-5 text-primary/40 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                                                        viewBox="0 0 20 20"
+                                                        fill="currentColor"
+                                                    >
+                                                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                                                    </svg>
+                                                </div>
+                                            ) : (
+                                                <div className="relative">
+                                                    <input
+                                                        required
+                                                        autoFocus
+                                                        type="text"
+                                                        name="originBank"
+                                                        value={formData.originBank}
+                                                        onChange={handleInputChange}
+                                                        placeholder="Nombre del Banco"
+                                                        className="w-full px-7 py-5 rounded-2xl bg-white border border-primary transition-all outline-none font-bold text-gray-800 placeholder:text-gray-300 text-base shadow-lg shadow-primary/5"
+                                                    />
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => {
+                                                            setShowCustomBank(false);
+                                                            setFormData(p => ({ ...p, originBank: '' }));
+                                                        }}
+                                                        className="absolute right-4 top-1/2 -translate-y-1/2 text-primary/40 hover:text-primary transition-colors p-2"
+                                                        title="Volver a la lista"
+                                                    >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            )}
 
-                                            {isDropdownOpen && (
+                                            {isDropdownOpen && !showCustomBank && (
                                                 <>
-                                                    {/* Backdrop to close when clicking outside */}
-                                                    <div
-                                                        className="fixed inset-0 z-40"
-                                                        onClick={() => setIsDropdownOpen(false)}
-                                                    ></div>
-
-                                                    {/* Dropdown List */}
-                                                    <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 py-3 z-50 animate-slide-up">
+                                                    <div className="fixed inset-0 z-40" onClick={() => setIsDropdownOpen(false)}></div>
+                                                    <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 py-3 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
                                                         {banks.map((bank) => (
                                                             <div
                                                                 key={bank}
@@ -269,6 +305,7 @@ const Payments = () => {
                                                 </>
                                             )}
                                         </div>
+
                                     </div>
 
                                     <div className="group">
@@ -310,11 +347,6 @@ const Payments = () => {
                     <p className="relative z-10 text-base md:text-lg font-bold leading-relaxed text-white/90">
                         "No se aceptan pagos en cheques. Al realizar su transacción, asegúrese de guardar su comprobante para el registro final."
                     </p>
-                    <div className="mt-8 flex justify-center gap-3 animate-bounce">
-                        <div className="w-1.5 h-1.5 rounded-full bg-gold"></div>
-                        <div className="w-1.5 h-1.5 rounded-full bg-gold/50"></div>
-                        <div className="w-1.5 h-1.5 rounded-full bg-gold/20"></div>
-                    </div>
                 </div>
             </div>
         </section>
