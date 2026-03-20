@@ -18,7 +18,7 @@ const Payments = () => {
         "Provincial",
         "Mercantil",
         "BNC",
-        "Pago Móvil",
+        "Venezolano de Credito",
         "Otro"
     ];
 
@@ -42,7 +42,7 @@ const Payments = () => {
             `*⚠️ NOTA IMPORTANTE: A continuación, adjunte el comprobante (capture/foto) correspondiente a esta transacción.*`;
 
         const encodedMessage = encodeURIComponent(message);
-        const phoneNumber = "584143131665"; // Nuevo número para pagos
+        const phoneNumber = "584121772899"; // Nuevo número para pagos
 
         // WhatsApp API url
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
@@ -164,25 +164,23 @@ const Payments = () => {
                                     holder="SC COLEGIO PATRIA"
                                     rif="RIF: J-30960099-0"
                                 />
+                                <BankAccount
+                                    bank="VENEZOLANO DE CREDITO"
+                                    details="0104 0041 4904 1010 7597"
+                                    holder="SC COLEGIO PATRIA"
+                                    rif="RIF: J-30960099-0"
+                                />
                             </div>
                         </div>
 
                         <div>
                             <div className="flex items-center gap-4 mb-10">
-                                <div className="w-12 h-12 bg-gold/10 rounded-2xl flex items-center justify-center text-gold text-2xl">🎨</div>
-                                <h3 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase">Uniformes y Tareas</h3>
-                            </div>
-                            <div className="grid md:grid-cols-1 gap-4 md:gap-4">
-                                <BankAccount
-                                    bank="BANCO DE VENEZUELA"
-                                    details="0102 0278 7100 0101 5447"
-                                    holder="Nahianytz Marcano"
-                                    rif="CI: 10.111.260"
-                                />
+                                <div className="w-12 h-12 bg-gold/10 rounded-2xl flex items-center justify-center text-gold text-2xl">📧</div>
+                                <h3 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase">Nuestros Correos</h3>
                             </div>
                             <div className="mt-8 space-y-4 text-xs md:text-sm font-bold uppercase tracking-widest text-gray-500 text-center flex flex-col items-center">
-                                <p>📧 <span className="text-primary tracking-normal">sccolegiopatria@gmail.com</span> (Uniformes)</p>
-                                <p>📧 <span className="text-primary tracking-normal">pagoscolegiopatria@gmail.com</span> (Tareas)</p>
+                                <p>📧 <span className="text-primary tracking-normal">sccolegiopatria@gmail.com</span></p>
+                                <p>📧 <span className="text-primary tracking-normal">pagoscolegiopatria@gmail.com</span></p>
                             </div>
                             <p className="mt-8 text-[11px] md:text-xs font-black text-gold uppercase tracking-[0.2em] leading-relaxed italic text-center">
                                 * Se agradece realizar los pagos por separado.

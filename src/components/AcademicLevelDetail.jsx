@@ -9,7 +9,7 @@ const AcademicLevelDetail = ({ levelData, onBack }) => {
                     onClick={onBack}
                     className="flex items-center gap-2 text-primary font-black uppercase text-xs tracking-widest hover:gap-4 transition-all mb-8 shadow-sm px-4 py-2 rounded-xl bg-primary/5 hover:bg-primary/10"
                 >
-                    <span className="text-lg">←</span> Volver a Oferta
+                    <span className="text-lg">←</span> Volver a Servicios
                 </button>
 
                 <div className="max-w-4xl mx-auto">
@@ -50,6 +50,28 @@ const AcademicLevelDetail = ({ levelData, onBack }) => {
                                     ))}
                                 </ul>
                             </div>
+                        </div>
+
+                        {/* Planilla de inscripción */}
+                        <div className="mb-10">
+                            <div className="flex items-center gap-4 mb-6">
+                                <h4 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tighter uppercase">Planilla de Inscripción</h4>
+                            </div>
+                            <div className="grid sm:grid-cols-2 gap-3">
+                                <a
+                                    href="/pdf/planilla-de-inscripcion-colegiopatria.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    download
+                                    className="flex items-center gap-4 p-5 bg-white border-2 border-gray-100 rounded-[2rem] hover:border-primary hover:bg-primary/5 transition-all duration-300 group shadow-sm hover:shadow-md"
+                                >
+                                    <div className="text-2xl grayscale group-hover:grayscale-0 transition-all duration-500">📝</div>
+                                    <span className="font-black text-[11px] md:text-xs uppercase tracking-widest text-gray-700 group-hover:text-primary leading-tight">
+                                        Descargar Planilla de Inscripción
+                                    </span>
+                                </a>
+                            </div>
+                            <p className="mt-6 text-gray-400 text-[10px] font-bold uppercase tracking-widest">* El archivo se abrirá en una nueva pestaña y se descargará automáticamente.</p>
                         </div>
 
                         {/* Supplies Section */}

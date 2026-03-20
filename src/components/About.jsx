@@ -247,7 +247,7 @@ const About = ({ isFullView = false, onNavigate }) => {
                 <div className="mb-24">
                     <div className="text-center mb-20">
                         <span className="text-gold font-black tracking-[0.5em] uppercase text-[13px] md:text-[14px] mb-2 block">Formación Académica</span>
-                        <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter uppercase mb-6">Nuestra Oferta</h2>
+                        <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter uppercase mb-6">Nuestros Servicios</h2>
                         <div className="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
                     </div>
 

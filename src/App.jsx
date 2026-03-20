@@ -18,12 +18,15 @@ function App() {
       title: 'Preescolar',
       description: 'La etapa preescolar, destinada a niños de 3 a 6 años, es el cimiento de todo su camino académico. Aquí, el aprendizaje se vive a través del juego didáctico, enfocándonos en el desarrollo de sus habilidades motrices, la iniciación a la lectoescritura y la consolidación de modales y valores fundamentales. Además, fomentamos su curiosidad natural mediante una introducción básica y dinámica a los idiomas inglés e italiano, garantizando un ambiente donde aprenden mientras se divierten y desarrollan su autonomía.',
       requirements: [
-        '4 fotos del alumno, tipo carnet',
-        '2 fotos del representante, tipo carnet',
+        'Los requisitos deben ser entregados en un sobre manila tamaño OFICIO',
+        '1 foto del alumno, tipo carnet',
         'Fotocopia de la partida de nacimiento',
-        'Constancia de vacunas actualizada',
-        'Cédula de identidad de los representantes (copia)',
-        'Certificado de salud vigente'
+        'Copia del último recibo de pago de la institución donde cursa.',
+        'Constancia de niño sano (maternal y preescolar)',
+        'Certificación de ingresos o carta de trabajo, que indique sueldo y antigüedad (ambos representantes).',
+        'Copia cédula de identidad de ambos representantes.',
+        'Certificado de educación preescolar (para el momento en que realice la inscripción).',
+      
       ],
       supplies: [
         { label: 'Lista de útiles para 1er nivel', link: '/pdf/utiles-preescolar-1er-nivel.pdf' },
@@ -37,7 +40,7 @@ function App() {
       ],
       uniform: [
         'Chemise roja institucional con insignia',
-        'Pantalón de vestir negro',
+        'Pantalón azul oscuro',
         'Zapatos blancos o negros',
         'Uniforme de Educación Física institucional'
       ]
@@ -46,12 +49,14 @@ function App() {
       title: 'Primaria',
       description: 'En el nivel de primaria, que abarca de los 6 a los 12 años, los estudiantes transitan hacia una formación más estructurada y profunda. A lo largo de estos grados, fortalecen su dominio académico, perfeccionando la escritura mediante dictados y el uso de letra cursiva, mientras avanzan en el estudio de los idiomas inglés e italiano y el desarrollo físico a través de deportes. Un pilar fundamental de nuestra metodología es la conexión con nuestras raíces, por lo que incentivamos constantemente la realización de exposiciones sobre historia, cultura general y el patrimonio de nuestra Venezuela, formando ciudadanos con conciencia crítica y conocimiento.',
       requirements: [
-        'Boleta de promoción del grado anterior',
-        'Constancia de conducta del colegio de procedencia',
-        '4 fotos del alumno, tipo carnet',
-        '2 fotos del representante, tipo carnet',
-        'Fotocopia de la partida de nacimiento',
-        'Copia de la C.I. del alumno (si posee)'
+        'Los requisitos deben ser entregados en un sobre manila tamaño OFICIO',
+        'Copia boletas de primero y segundo lapso.',
+        'Copia del último recibo de pago de la institución donde cursa.',
+        'Copia partida de nacimiento.',
+        'Certificación de ingresos o carta de trabajo, que indique sueldo y antigüedad (ambos representantes).',
+        'Copia cédula de identidad de ambos representantes y del alumno en caso de poseerla.',
+        'Constancia de prosecución',
+
       ],
       supplies: [
         { label: 'Lista de útiles para 1er grado', link: '/pdf/utiles-primaria-1er-grado.pdf' },
@@ -76,7 +81,7 @@ function App() {
       ],
       uniform: [
         'Chemise blanca institucional con insignia',
-        'Pantalón de vestir negro',
+        'Pantalón azul oscuro',
         'Zapatos blancos o negros',
         'Uniforme de Educación Física institucional'
       ]
@@ -85,12 +90,14 @@ function App() {
       title: 'Bachillerato (1ro - 3ro)',
       description: 'En esta etapa de Media General, los estudiantes profundizan en diversas áreas del saber, desarrollando capacidades analíticas y críticas. El currículo está diseñado para fortalecer las bases científicas y humanísticas, preparando a los jóvenes para los retos del ciclo diversificado y fomentando valores de responsabilidad y autonomía.',
       requirements: [
-        'Certificado de 6to grado (para 1er año)',
-        'Notas certificadas originales y copia',
-        'Carta de buena conducta',
-        '4 fotos del alumno, tipo carnet',
-        'Copia de la Cédula de Identidad del alumno',
-        'Solvencia académica del colegio anterior'
+        'Los requisitos deben ser entregados en un sobre manila tamaño OFICIO',
+        'Copia boletas de primero y segundo lapso.',
+        'Copia partida de nacimiento.',
+        'Copia de cédula de identidad del alumno.',
+        'Certificación de ingresos o carta de trabajo, que indique sueldo y antigüedad (ambos representantes).',
+        'Copia cédula de identidad de ambos representantes.',
+        'Copia del último recibo de pago de la institución donde cursa.',
+        'Notas certificadas (para el mes en que realice la inscripción).'
       ],
       supplies: [
         { label: 'Lista de útiles para 1er año', link: '/pdf/utiles-bachillerato-1er-año.pdf' },
@@ -111,7 +118,7 @@ function App() {
       ],
       uniform: [
         'Chemise azul institucional con insignia',
-        'Pantalón de vestir negro',
+        'Pantalón azul oscuro',
         'Zapatos negros',
         'Uniforme de Educación Física institucional'
       ]
@@ -120,12 +127,14 @@ function App() {
       title: 'Bachillerato (4to - 5to)',
       description: 'El ciclo diversificado representa la culminación académica para jóvenes de 15 a 17 años. Nuestros estudiantes se gradúan como Bachilleres en Ciencias, habiendo cultivado competencias esenciales como el trabajo colaborativo, la capacidad de autogestión y el liderazgo. Este periodo se enfoca en la preparación pre-universitaria y la excelencia científica.',
       requirements: [
-        'Certificado de 3er año aprobado',
-        'Notas certificadas actualizadas',
-        '4 fotos del alumno, tipo carnet',
-        'Copia de la Cédula de Identidad del alumno',
-        'Solvencia administrativa vigente',
-        'Partida de nacimiento (copia)'
+        'Los requisitos deben ser entregados en un sobre manila tamaño OFICIO',
+        'Copia boletas de primero y segundo lapso.',
+        'Copia partida de nacimiento.',
+        'Copia de cédula de identidad del alumno.',
+        'Certificación de ingresos o carta de trabajo, que indique sueldo y antigüedad (ambos representantes).',
+        'Copia cédula de identidad de ambos representantes.',
+        'Copia del último recibo de pago de la institución donde cursa.',
+        'Notas certificadas (para el mes en que realice la inscripción).'
       ],
       supplies: [
         { label: 'Lista de útiles para 4to año', link: '/pdf/utiles-bachillerato-4to-año.pdf' },
@@ -145,7 +154,7 @@ function App() {
       ],
       uniform: [
         'Chemise beige institucional con insignia',
-        'Pantalón de vestir negro',
+        'Pantalón azul oscuro',
         'Zapatos negros',
         'Uniforme de Educación Física institucional'
       ]
