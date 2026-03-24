@@ -151,60 +151,58 @@ const CarouselSection = ({ title, tag, description, images, isReversed = false, 
 
 const About = ({ isFullView = false, onNavigate }) => {
     const levels = [
-        { title: "Preescolar", detail: "1er Nivel - 3er Nivel", image: "/images/preescolar.jpg", id: 'preescolar' },
-        { title: "Primaria", detail: "1er Grado - 6to Grado", image: "/images/primaria.jpg", id: 'primaria' },
-        { title: "Bachillerato", detail: "1er Año - 3er Año", image: "/images/bachillerato1.jpg", id: 'bachillerato' },
-        { title: "Bachillerato", detail: "4to Año - 5to Año", image: "/images/bachillerato2.jpg", id: 'diversificado' }
+        { title: "Preescolar", detail: "1er Nivel - 3er Nivel", image: "/images/preescolar-colegio-patria-caracas.jpg", id: 'preescolar' },
+        { title: "Primaria", detail: "1er Grado - 6to Grado", image: "/images/primaria-colegio-patria-caracas.jpg", id: 'primaria' },
+        { title: "Bachillerato", detail: "1er Año - 3er Año", image: "/images/bachillerato-colegio-patria-caracas-1.jpg", id: 'bachillerato' },
+        { title: "Bachillerato", detail: "4to Año - 5to Año", image: "/images/bachillerato-colegio-patria-caracas-2.jpg", id: 'diversificado' }
     ]
 
     const teamImages = [
-        "/images/equipo.jpg",
-        "/images/equipo2.jpg",
-        "/images/equipo3.jpg",
-        "/images/equipo4.jpg",
-        "/images/equipo5.jpg",
-        "/images/equipo6.jpg",
-        "/images/equipo7.jpg",
-        "/images/equipo8.jpg",
-        "/images/equipo9.jpg",
-        "/images/equipo10.jpg"
+        "/images/equipo-docente-colegio-patria-caracas.jpg",
+        "/images/equipo-docente-colegio-patria-caracas-2.jpg",
+        "/images/equipo-docente-colegio-patria-caracas-3.jpg",
+        "/images/equipo-docente-colegio-patria-caracas-4.jpg",
+        "/images/equipo-docente-colegio-patria-caracas-5.jpg",
+        "/images/equipo-docente-colegio-patria-caracas-6.jpg",
+        "/images/equipo-docente-colegio-patria-caracas-7.jpg"
+        // Si tienes más imágenes de equipo, agrégalas aquí con el mismo patrón
     ]
 
     const culturalImages = [
-        "/images/cultural1.jpg",
-        "/images/cultural11.jpg",
-        "/images/cultural12.jpg",
-        "/images/cultural13.jpg",
-        "/images/cultural14.jpg",
-        "/images/cultural15.jpg",
-        "/images/cultural2.jpg",
-        "/images/cultural3.jpg",
-        "/images/cultural4.jpg",
-        "/images/cultural5.jpg",
-        "/images/cultural6.jpg",
-        "/images/cultural7.jpg"
+        "/images/acto-cultural-colegio-patria-caracas-1.jpg",
+        "/images/acto-cultural-colegio-patria-caracas-11.jpg",
+        "/images/acto-cultural-colegio-patria-caracas-12.jpg",
+        "/images/acto-cultural-colegio-patria-caracas-13.jpg",
+        "/images/acto-cultural-colegio-patria-caracas-14.jpg",
+        "/images/acto-cultural-colegio-patria-caracas-15.jpg",
+        "/images/acto-cultural-colegio-patria-caracas-2.jpg",
+        "/images/acto-cultural-colegio-patria-caracas-3.jpg",
+        "/images/acto-cultural-colegio-patria-caracas-4.jpg",
+        "/images/acto-cultural-colegio-patria-caracas-5.jpg",
+        "/images/acto-cultural-colegio-patria-caracas-6.jpg",
+        "/images/acto-cultural-colegio-patria-caracas-7.jpg"
     ]
 
     const gradoImages = [
-        "/images/grado1.jpg",
-        "/images/grado2.jpg",
-        "/images/grado3.jpg",
-        "/images/grado4.jpg",
-        "/images/grado5.jpg",
-        "/images/grado6.jpg"
+        "/images/grado-primaria-colegio-patria-caracas-1.jpg",
+        "/images/grado-primaria-colegio-patria-caracas-2.jpg",
+        "/images/grado-primaria-colegio-patria-caracas-3.jpg",
+        "/images/grado-primaria-colegio-patria-caracas-4.jpg",
+        "/images/grado-primaria-colegio-patria-caracas-5.jpg",
+        "/images/grado-primaria-colegio-patria-caracas-6.jpg"
     ]
 
     const carteleraImages = [
-        "/images/cartelera1.jpg",
-        "/images/cartelera11.jpg",
-        "/images/cartelera2.jpg",
-        "/images/cartelera12.jpg",
-        "/images/cartelera3.jpg",
-        "/images/cartelera13.jpg",
-        "/images/cartelera4.jpg",
-        "/images/cartelera14.jpg",
-        "/images/cartelera5.jpg",
-        "/images/cartelera15.jpg"
+        "/images/cartelera-informativa-colegio-patria-caracas-1.jpg",
+        "/images/cartelera-informativa-colegio-patria-caracas-11.jpg",
+        "/images/cartelera-informativa-colegio-patria-caracas-2.jpg",
+        "/images/cartelera-informativa-colegio-patria-caracas-12.jpg",
+        "/images/cartelera-informativa-colegio-patria-caracas-3.jpg",
+        "/images/cartelera-informativa-colegio-patria-caracas-13.jpg",
+        "/images/cartelera-informativa-colegio-patria-caracas-4.jpg",
+        "/images/cartelera-informativa-colegio-patria-caracas-14.jpg",
+        "/images/cartelera-informativa-colegio-patria-caracas-5.jpg",
+        "/images/cartelera-informativa-colegio-patria-caracas-15.jpg"
     ]
 
     const extras = [
@@ -212,31 +210,31 @@ const About = ({ isFullView = false, onNavigate }) => {
             id: 'futbol',
             title: "Fútbol",
             description: "Entrenamientos dirigidos para potenciar el trabajo en equipo y la disciplina deportiva.",
-            image: "/images/extra_futbol.jpg"
+            image: "/images/futbol-extraescolar-colegio-patria-caracas.jpg"
         },
         {
             id: 'voleibol',
             title: "Voleibol",
             description: "Desarrollo de habilidades motrices y coordination en un ambiente competitivo saludable.",
-            image: "/images/extra_voleibol.jpg"
+            image: "/images/voleibol-extraescolar-colegio-patria-caracas.jpg"
         },
         {
             id: 'ajedrez',
             title: "Ajedrez",
             description: "Desarrollo del pensamiento estratégico, la concentración y la resolución de problemas.",
-            image: "/images/extra_ajedrez.jpg"
+            image: "/images/ajedrez-extraescolar-colegio-patria-caracas.jpg"
         },
         {
             id: 'baile',
             title: "Danza",
             description: "Expresión artística y rítmica que fomenta la confianza y la disciplina creativa.",
-            image: "/images/extra_baile.jpg"
+            image: "/images/baile-extraescolar-colegio-patria-caracas.jpg"
         },
         {
             id: 'tareas',
             title: "Tareas Dirigidas",
             description: "Refuerzo pedagógico personalizado para garantizar la excelencia académica.",
-            image: "/images/extra_tareas.jpg"
+            image: "/images/tareas-extraescolar-colegio-patria-caracas.jpg"
         }
     ]
 

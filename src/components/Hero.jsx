@@ -6,8 +6,8 @@ const Hero = ({ onNavigate }) => {
             {/* Fallback pattern + Image Overlay */}
             <div className="absolute inset-0 bg-primary-dark">
                 <img
-                    src="/images/hero-bg.jpg"
-                    alt="Colegio Patria Background"
+                    src="/images/fachada-colegio-patria-caracas.jpg"
+                    alt="Fachada Colegio Patria Caracas - Educación Ítalo-Venezolana, Inscripciones abiertas"
                     className="w-full h-full object-cover opacity-45 transition-transform duration-[3000ms] group-hover:scale-110"
                     onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=2000'; }}
                 />

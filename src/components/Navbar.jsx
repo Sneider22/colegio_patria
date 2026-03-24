@@ -45,8 +45,8 @@ const Navbar = ({ activeView, onNavigate, isOpen, onToggle }) => {
                     className="flex items-center gap-3 group transition-all"
                 >
                     <img
-                        src="/images/logo.png"
-                        alt="Logo"
+                        src="/images/logo-colegio-patria-caracas.png"
+                        alt="Logo Colegio Patria Caracas - Educación Ítalo-Venezolana"
                         className="h-10 md:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-110"
                         onError={(e) => { e.target.style.display = 'none'; }}
                     />
