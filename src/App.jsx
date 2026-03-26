@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Routes, Route, useLocation, useNavigate, useParams, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -9,9 +10,49 @@ import Footer from './components/Footer'
 import WhatsAppFAB from './components/WhatsAppFAB'
 import AcademicLevelDetail from './components/AcademicLevelDetail'
 
+// Helper component for scrolling management on navigation
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
+// Wrapper for Academic Detail routes to extract params
+function AcademicDetailWrapper({ academicData, onNavigate }) {
+  const { level } = useParams();
+  const navigate = useNavigate();
+  
+  if (!academicData[level]) return <Navigate to="/" replace />;
+  
+  return (
+    <div className="pt-20">
+      <AcademicLevelDetail
+        levelData={academicData[level]}
+        onBack={() => onNavigate('/nosotros')}
+      />
+    </div>
+  );
+}
+
 function App() {
-  const [activeView, setActiveView] = useState('inicio') // 'inicio', 'nosotros', 'identidad', 'contacto', 'academic-*'
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  // Determinar activeView basado en la ruta actual para el Navbar
+  const getActiveView = () => {
+    const path = location.pathname;
+    if (path === '/') return 'inicio';
+    if (path === '/nosotros' || path.startsWith('/academia/')) return 'nosotros';
+    if (path === '/identidad') return 'identidad';
+    if (path === '/pagos') return 'pagos';
+    if (path === '/contacto') return 'contacto';
+    return 'inicio';
+  }
+
+  const activeView = getActiveView();
 
   const academicData = {
     'preescolar': {
@@ -26,7 +67,6 @@ function App() {
         'Certificación de ingresos o carta de trabajo, que indique sueldo y antigüedad (ambos representantes).',
         'Copia cédula de identidad de ambos representantes.',
         'Certificado de educación preescolar (para el momento en que realice la inscripción).',
-      
       ],
       supplies: [
         { label: 'Lista de útiles para 1er nivel', link: '/pdf/utiles-preescolar-1er-nivel.pdf' },
@@ -56,7 +96,6 @@ function App() {
         'Certificación de ingresos o carta de trabajo, que indique sueldo y antigüedad (ambos representantes).',
         'Copia cédula de identidad de ambos representantes y del alumno en caso de poseerla.',
         'Constancia de prosecución',
-
       ],
       supplies: [
         { label: 'Lista de útiles para 1er grado', link: '/pdf/utiles-primaria-1er-grado.pdf' },
@@ -161,134 +200,79 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    // Inicializar el historial si es la primera vez
-    if (!window.history.state) {
-      window.history.replaceState({ view: 'inicio' }, '')
-    }
+  const handleNavigation = (dest) => {
+    // Si dest es un ID de vista antiguo, lo convertimos a ruta
+    let path = dest;
+    if (dest === 'inicio') path = '/';
+    else if (dest === 'nosotros') path = '/nosotros';
+    else if (dest === 'identidad') path = '/identidad';
+    else if (dest === 'contacto') path = '/contacto';
+    else if (dest === 'pagos') path = '/pagos';
+    else if (dest.startsWith('academic-')) path = `/academia/${dest.split('-')[1]}`;
 
-    const handlePopState = (event) => {
-      if (event.state && event.state.view) {
-        // Al navegar hacia atrás, actualizamos la vista sin hacer pushState de nuevo
-        setActiveView(event.state.view)
-        if (event.state.view === 'inicio') {
-          setTimeout(() => {
-            const elem = document.getElementById('inicio-view')
-            if (elem) elem.scrollIntoView({ behavior: 'smooth' })
-          }, 150)
-        } else {
-          window.scrollTo(0, 0)
-        }
-      } else {
-        // Por si acaso no hay estado, volvemos a inicio
-        setActiveView('inicio')
-      }
-    }
-
-    window.addEventListener('popstate', handlePopState)
-    return () => window.removeEventListener('popstate', handlePopState)
-  }, [])
-
-  const handleNavigation = (id, skipHistory = false) => {
-    if (id === 'inicio') {
-      if (activeView !== 'inicio') {
-        setActiveView('inicio')
-        if (!skipHistory) {
-          window.history.pushState({ view: 'inicio' }, '')
-        }
-        setTimeout(() => {
-          const elem = document.getElementById('inicio-view')
-          if (elem) elem.scrollIntoView({ behavior: 'smooth' })
-        }, 150)
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-      }
-    } else if (id === 'nosotros') {
-      setActiveView('nosotros')
-      if (!skipHistory) window.history.pushState({ view: 'nosotros' }, '')
-      window.scrollTo(0, 0)
-    } else if (id === 'identidad') {
-      setActiveView('identidad')
-      if (!skipHistory) window.history.pushState({ view: 'identidad' }, '')
-      window.scrollTo(0, 0)
-    } else if (id === 'contacto') {
-      setActiveView('contacto')
-      if (!skipHistory) window.history.pushState({ view: 'contacto' }, '')
-      window.scrollTo(0, 0)
-    } else if (id === 'pagos') {
-      setActiveView('pagos')
-      if (!skipHistory) window.history.pushState({ view: 'pagos' }, '')
-      window.scrollTo(0, 0)
-    } else if (id.startsWith('academic-')) {
-      setActiveView(id)
-      if (!skipHistory) window.history.pushState({ view: id }, '')
-      window.scrollTo(0, 0)
-    }
-  }
-
-  const renderContent = () => {
-    if (activeView.startsWith('academic-')) {
-      const level = activeView.split('-')[1]
-      return (
-        <div className="pt-20">
-          <AcademicLevelDetail
-            levelData={academicData[level]}
-            onBack={() => handleNavigation('nosotros')}
-          />
-        </div>
-      )
-    }
-
-    switch (activeView) {
-      case 'inicio':
-        return (
-          <>
-            <div id="inicio-view">
-              <Hero onNavigate={handleNavigation} />
-            </div>
-            <About isFullView={false} onNavigate={handleNavigation} />
-          </>
-        )
-      case 'nosotros':
-        return (
-          <div className="pt-20">
-            <About isFullView={true} onNavigate={handleNavigation} />
-          </div>
-        )
-      case 'identidad':
-        return (
-          <div className="pt-20">
-            <Hymns />
-          </div>
-        )
-      case 'pagos':
-        return (
-          <div className="pt-20">
-            <Payments />
-          </div>
-        )
-      case 'contacto':
-        return (
-          <div className="pt-20">
-            <Contact />
-          </div>
-        )
-      default:
-        return (
-          <>
-            <Hero onNavigate={handleNavigation} />
-            <About onNavigate={handleNavigation} />
-          </>
-        )
+    // Navegar
+    if (path === '/' && location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate(path);
     }
   }
 
   return (
     <div className="min-h-screen bg-secondary antialiased flex flex-col font-inter transition-all duration-700">
-      <Navbar activeView={activeView} onNavigate={handleNavigation} isOpen={isMenuOpen} onToggle={setIsMenuOpen} />
+      <ScrollToTop />
+      <Navbar 
+        activeView={activeView} 
+        onNavigate={handleNavigation} 
+        isOpen={isMenuOpen} 
+        onToggle={setIsMenuOpen} 
+      />
+      
       <main className="flex-grow">
-        {renderContent()}
+        <Routes>
+          <Route path="/" element={
+            <>
+              <div id="inicio-view">
+                <Hero onNavigate={handleNavigation} />
+              </div>
+              <About isFullView={false} onNavigate={handleNavigation} />
+            </>
+          } />
+          
+          <Route path="/nosotros" element={
+            <div className="pt-20">
+              <About isFullView={true} onNavigate={handleNavigation} />
+            </div>
+          } />
+          
+          <Route path="/identidad" element={
+            <div className="pt-20">
+              <Hymns />
+            </div>
+          } />
+          
+          <Route path="/pagos" element={
+            <div className="pt-20">
+              <Payments />
+            </div>
+          } />
+          
+          <Route path="/contacto" element={
+            <div className="pt-20">
+              <Contact />
+            </div>
+          } />
+          
+          <Route 
+            path="/academia/:level" 
+            element={<AcademicDetailWrapper academicData={academicData} onNavigate={handleNavigation} />} 
+          />
+          
+          {/* Fallback for shared links or typos */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
+
       <Footer onNavigate={handleNavigation} />
       <WhatsAppFAB isMenuOpen={isMenuOpen} />
     </div>

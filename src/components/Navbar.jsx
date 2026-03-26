@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = ({ activeView, onNavigate, isOpen, onToggle }) => {
     const [scrolled, setScrolled] = useState(false)
@@ -34,14 +35,14 @@ const Navbar = ({ activeView, onNavigate, isOpen, onToggle }) => {
     const handleLinkClick = (id) => {
         onNavigate(id)
         onToggle(false)
-        // Eliminado window.scrollTo(0,0) de aquí para no interferir con el scroll de App.jsx
     }
 
     return (
         <nav className="fixed top-0 w-full z-50 transition-all duration-500 bg-white/95 backdrop-blur-xl shadow-lg py-3">
             <div className="container mx-auto px-6 flex justify-between items-center">
-                <button
-                    onClick={() => handleLinkClick('inicio')}
+                <Link
+                    to="/"
+                    onClick={() => onToggle(false)}
                     className="flex items-center gap-3 group transition-all"
                 >
                     <img
@@ -53,7 +54,7 @@ const Navbar = ({ activeView, onNavigate, isOpen, onToggle }) => {
                     <span className="text-xl md:text-2xl font-black tracking-tighter transition-colors text-primary items-center flex">
                         Colegio<span className="text-accent">Patria</span>
                     </span>
-                </button>
+                </Link>
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex space-x-10">
