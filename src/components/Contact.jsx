@@ -58,11 +58,7 @@ const Contact = () => {
     const faqs = [
         {
             question: "¿CUÁLES SON LOS REQUISITOS GENERALES?",
-            answer: "Los requisitos generales incluyen:\n\n• 4 fotos del alumno, tipo carnet.\n• 2 fotos del representante, tipo carnet.\n• Fotocopia de la partida de nacimiento.\n• Constancia de solvencia del colegio anterior.\n• Boleta de promoción.\n• Carta de buena conducta.\n• Depósito bancario colegio.\n• Cuota Comunidad Educativa.\n• Contrato Colegio-Representante."
-        },
-        {
-            question: "¿CUÁLES SON LOS REQUISITOS DE PREINSCRIPCIÓN?",
-            answer: "Los requisitos de preinscripción son:\n\n• Constancia de buena conducta.\n• Fotocopia de C.I. del alumno o representante.\n• Notas del lapso para el momento de preinscripción.\n• Cartas de trabajo de ambos padres o certificación de ingresos."
+            answer: "Los documentos deben ser entregados en un sobre manila tamaño OFICIO. Los requisitos generales comunes incluyen:\n\n• Copia de la partida de nacimiento.\n• Copia de la cédula de identidad de ambos representantes (y del alumno si la posee).\n• Copia del último recibo de pago de la institución de procedencia.\n• Certificación de ingresos o carta de trabajo de ambos representantes.\n• Boletas de evaluación, constancia de prosecución o notas certificadas (dependiendo del nivel).\n\nPara revisar la lista exacta correspondiente a cada etapa (Preescolar, Primaria o Bachillerato), puedes consultar los detalles dentro de nuestra sección de Formación Académica."
         },
         {
             question: "¿OFRECEN ACTIVIDADES EXTRACURRICULARES?",

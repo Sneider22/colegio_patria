@@ -280,6 +280,40 @@ const About = ({ isFullView = false, onNavigate }) => {
                     </div>
                 </div>
 
+                {/* Planilla de Inscripción Banner */}
+                <div className="bg-white rounded-3xl md:rounded-[3rem] p-8 md:p-14 shadow-xl md:shadow-2xl border border-gray-100 mb-24 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 w-full">
+                    <div className="absolute top-0 right-0 w-64 md:w-96 h-64 md:h-96 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none"></div>
+                    
+                    <div className="relative z-10 flex flex-col sm:flex-row items-center sm:items-start md:items-center gap-6 lg:gap-10 text-center sm:text-left w-full md:w-2/3">
+                        <div className="w-14 h-14 md:w-20 md:h-20 bg-primary/10 text-primary rounded-2xl md:rounded-[2rem] flex items-center justify-center shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 md:h-10 md:w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <span className="text-gold font-black tracking-[0.2em] uppercase text-[10px] md:text-sm mb-1 md:mb-2 block">Proceso de Admisión</span>
+                            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-2 md:mb-4 tracking-tighter uppercase">Planilla de Inscripción</h2>
+                            <p className="text-gray-500 font-medium text-sm md:text-base lg:text-lg leading-snug">
+                                Descarga, imprime y llena el documento para formalizar la inscripción en el plantel.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="relative z-10 w-full md:w-auto flex justify-center md:justify-end mt-2 md:mt-0">
+                        <a 
+                            href="/pdf/planilla-de-inscripcion-colegiopatria.pdf" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-2 md:gap-3 bg-primary text-white font-black uppercase tracking-widest text-xs md:text-sm px-8 py-4 md:px-10 md:py-5 rounded-full shadow-lg hover:bg-primary-dark transition-all duration-300 md:hover:scale-105 whitespace-nowrap w-full sm:w-auto"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            Descargar PDF
+                        </a>
+                    </div>
+                </div>
+
                 {/* Stats Marker - ONLY IN INICIO/HOME VIEW */}
                 {!isFullView && (
                     <div className="mb-24 bg-footer-blue rounded-[3rem] p-12 md:p-16 relative overflow-hidden group shadow-2xl">
