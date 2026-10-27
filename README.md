@@ -1,17 +1,17 @@
 <div align="center">
 
 <img src="https://www.colegiopatria.com/images/logo-colegio-patria-caracas.png" alt="Colegio Patria" width="110" />
-</div>
-
-
 
 # Colegio Patria — Sitio institucional
 
 **Plataforma web oficial de la U.E. Colegio Patria**, institución ítalo-venezolana con más de 60 años de trayectoria en Los Chorros, Caracas.
+<br><br>
 
 [![Visitar sitio](https://img.shields.io/badge/🌐_Visitar_sitio-colegiopatria.com-0052B4?style=for-the-badge)](https://www.colegiopatria.com/)
 [![Instagram](https://img.shields.io/badge/Instagram-@sccolegiopatria-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/sccolegiopatria/?hl=es)
 [![Facebook](https://img.shields.io/badge/Facebook-Colegio_Patria-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/p/SC-Colegio-Patria-100063499273001/?locale=es_LA)
+
+<br>
 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" title="React 19" width="34" height="34"/>&nbsp;
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/reactrouter/reactrouter-original.svg" alt="React Router" title="React Router 7" width="34" height="34"/>&nbsp;
@@ -49,7 +49,7 @@ Contadores animados que arrancan al entrar en pantalla (`IntersectionObserver`),
 
 ---
 
-<div align="center">
+<div>
 
 Desarrollado por **[Sneider Araque](https://github.com/Sneider22)**
 
