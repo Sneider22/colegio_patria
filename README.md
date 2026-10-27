@@ -11,15 +11,6 @@
 [![Instagram](https://img.shields.io/badge/Instagram-@sccolegiopatria-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/sccolegiopatria/?hl=es)
 [![Facebook](https://img.shields.io/badge/Facebook-Colegio_Patria-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/p/SC-Colegio-Patria-100063499273001/?locale=es_LA)
 
-<br>
-
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" title="React 19" width="34" height="34"/>&nbsp;
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/reactrouter/reactrouter-original.svg" alt="React Router" title="React Router 7" width="34" height="34"/>&nbsp;
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" alt="Vite" title="Vite 7" width="34" height="34"/>&nbsp;
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" title="Tailwind CSS 4" width="34" height="34"/>&nbsp;
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript" width="34" height="34"/>&nbsp;
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" alt="Vercel" title="Vercel" width="34" height="34"/>
-
 </div>
 
 ---
