@@ -7,7 +7,7 @@
 # Colegio Patria — Sitio institucional
 
 **Plataforma web oficial de la U.E. Colegio Patria**, institución ítalo-venezolana con más de 60 años de trayectoria en Los Chorros, Caracas.
-<br><br>
+<br>
 
 [![Visitar sitio](https://img.shields.io/badge/🌐_Visitar_sitio-colegiopatria.com-0052B4?style=for-the-badge)](https://www.colegiopatria.com/)
 [![Instagram](https://img.shields.io/badge/Instagram-@sccolegiopatria-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/sccolegiopatria/?hl=es)
