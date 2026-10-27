@@ -2,6 +2,8 @@
 
 <img src="https://www.colegiopatria.com/images/logo-colegio-patria-caracas.png" alt="Colegio Patria" width="110" />
 
+</div>
+
 # Colegio Patria — Sitio institucional
 
 **Plataforma web oficial de la U.E. Colegio Patria**, institución ítalo-venezolana con más de 60 años de trayectoria en Los Chorros, Caracas.
@@ -11,13 +13,22 @@
 [![Instagram](https://img.shields.io/badge/Instagram-@sccolegiopatria-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/sccolegiopatria/?hl=es)
 [![Facebook](https://img.shields.io/badge/Facebook-Colegio_Patria-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/p/SC-Colegio-Patria-100063499273001/?locale=es_LA)
 
-</div>
-
 ---
 
 <div align="center">
   <img src="./assets/inicio.png" alt="Página de inicio" width="100%" />
 </div>
+
+---
+
+## Tecnologías Implementadas
+
+| Capa / Herramienta | Tecnología |
+|---|---|
+| **Frontend** | React 19 |
+| **Build Tool** | Vite |
+| **Estilos** | Tailwind CSS 4 |
+| **Iconografía** | Lucide React / Heroicons |
 
 ---
 
